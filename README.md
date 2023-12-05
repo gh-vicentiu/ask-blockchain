@@ -17,4 +17,22 @@ this is alpha version
     the answer returns to the first agent and relayed back to the user.
 
 
+!!! OPEN AI KEY REQUIRED !!! 
+
+What to expect. for now...
+    5 dececmber 2023
+    first alpha version!
+
+    the main coder for blockchain is not yet active, we are in testing stages.
+    
+    The main agent will talk to you, 
+    01.    if you require of him the price of btc, it will call another agent that will make up a price and gives it back
+    02.    if you require of him to code for you, it will write py code save it in /sandbox/ and it will execute it
+
+    it is quite buggy yet, but works for the most part.
+
+    to be added:
+        better error handeling
+        blockchain coder assistant
+        code debugger
 
