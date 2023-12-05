@@ -64,4 +64,4 @@ tools_lite = [{
             "required": ["fileName"]
         }
     }
-}]
+},{"type": "code_interpreter"}]

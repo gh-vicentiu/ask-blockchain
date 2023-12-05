@@ -1,1 +1,308 @@
-{}
+{
+        "1121122": {
+                "a": {
+                        "last_assistant_id": "asst_4HMw5BxgTYXyiWa22Q1Bpr6z",
+                        "last_thread_id": "thread_642AMbLa4pWaokC5EmGmV1mZ",
+                        "agent_coder_assistant_id": "asst_DrOzUgV7vhyNEMZAkDbXYLnN",
+                        "agent_coder_thread_id": "thread_UGHbPbf6RduBXgtOTthMIWvL"
+                },
+                "asst_4HMw5BxgTYXyiWa22Q1Bpr6z": {
+                        "thread_642AMbLa4pWaokC5EmGmV1mZ": {
+                                "msg_jOxhRn6HXVDLKQctvUaYANok": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "show me a transaction that happened today at random",
+                                                        "timestamp": 1701806009
+                                                }
+                                        },
+                                        "thread_UGHbPbf6RduBXgtOTthMIWvL": {},
+                                        "msg_dmteJOFEcQHPqMcAoYOLQz9r": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Show me a random bitcoin transaction that happened today.",
+                                                                "timestamp": 1701806013
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Unfortunately, it seems that I am unable to retrieve a random bitcoin transaction that occurred today. If you have a specific bitcoin transaction in mind or any other questions related to bitcoin, please let me know and I can assist you further.",
+                                                        "timestamp": 1701806060
+                                                }
+                                        }
+                                },
+                                "msg_9fkjplRIekYEcjMhtoy0hwHv": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "pull the latest 3 blocks and their hashes",
+                                                        "timestamp": 1701807521
+                                                }
+                                        },
+                                        "msg_wgTQegbjd3qZ84ioAfH1cDKE": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Pull the hashes of the latest 3 blocks on the Bitcoin blockchain.",
+                                                                "timestamp": 1701807525
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It looks like there is an issue with accessing the latest block hashes from the Bitcoin blockchain. I will continue to investigate the problem and provide a solution as soon as possible. Thank you for your patience.",
+                                                        "timestamp": 1701807561
+                                                }
+                                        }
+                                },
+                                "msg_ybDjznqqkDItlFS8Sev06L3H": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "pull the latest 3 blocks and their hashes",
+                                                        "timestamp": 1701807618
+                                                }
+                                        },
+                                        "msg_UBlQlwggAo8A8xKRQjKfqn8O": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Pull the hashes of the latest 3 blocks on the Bitcoin blockchain.",
+                                                                "timestamp": 1701807622
+                                                        }
+                                                }
+                                        }
+                                },
+                                "msg_N0wKYNguPc4THBRBxkQG9OhM": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "pull the latest 3 blocks and their hashes",
+                                                        "timestamp": 1701807989
+                                                }
+                                        },
+                                        "msg_xLTcK41d3Jtrip2ZdnpctbY3": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Pull the hashes of the latest 3 blocks on the Bitcoin blockchain.",
+                                                                "timestamp": 1701807994
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It looks like there is still an issue with accessing the hashes of the latest 3 blocks on the Bitcoin blockchain. I will continue to troubleshoot and provide a solution as soon as possible. Thank you for your patience.",
+                                                        "timestamp": 1701808016
+                                                }
+                                        }
+                                },
+                                "msg_YTO0laHbkppAprCLxdRpgftr": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "pull the latest block number",
+                                                        "timestamp": 1701808115
+                                                }
+                                        },
+                                        "msg_xBFIVP8DdwaCih27FUvC0IMV": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Pull the latest block number on the Bitcoin blockchain.",
+                                                                "timestamp": 1701808119
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It seems that there is an issue with accessing the latest block number on the Bitcoin blockchain. I will continue to investigate the problem and provide a solution as soon as possible. Thank you for your understanding.",
+                                                        "timestamp": 1701808141
+                                                }
+                                        }
+                                },
+                                "msg_v3pTulQTiCMGFAWMM5vdy2te": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "pull the latest block number",
+                                                        "timestamp": 1701808272
+                                                }
+                                        },
+                                        "msg_b7cZZd3DE3vSPk8gtowk8SLW": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Pull the latest block number on the Bitcoin blockchain.",
+                                                                "timestamp": 1701808276
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The latest block number on the Bitcoin blockchain is 819,926. If you have any more questions or need further assistance, feel free to ask!",
+                                                        "timestamp": 1701808291
+                                                }
+                                        }
+                                },
+                                "msg_YC3Oo7KrymUH7Zi08Re90HLN": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "pull the latest 3 blocks numbers",
+                                                        "timestamp": 1701808326
+                                                }
+                                        },
+                                        "msg_NXkFDYXS4kT2nxQf9JS1QU9a": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Pull the block number for the latest block on the Bitcoin blockchain.",
+                                                                "timestamp": 1701808336
+                                                        }
+                                                }
+                                        },
+                                        "msg_WoltsCKCHfticyQG7HtPnn77": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Pull the block number for the second latest block on the Bitcoin blockchain.",
+                                                                "timestamp": 1701808348
+                                                        }
+                                                }
+                                        },
+                                        "msg_ioMfJVPsiAzAnsniXaWeSMLW": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Pull the block number for the third latest block on the Bitcoin blockchain.",
+                                                                "timestamp": 1701808367
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The block numbers for the latest 3 blocks on the Bitcoin blockchain are as follows:\n1. Latest block number: 819,926\n2. Second latest block number: 819,925\n3. Third latest block number: 819,924\n\nIf you have any more questions or need further assistance, feel free to ask!",
+                                                        "timestamp": 1701808388
+                                                }
+                                        }
+                                },
+                                "msg_VyFsHMWrdeQGVTCyl2uXZyfQ": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "pull the last 3 block numbers and corresponding hashes",
+                                                        "timestamp": 1701808474
+                                                }
+                                        },
+                                        "msg_QfBDimSiGxoEKbMknVJNmbap": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Pull the block numbers and corresponding hashes for the last 3 blocks on the Bitcoin blockchain.",
+                                                                "timestamp": 1701808478
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Here are the block numbers and corresponding hashes for the last 3 blocks on the Bitcoin blockchain:\n\n1. Block Number: 819,927, Block Hash: 0000000000000000000121c53ac561aa5e6073770f6218b4bd9a5e736256998a\n2. Block Number: 819,926, Block Hash: 0000000000000000000025ab6da041b7aeaea0ea6e2c69f366122c555a12534b\n3. Block Number: 819,925, Block Hash: 000000000000000000032ba23706563c2d8f8e622eb65bd8d9c4f8234e2c3266\n\nIf you have any more questions or need further assistance, feel free to ask!",
+                                                        "timestamp": 1701808506
+                                                }
+                                        }
+                                },
+                                "msg_nA9UtmyTFuNmuMNatJYbiy3J": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "what is the highest amount traded in the last block?",
+                                                        "timestamp": 1701809290
+                                                }
+                                        },
+                                        "msg_ST3oXD4ribZPHyeVkv3RqgXj": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "What is the highest amount traded in the last block on the Bitcoin blockchain?",
+                                                                "timestamp": 1701809295
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The highest amount traded in the last block on the Bitcoin blockchain is 2525.55047982. If you have any more questions or need further assistance, feel free to ask!",
+                                                        "timestamp": 1701809321
+                                                }
+                                        }
+                                },
+                                "msg_dX3FNdq3H5F3HKtWEI98KuPi": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "make a list of addresses, transaction id's, hashes and ammounts, in the last block",
+                                                        "timestamp": 1701809376
+                                                }
+                                        },
+                                        "msg_reN3ut2nnRkQrsuhjeGn49Rr": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Provide a list of addresses, transaction IDs, hashes, and amounts for transactions in the last block on the Bitcoin blockchain.",
+                                                                "timestamp": 1701809381
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It seems that there was an issue with retrieving the requested information for the transactions in the last block on the Bitcoin blockchain. I will investigate the problem and provide a solution as soon as possible. Thank you for your understanding.",
+                                                        "timestamp": 1701809403
+                                                }
+                                        }
+                                },
+                                "msg_Z54ZFfm71g3Uvgec4pf4LAJR": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "what are the number of transactions in the last block?",
+                                                        "timestamp": 1701810061
+                                                }
+                                        },
+                                        "msg_RqFshjvSqhO8kW7JNvQpaQcV": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "What is the number of transactions in the last block on the Bitcoin blockchain?",
+                                                                "timestamp": 1701810065
+                                                        }
+                                                }
+                                        },
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "what are the number of transactions in the last block?",
+                                                        "timestamp": 1701810061
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The number of transactions in the last block on the Bitcoin blockchain is 3,591. If you have any more questions or need further assistance, feel free to ask!",
+                                                        "timestamp": 1701810080
+                                                }
+                                        }
+                                }
+                        }
+                }
+        }
+}

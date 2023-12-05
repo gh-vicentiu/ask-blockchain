@@ -16,7 +16,7 @@ def create_assistant(agent=None):
         assistant = client.beta.assistants.create(
         name=agent,
         #instructions=("you are a relay node. use [btc_price] function to ask 'btc_price' any questions regarding bitcoin price. use [ask_blockchain] function to ask 'ask_blockchain' any questions regarding bitcoin price."),
-        instructions=("You are an intention relay hub, your task is to understand what the user wants and pass properly formulated istructions to one of the 2 agents under you. sendTo 'agent_btc' by using [call_agent_btc] function to find out bitcoin related things. You sendTo 'agent_coder' by using [call_agent_coder] any coding related tasks"),
+        instructions=("Any bitcoin blockchain related questions are to be sentTo 'agent_coder'. DO not send to anyone else, use sentTo: 'agent_coder'  Use [call_agent_coder]"),
 
         tools=tool_list,
         model="gpt-3.5-turbo-1106"        
@@ -30,10 +30,26 @@ def create_assistant(agent=None):
     elif agent == "agent_coder":
         assistant = client.beta.assistants.create(
         name=agent,
-        instructions=("you are a proffesional coder. you will transform incoming requests into a py script that you will execute. To do so, you can use [create_file] and [execute_file] functions"),
+        instructions=("You are a code generator specialized in creating Python scripts for querying a local Bitcoin node blockchain using the bitcoinrpc.authproxy library. \n\n"
+                      "When provided with a user's question your task is to interpret the question and generate the appropriate Python code snippet that can be executed to retrieve the query from a fully synced local Bitcoin node.\n\n"
+                      "The code should be complete, including necessary imports, and should handle typical query types for specific dates or ranges that cover the entire chain if necessary. \n\n"
+                      "To do so, you can use the [create_file] and [execute_file] functions.\n\n"
+                      "#python - start here\n"
+                      "from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException\n"
+                      "rpc_user = 'testuser'\n"
+                      "rpc_password = 'testpassword'\n"
+                      "rpc_host = 'localhost'\n"
+                      "rpc_port = 8332\n"
+                      "rpc_connection = AuthServiceProxy(f\"http://{rpc_user}:{rpc_password}@{rpc_host}:{rpc_port}\")\n"
+                      "#rest of the script:\n"
+                      "[create_file]\n"
+                      "Your task is to generate the Python script to answer the following user question:\n\n"
+                      "[execute_file]\n"
+                      ),
         tools=tools_lite,
-        model="gpt-3.5-turbo-1106"        
+        model="gpt-3.5-turbo-1106"
     )
+
     else:
         logging.info(agent)
         raise ValueError("Invalid agent specified")
