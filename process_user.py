@@ -61,11 +61,7 @@ def process_user(user_id, messaged_us):
     logging.info(f"Thread {thread_id} for {user_id}.")
 
 
-    # get_runs = client.beta.threads.runs.list(thread_id=thread_id, limit=1, order='desc')
-    # run_id = get_runs.data[0].id
-    # run_status = client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run_id)  
-    # if run_status.status not in ['completed', 'failed', 'cancelled']:   
-    #     cancel_job = client.beta.threads.runs.cancel(thread_id=thread_id, run_id=run_id)
+
 
     
     logging.info(f"Adding Message to  {assistant_id} - {thread_id} for {user_id}.")
@@ -73,7 +69,14 @@ def process_user(user_id, messaged_us):
 
     if message_u_id is None:
         logging.error("Failed to add message to thread.")
-        return None
+        get_runs = client.beta.threads.runs.list(thread_id=thread_id, limit=1, order='desc')
+        run_id = get_runs.data[0].id
+        run_status = client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run_id)  
+        if run_status.status not in ['completed', 'failed', 'cancelled']:   
+            cancel_job = client.beta.threads.runs.cancel(thread_id=thread_id, run_id=run_id)
+            time.sleep(2)
+        message_u_id = add_message_to_thread(thread_id, messaged_us, role='user')
+
     logging.info(f"Message {message_u_id} added to  {assistant_id} - {thread_id} for {user_id}.")
 
     #logging.info(f"{db[user_id][assistant_id][thread_id][message_u_id]}")

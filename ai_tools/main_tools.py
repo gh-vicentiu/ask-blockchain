@@ -2,23 +2,24 @@
 import json
 
 
-def btc_price(sentTo, sentFrom, instruction, thread_main):
+def call_agent_btc(sentTo, sentFrom, instruction, thread_main):
     from process_bot import process_bot
     print(f"Sending message from {sentFrom} to {sentTo}: '{instruction}'")
     thread_main['agent'] = sentTo
     response = process_bot(instruction=instruction, thread_main=thread_main)
     return f"result {response}"
 
-def blockchain(sentTo, sentFrom, instruction, thread_main):
+def call_agent_coder(sentTo, sentFrom, instruction, thread_main):
     from process_bot import process_bot
     print(f"Sending message from {sentFrom} to {sentTo}: '{instruction}'")
+    thread_main['agent'] = sentTo
     response = process_bot(instruction=instruction, thread_main=thread_main)
     return f"result {response}"
 
 tools_list = [{
     "type": "function",
     "function": {
-        "name": "btc_price",
+        "name": "call_agent_btc",
         "description": "send messages using this function",
         "parameters": {
             "type": "object",
@@ -42,7 +43,7 @@ tools_list = [{
 }, {
     "type": "function",
     "function": {
-        "name": "blockchain",
+        "name": "call_agent_coder",
         "description": "send messages using another function",
         "parameters": {
             "type": "object",

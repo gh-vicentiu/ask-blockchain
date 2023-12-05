@@ -16,21 +16,21 @@ def create_assistant(agent=None):
         assistant = client.beta.assistants.create(
         name=agent,
         #instructions=("you are a relay node. use [btc_price] function to ask 'btc_price' any questions regarding bitcoin price. use [ask_blockchain] function to ask 'ask_blockchain' any questions regarding bitcoin price."),
-        instructions=("You are a sales agent for bitcoin. If you are asked any information about blockchain. you will will send a proper formulated request, send to 'blockchain' use [blockchain] function"),
+        instructions=("You are an intention relay hub, your task is to understand what the user wants and pass properly formulated istructions to one of the 2 agents under you. sendTo 'agent_btc' by using [call_agent_btc] function to find out bitcoin related things. You sendTo 'agent_coder' by using [call_agent_coder] any coding related tasks"),
 
         tools=tool_list,
         model="gpt-3.5-turbo-1106"        
     )
-    elif agent == "btc_price":
+    elif agent == "agent_btc":
         assistant = client.beta.assistants.create(
         name=agent,
         instructions=("you are a bitcoin price master. make up prices as you are asked"),
         model="gpt-3.5-turbo-1106"        
     )
-    elif agent == "blockchain":
+    elif agent == "agent_coder":
         assistant = client.beta.assistants.create(
         name=agent,
-        instructions=("you are a bitcoin blockchain coder, you will be sent requests and your job is to transform them into executable python code, you will save them to file and then execute them."),
+        instructions=("you are a proffesional coder. you will transform incoming requests into a py script that you will execute. To do so, you can use [create_file] and [execute_file] functions"),
         tools=tools_lite,
         model="gpt-3.5-turbo-1106"        
     )

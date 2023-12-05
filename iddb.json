@@ -1,48 +1,156 @@
 {
-        "11124": {
+        "11120": {
                 "a": {
-                        "last_assistant_id": "asst_nys3WzpLJZoJNCRu3FwGZ10b",
-                        "last_thread_id": "thread_kWgUK4Qn9tKwmOjhHk5VOmLv",
-                        "blockchain_assistant_id": "asst_JZHcaOPFT2ebLtJxgEHDwNEy",
-                        "blockchain_thread_id": "thread_vRU4xRNKZHOYJHo4sKRIXaz0"
+                        "last_assistant_id": "asst_2X42TbvwifbGw7RFMpFJBfGQ",
+                        "last_thread_id": "thread_nRj6PkPyGdEq0kBLb5jKOzbo",
+                        "agent_coder_assistant_id": "asst_LbJaRoG1HfeGsxK30bCo1Q7K",
+                        "agent_coder_thread_id": "thread_A90SgfenT47SHEa9sCXCiRax"
                 },
-                "asst_nys3WzpLJZoJNCRu3FwGZ10b": {
-                        "thread_kWgUK4Qn9tKwmOjhHk5VOmLv": {
-                                "msg_3wvs4V2jD2QiMflBshl1k3Nb": {
+                "asst_2X42TbvwifbGw7RFMpFJBfGQ": {
+                        "thread_nRj6PkPyGdEq0kBLb5jKOzbo": {
+                                "msg_r1Z7kgmdwC3idVoMMnFq38zi": {
                                         "0": {
                                                 "sent": {
                                                         "role": "user",
-                                                        "content": "how many transactions are in my wallet",
-                                                        "timestamp": 1701768707
+                                                        "content": "make me a script that prints hi",
+                                                        "timestamp": 1701790640
                                                 }
                                         },
-                                        "thread_vRU4xRNKZHOYJHo4sKRIXaz0": {},
-                                        "msg_fpZYcj7EAMJpoov9nhtj2vka": {
+                                        "thread_A90SgfenT47SHEa9sCXCiRax": {},
+                                        "msg_CNhPhWxVyJMPRJ2r8t7gy3mk": {
                                                 "0": {
                                                         "sent": {
                                                                 "role": "user",
-                                                                "content": "How many transactions are in my wallet?",
-                                                                "timestamp": 1701768712
+                                                                "content": "Please write a script that prints 'hi'.",
+                                                                "timestamp": 1701790645
                                                         }
                                                 }
                                         }
-                                }
-                        }
-                }
-        },
-        "11125": {
-                "a": {
-                        "last_assistant_id": "asst_sFM4ZN01KhYGittDUw0Fjxz8",
-                        "last_thread_id": "thread_q2rxAKiwRYFWPd5w6dPlDVtu"
-                },
-                "asst_sFM4ZN01KhYGittDUw0Fjxz8": {
-                        "thread_q2rxAKiwRYFWPd5w6dPlDVtu": {
-                                "msg_b1xAXQNgXMfXBiXavLXZLSEF": {
+                                },
+                                "msg_4GMotgRTd9hzZBSCeCXJUSkw": {
                                         "0": {
                                                 "sent": {
                                                         "role": "user",
-                                                        "content": "how many transactions are in my wallet",
-                                                        "timestamp": 1701768951
+                                                        "content": "make me a script that prints hi",
+                                                        "timestamp": 1701790830
+                                                }
+                                        }
+                                },
+                                "msg_zEoQHlUneM1HXnq4STz6sdRV": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "make me a script that prints hi",
+                                                        "timestamp": 1701790995
+                                                }
+                                        },
+                                        "msg_qepplpIwGM6nPcvE1CPjp8zQ": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please write a script that prints 'hi'.",
+                                                                "timestamp": 1701791001
+                                                        }
+                                                }
+                                        }
+                                },
+                                "msg_l7DRAKdrPNbCkgehDSthmFCe": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "make me a script that prints hi",
+                                                        "timestamp": 1701791189
+                                                }
+                                        },
+                                        "msg_oa209WMPHrgjXumS6Gh1hvB1": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please write a script that prints 'hi'.",
+                                                                "timestamp": 1701791195
+                                                        }
+                                                }
+                                        }
+                                },
+                                "msg_tkjdhuRtZ1kr8PcqMQFAI1q7": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "make me a script that prints hi",
+                                                        "timestamp": 1701791302
+                                                }
+                                        },
+                                        "msg_wHdtJJ15wPBjgQSUvIZG0iUH": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please write a script that prints 'hi'.",
+                                                                "timestamp": 1701791308
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The script has been executed successfully and it printed 'hi'.",
+                                                        "timestamp": 1701791325
+                                                }
+                                        }
+                                },
+                                "msg_vDCn0dpFhxssnD1SPXovHJeb": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "make me a script that prints hi 10 times in a row, by row waiting 1 second in between",
+                                                        "timestamp": 1701791442
+                                                }
+                                        },
+                                        "msg_ziQdBlo4b0oLiv2fLKuxybGX": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please write a script that prints 'hi' 10 times in a row, waiting 1 second in between each print.",
+                                                                "timestamp": 1701791446
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The script has been executed successfully, and it printed 'hi' 10 times, waiting for 1 second between each print.",
+                                                        "timestamp": 1701791479
+                                                }
+                                        }
+                                },
+                                "msg_45QwTPA5i2Kky6OiPrGN9B1O": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "write me a py that prints me hello big on the screen",
+                                                        "timestamp": 1701795240
+                                                }
+                                        },
+                                        "msg_lbxI5w45D9dHGuR6WfWYYfZR": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please write a script that prints 'hello big' on the screen.",
+                                                                "timestamp": 1701795245
+                                                        }
+                                                }
+                                        },
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "write me a py that prints me hello big on the screen",
+                                                        "timestamp": 1701795240
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The script has been executed successfully, and it printed 'hello big'.",
+                                                        "timestamp": 1701795260
                                                 }
                                         }
                                 }

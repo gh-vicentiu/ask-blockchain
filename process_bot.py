@@ -54,7 +54,13 @@ def process_bot(instruction, thread_main):
     message_u_id = add_message_to_thread(thread_id, instruction, role='user')
     if message_u_id is None:
         logging.error("Failed to add message to thread.")
-        return None
+        get_runs = client.beta.threads.runs.list(thread_id=thread_id, limit=1, order='desc')
+        run_id = get_runs.data[0].id
+        run_status = client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run_id)  
+        if run_status.status not in ['completed', 'failed', 'cancelled']:   
+            cancel_job = client.beta.threads.runs.cancel(thread_id=thread_id, run_id=run_id)
+            message_u_id = add_message_to_thread(thread_id, instruction, role='user')
+    logging.info(f"Message {message_u_id} added to  {assistant_id} - {thread_id} for {thread_main['u_bot_0_id']}.")
     write_db(db)
 
     if message_u_id not in db[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']]:

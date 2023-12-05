@@ -1,21 +1,30 @@
 import json
 import subprocess
+import os
 
 def create_file(fileName, fileContent):
+    sandbox_dir = "sandbox"
+    # Ensure the sandbox directory exists
+    if not os.path.exists(sandbox_dir):
+        os.makedirs(sandbox_dir)
+
+    # Adjust the file path to include the sandbox directory
+    filePath = os.path.join(sandbox_dir, fileName)
+
     try:
-        with open(fileName, 'w') as file:
+        with open(filePath, 'w') as file:
             file.write(fileContent)
-        return f"File '{fileName}' created successfully."
+        return f"File '{filePath}' created successfully."
     except IOError as e:
         return f"Error creating file: {e}"
 
 def execute_file(fileName):
-    """
-    Executes a Python file.
-    :param filename: Name of the file to execute.
-    """
+    sandbox_dir = "sandbox"
+    # Adjust the file path to include the sandbox directory
+    filePath = os.path.join(sandbox_dir, fileName)
+
     try:
-        result = subprocess.run(['python', fileName], capture_output=True, text=True, check=True)
+        result = subprocess.run(['python3', filePath], capture_output=True, text=True, check=True)
         return result.stdout
     except subprocess.CalledProcessError as e:
         return f"Error executing file: {e.output}"

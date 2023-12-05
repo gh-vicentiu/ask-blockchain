@@ -2,7 +2,7 @@ import time
 import openai
 import json
 import logging
-from ai_tools.main_tools import btc_price, blockchain
+from ai_tools.main_tools import call_agent_btc, call_agent_coder
 from ai_tools.secondary_tools import execute_file, create_file
 from functions.db_operations import read_db, write_db, r_dbin, w_dbin  # To handle database operations
 
@@ -56,8 +56,8 @@ def run_assistant(thread_main):
                 func_name = action['function']['name']
                 arguments = json.loads(action['function']['arguments'])
                 
-                if func_name == "btc_price":
-                    output = btc_price(sentTo=arguments['sentTo'], sentFrom=arguments['sentFrom'], instruction=arguments['instruction'], thread_main=thread_main)
+                if func_name == "call_agent_btc":
+                    output = call_agent_btc(sentTo=arguments['sentTo'], sentFrom=arguments['sentFrom'], instruction=arguments['instruction'], thread_main=thread_main)
                     tool_outputs.append({
                         "tool_call_id": action['id'],
                         "output": output,
@@ -70,8 +70,8 @@ def run_assistant(thread_main):
                     logging.info(f"Agent Sent this: {output}")
                     logging.info(json.dumps(run, default=str, indent=4))
 
-                elif func_name == "blockchain":
-                    output = btc_price(sentTo=arguments['sentTo'], sentFrom=arguments['sentFrom'], instruction=arguments['instruction'], thread_main=thread_main)
+                elif func_name == "call_agent_coder":
+                    output = call_agent_coder(sentTo=arguments['sentTo'], sentFrom=arguments['sentFrom'], instruction=arguments['instruction'], thread_main=thread_main)
                     tool_outputs.append({
                         "tool_call_id": action['id'],
                         "output": output,
