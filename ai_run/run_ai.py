@@ -2,8 +2,9 @@ import time
 import openai
 import json
 import logging
-from ai_tools.main_tools import call_agent_btc, call_agent_coder
-from ai_tools.secondary_tools import execute_file, create_file
+from ai_tools.main_tools import call_agent_price, call_agent_coder
+from ai_tools.secondary_tools import execute_file, create_file, move_files
+from ai_tools.tool_calls import handle_call_agent_price, handle_call_agent_coder, handle_create_file, handle_execute_file, handle_move_files
 from functions.db_operations import read_db, write_db, r_dbin, w_dbin  # To handle database operations
 
 
@@ -52,68 +53,31 @@ def run_assistant(thread_main):
             required_actions = run_status.required_action.submit_tool_outputs.model_dump()
             logging.info(required_actions)
             tool_outputs = []
+
             for action in required_actions["tool_calls"]:
                 func_name = action['function']['name']
                 arguments = json.loads(action['function']['arguments'])
-                
-                if func_name == "call_agent_btc":
-                    output = call_agent_btc(sentTo=arguments['sentTo'], sentFrom=arguments['sentFrom'], instruction=arguments['instruction'], thread_main=thread_main)
-                    tool_outputs.append({
-                        "tool_call_id": action['id'],
-                        "output": output,
-                     })
-                    
-                    if thread_main['agent'] is None:
-                        db[user_id][assistant_id][thread_id][message_u_id] = {}
-                        db[user_id][assistant_id][thread_id][message_u_id][2] = {"tool":{'instruction': arguments, "timestamp": int(time.time())}}
-                   
-                    logging.info(f"Agent Sent this: {output}")
-                    logging.info(json.dumps(run, default=str, indent=4))
+                action_id = action['id']  # Extract the action ID
 
-                elif func_name == "call_agent_coder":
-                    output = call_agent_coder(sentTo=arguments['sentTo'], sentFrom=arguments['sentFrom'], instruction=arguments['instruction'], thread_main=thread_main)
-                    tool_outputs.append({
-                        "tool_call_id": action['id'],
-                        "output": output,
-                     })
-                    
-                    if thread_main['agent'] is None:
-                        db[user_id][assistant_id][thread_id][message_u_id] = {}
-                        db[user_id][assistant_id][thread_id][message_u_id][2] = {"tool":{'instruction': arguments, "timestamp": int(time.time())}}
-                    
-                    logging.info(f"Agent Sent this: {output}")
-                    logging.info(json.dumps(run, default=str, indent=4))
-                
-                elif func_name == "create_file":
-                    output = create_file(fileName=arguments['fileName'], fileContent=arguments['fileContent'])
-                    tool_outputs.append({
-                        "tool_call_id": action['id'],
-                        "output": output,
-                     })
-                    
-                    if thread_main['agent'] is None:
-                        db[user_id][assistant_id][thread_id][message_u_id] = {}
-                        db[user_id][assistant_id][thread_id][message_u_id][2] = {"tool":{'instruction': arguments, "timestamp": int(time.time())}}
-                    
-                    logging.info(f"Agent Sent this: {output}")
-                    logging.info(json.dumps(run, default=str, indent=4))
+                # Refactored: Using a dictionary to map function names to handler functions
+                handlers = {
+                    "call_agent_price": handle_call_agent_price,
+                    "call_agent_coder": handle_call_agent_coder,
+                    "create_file": handle_create_file,
+                    "execute_file": handle_execute_file,
+                    "move_files": handle_move_files
+                }
 
-                elif func_name == "execute_file":
-                    output = execute_file(fileName=arguments['fileName'])
-                    tool_outputs.append({
-                        "tool_call_id": action['id'],
-                        "output": output,
-                     })
-                    
-                    if thread_main['agent'] is None:
-                        db[user_id][assistant_id][thread_id][message_u_id] = {}
-                        db[user_id][assistant_id][thread_id][message_u_id][2] = {"tool":{'instruction': arguments, "timestamp": int(time.time())}}
-                    
-                    logging.info(f"Agent Sent this: {output}")
-                    logging.info(json.dumps(run, default=str, indent=4))
-
+                db_entry = {}  # Initialize an empty dictionary for database entry
+                if func_name in handlers:
+                    handlers[func_name](arguments, thread_main, tool_outputs, db_entry, action_id)
                 else:
-                    raise ValueError(f"Unknown function: {func_name}")
+                    logging.error(f"Unknown function: {func_name}")
+
+                # Update the database if needed
+                if thread_main['agent'] is None and db_entry:
+                    db[user_id][assistant_id][thread_id][message_u_id] = db_entry
+                    write_db(db)
 
                
             print("Submitting outputs back to the Assistant...")

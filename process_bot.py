@@ -13,24 +13,16 @@ from ai_run.run_ai import run_assistant  # To run the AI assistant within a thre
 from functions.db_operations import read_db, write_db,w_dbin,r_dbin  # To handle database operations
 from functions.ai_parse_response import ai_parse_response
 
-# Configure basic logging to track application activity and errors
-# Initialize the OpenAI client with the necessary API key
+
 client = openai.Client()
-# Read the current state of the database
-db = read_db()
+
 
 # Main function to process a user message
 def process_bot(instruction, thread_main):
-    print('xxx')
-    print(thread_main)
-    print('xxx')
-
+    db = read_db()
     # Log the incoming user ID and message
-    logging.info(f"Processing bot: {thread_main['u_bot_0_id']} with message: {instruction}")
-
-    # Initialize variable for the full thread
+    logging.info(f"Processing bot {thread_main['agent']}: {thread_main['u_bot_0_id']} with message: {instruction}")
     thread_full = None
-
     ids = 'a'
 
     # Retrieve or create an assistant ID for the bot
@@ -51,15 +43,10 @@ def process_bot(instruction, thread_main):
         db[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id] = {}
         write_db(db)
 
-    message_u_id = add_message_to_thread(thread_id, instruction, role='user')
-    if message_u_id is None:
-        logging.error("Failed to add message to thread.")
-        get_runs = client.beta.threads.runs.list(thread_id=thread_id, limit=1, order='desc')
-        run_id = get_runs.data[0].id
-        run_status = client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run_id)  
-        if run_status.status not in ['completed', 'failed', 'cancelled']:   
-            cancel_job = client.beta.threads.runs.cancel(thread_id=thread_id, run_id=run_id)
-            message_u_id = add_message_to_thread(thread_id, instruction, role='user')
+   
+    
+    message_u_id = add_message_to_thread(thread_id, instruction, role='user', agent=thread_main['agent'])
+
     logging.info(f"Message {message_u_id} added to  {assistant_id} - {thread_id} for {thread_main['u_bot_0_id']}.")
     write_db(db)
 

@@ -2,7 +2,7 @@
 import json
 
 
-def call_agent_btc(sentTo, sentFrom, instruction, thread_main):
+def call_agent_price(sentTo, sentFrom, instruction, thread_main):
     from process_bot import process_bot
     print(f"Sending message from {sentFrom} to {sentTo}: '{instruction}'")
     thread_main['agent'] = sentTo
@@ -19,7 +19,7 @@ def call_agent_coder(sentTo, sentFrom, instruction, thread_main):
 tools_list = [{
     "type": "function",
     "function": {
-        "name": "call_agent_btc",
+        "name": "call_agent_price",
         "description": "send messages using this function",
         "parameters": {
             "type": "object",

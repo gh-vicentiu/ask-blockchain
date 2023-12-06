@@ -13,10 +13,7 @@ from ai_run.run_ai import run_assistant  # To run the AI assistant within a thre
 from functions.db_operations import read_db, write_db,w_dbin,r_dbin  # To handle database operations
 from functions.ai_parse_response import ai_parse_response
 
-# Configure basic logging to track application activity and errors
 
-
-# Initialize the OpenAI client with the necessary API key
 client = openai.Client()
 
 # Main function to process a user message
@@ -60,23 +57,9 @@ def process_user(user_id, messaged_us):
         write_db(db)
     logging.info(f"Thread {thread_id} for {user_id}.")
 
-
-
-
     
     logging.info(f"Adding Message to  {assistant_id} - {thread_id} for {user_id}.")
-    message_u_id = add_message_to_thread(thread_id, messaged_us, role='user')
-
-    if message_u_id is None:
-        logging.error("Failed to add message to thread.")
-        get_runs = client.beta.threads.runs.list(thread_id=thread_id, limit=1, order='desc')
-        run_id = get_runs.data[0].id
-        run_status = client.beta.threads.runs.retrieve(thread_id=thread_id, run_id=run_id)  
-        if run_status.status not in ['completed', 'failed', 'cancelled']:   
-            cancel_job = client.beta.threads.runs.cancel(thread_id=thread_id, run_id=run_id)
-            time.sleep(2)
-        message_u_id = add_message_to_thread(thread_id, messaged_us, role='user')
-
+    message_u_id = add_message_to_thread(thread_id, messaged_us, role='user', agent=None)
     logging.info(f"Message {message_u_id} added to  {assistant_id} - {thread_id} for {user_id}.")
 
     #logging.info(f"{db[user_id][assistant_id][thread_id][message_u_id]}")
