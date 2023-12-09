@@ -960,18 +960,316 @@
                                                         }
                                                 }
                                         },
-                                        "0": {
-                                                "sent": {
-                                                        "role": "user",
-                                                        "content": "get me the last transaction?",
-                                                        "timestamp": 1701923778
-                                                }
-                                        },
                                         "1": {
                                                 "replay": {
                                                         "role": "assistant",
                                                         "content": "It seems that there was an error in retrieving the last bitcoin transaction. I will work on resolving this issue and provide you with the correct response shortly. Thank you for your patience.",
                                                         "timestamp": 1701923818
+                                                }
+                                        }
+                                },
+                                "msg_6TaF0lHLR37dlbr7pXdSGnny": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hello",
+                                                        "timestamp": 1701974668
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you with bitcoin-related questions?",
+                                                        "timestamp": 1701974672
+                                                }
+                                        }
+                                },
+                                "msg_edrYNCOHpmLuY1U4ZjTUyVVt": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "how many transactions have there been today?",
+                                                        "timestamp": 1701974707
+                                                }
+                                        },
+                                        "msg_nHgPrDqe4PfzXAZgvKakgpse": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "How many bitcoin transactions have occurred today?",
+                                                                "timestamp": 1701974712
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It seems that there was an error in retrieving the number of bitcoin transactions that have occurred today. I will work on resolving this issue and provide you with the correct response shortly. Thank you for your patience.",
+                                                        "timestamp": 1701974737
+                                                }
+                                        }
+                                },
+                                "msg_ZnzNfoGYlASsLLmZjfWri4TC": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "how many transactions are there in the latest block? not MY transactions but ALL",
+                                                        "timestamp": 1701974977
+                                                }
+                                        },
+                                        "msg_VPunAusRy64AmVFuBGda3v6G": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "How many transactions are there in the latest block?",
+                                                                "timestamp": 1701974982
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The number of transactions in the latest block is 4179. If you have any more questions related to bitcoin, feel free to ask!",
+                                                        "timestamp": 1701975004
+                                                }
+                                        }
+                                },
+                                "msg_oXz7ytNx1FlicLc4uZtimpZD": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "what is the hash of the last 10 blocks, give them in order one under the other",
+                                                        "timestamp": 1701975035
+                                                }
+                                        },
+                                        "msg_rQwLHT7mN4Ok86yHTJI6ube4": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please provide the hash of the last 10 blocks in order.",
+                                                                "timestamp": 1701975040
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The hashes of the last 10 blocks (in reverse order) are as follows:\n1. 000000000000000000036f1770b2e3840aed08ff08051187b08cc1c9040df32a\n2. 00000000000000000001f5456d4fdbbed957f52874235a68f101b2e7d81aa9b1\n3. 000000000000000000000d3cb9338539cefb6f0d48f5a7d1f31b3aa1aae31676\n4. 00000000000000000000921269ad0d7d7d0b0627c893765a4595081b74be0bdb\n5. 0000000000000000000030d7b418bc601802f1c9618a85311477b3e2e9110c6d\n6. 000000000000000000037d4a180c70ec96e30f93c18f91a161511d48b7ba860b\n7. 00000000000000000001eeb8e0982eb0938a3262875719b1d167939a889a4b66\n8. 00000000000000000000703212d108fe4228bbeb82e90ec4066eb7f814ae9ecd\n9. 000000000000000000033a45f9468fcbaf5f78f1fe483297ec5ac0d0166e7278\n10. 00000000000000000001cd8a3916f39b5866918e8bf9c8f3b12eea90f2ba79ff\n\nIf you have any more questions related to bitcoin, feel free to ask!",
+                                                        "timestamp": 1701975075
+                                                }
+                                        }
+                                },
+                                "msg_08VXsap0sG8HtPJ53R2BECB1": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "make a graph with number of transactions in raport with block number for the last 10 blocks",
+                                                        "timestamp": 1701975179
+                                                }
+                                        },
+                                        "msg_Zf51lJqx9SlJpYUIVPIK9GWH": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please create a graph showing the number of transactions in relation to the block number for the last 10 blocks.",
+                                                                "timestamp": 1701975184
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The script for generating the graph showing the number of transactions in relation to the block number for the last 10 blocks has been created. You can now visualize the data to better understand the transaction trends. If you have any more questions related to bitcoin, feel free to ask!",
+                                                        "timestamp": 1701975202
+                                                }
+                                        }
+                                },
+                                "msg_oBdumt5uNoedxxBXJS5lpfEj": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "what is the latest block?",
+                                                        "timestamp": 1702033862
+                                                }
+                                        },
+                                        "msg_OXaCIfAk9lmFY5nd3EydQjBv": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "What is the hash of the latest block?",
+                                                                "timestamp": 1702033867
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The hash of the latest block is: 000000000000000000029b10d1d4b7df710cebb2fa971e3bfbc0f372bf3ae55a\n\nIf you have any more questions related to bitcoin, feel free to ask!",
+                                                        "timestamp": 1702033889
+                                                }
+                                        }
+                                },
+                                "msg_lfwN0ZWuOVXiXnmGUIgKtAGY": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "what are the number of transactions in the last block?",
+                                                        "timestamp": 1702034036
+                                                }
+                                        },
+                                        "msg_kehbC4VZuGlPnSghbAZ2wBCT": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "How many transactions are there in the latest block?",
+                                                                "timestamp": 1702034046
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The number of transactions in the latest block is 4465. If you have any more questions or need further information, feel free to ask!",
+                                                        "timestamp": 1702034069
+                                                }
+                                        }
+                                },
+                                "msg_3B4NfT6YigoXq2YR8gakrKEq": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "what are the addresses involved in the transactions in the latest block?",
+                                                        "timestamp": 1702034167
+                                                }
+                                        },
+                                        "msg_R7ogGg36nwVOMhey8GoBd3Ay": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please provide the addresses involved in the transactions in the latest block.",
+                                                                "timestamp": 1702034171
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It seems that there was an error in retrieving the addresses involved in the transactions in the latest block. I will work on resolving this issue and provide you with the correct response shortly. Thank you for your patience.",
+                                                        "timestamp": 1702034204
+                                                }
+                                        }
+                                },
+                                "msg_hFBv3ZqNqgKZaUpAFO9A7rIs": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "what is the latest block number and hash?",
+                                                        "timestamp": 1702125828
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It looks like there was an error in retrieving the latest block number and hash. I will work on resolving this issue and provide the correct response shortly. Thank you for your understanding.",
+                                                        "timestamp": 1702125839
+                                                }
+                                        }
+                                },
+                                "msg_fF8RS2OcrKEs44wFH6zkbjae": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "what is the latest block number and hash?",
+                                                        "timestamp": 1702126004
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It seems that there was an error in retrieving the latest block number and hash. I will work on resolving this issue and provide you with the correct response shortly. Thank you for your patience.",
+                                                        "timestamp": 1702126015
+                                                }
+                                        }
+                                },
+                                "msg_ixjzdDOsbM6c1tkMGh92GJAh": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "what is the latest block number?",
+                                                        "timestamp": 1702126116
+                                                }
+                                        },
+                                        "msg_Nn1srBVXKNh4PNtmpAOFBPQn": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "What is the latest block number?",
+                                                                "timestamp": 1702126120
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The latest block number is 820409. If you have any more questions related to bitcoin, feel free to ask!",
+                                                        "timestamp": 1702126143
+                                                }
+                                        }
+                                },
+                                "msg_ZoWwchs2NEAZpnLYztxURSEQ": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "what is the hash of that block?",
+                                                        "timestamp": 1702126171
+                                                }
+                                        },
+                                        "msg_onftNZp7AIt1BXt3vMWI8wSb": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "What is the hash of block number 820409?",
+                                                                "timestamp": 1702126182
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The hash of block number 820409 is: 0000000000000000000005443a164c14aeefa9c2617b40709cd4bb955dd93618\n\nIf you have any more questions or need further information, feel free to ask!",
+                                                        "timestamp": 1702126204
+                                                }
+                                        }
+                                },
+                                "msg_MhsNfPZV0OUhpck3DiP5WLlF": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "give me a list of transactions from that block",
+                                                        "timestamp": 1702126279
+                                                }
+                                        },
+                                        "msg_OeH9AE2KuRMJO89PbcE6riot": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please provide the list of transactions from block number 820409.",
+                                                                "timestamp": 1702126284
+                                                        }
+                                                }
+                                        },
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "give me a list of transactions from that block",
+                                                        "timestamp": 1702126279
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The response contains a long list of transaction hashes from block number 820409, and the output has been truncated due to the character limit. If you would like to retrieve specific information about any of the transactions listed, or if there's anything else you need, please let me know!",
+                                                        "timestamp": 1702126333
                                                 }
                                         }
                                 }

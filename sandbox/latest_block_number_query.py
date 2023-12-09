@@ -5,5 +5,5 @@ rpc_host = 'localhost'
 rpc_port = 8332
 rpc_connection = AuthServiceProxy(f"http://{rpc_user}:{rpc_password}@{rpc_host}:{rpc_port}")
 
-last_transaction = rpc_connection.listtransactions('*', 1, 0, True)
-print('Last transaction:', last_transaction)
+latest_block_number = rpc_connection.getblockcount()
+print('Latest block number:', latest_block_number)

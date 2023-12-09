@@ -5,8 +5,5 @@ rpc_host = 'localhost'
 rpc_port = 8332
 rpc_connection = AuthServiceProxy(f"http://{rpc_user}:{rpc_password}@{rpc_host}:{rpc_port}")
 
-# Get the latest block info
-latest_block_hash = rpc_connection.getbestblockhash()
-latest_block = rpc_connection.getblock(latest_block_hash)
-block_size = latest_block['size']
-print(block_size)
+block_820409_hash = rpc_connection.getblockhash(820409)
+print('Hash of block 820409:', block_820409_hash)
