@@ -31,6 +31,7 @@ def run_assistant(thread_main):
 
     
     run = client.beta.threads.runs.create(thread_id=thread_id, assistant_id=assistant_id, instructions="")
+    
     logging.info("Main Assistant run initiated. Dumping initial run status:")
     #logging.info(json.dumps(run, default=str, indent=4))
 
@@ -59,6 +60,7 @@ def run_assistant(thread_main):
                 func_name = action['function']['name']
                 arguments = json.loads(action['function']['arguments'])
                 action_id = action['id']  # Extract the action ID
+                result = send_message_to_hook(user_id, messaged_back=(f"{thread_main['agent']}, '{func_name}'"))
 
                 # Refactored: Using a dictionary to map function names to handler functions
                 handlers = {
@@ -72,16 +74,7 @@ def run_assistant(thread_main):
                 db_entry = {}  # Initialize an empty dictionary for database entry
                 if func_name in handlers:
                     handlers[func_name](arguments, thread_main, tool_outputs, db_entry, action_id)
-                try:
-                    result = send_message_to_hook(user_id, message=(func_name, tool_outputs))
-                    if result is not None:
-                        print("Message sent successfully:", result)
-                    else:
-                        print("Failed to send the message.")
-                except Exception as e:
-                    print(f"An error occurred: {e}")
-                else:
-                    logging.error(f"Unknown function: {func_name}")
+                    result = send_message_to_hook(user_id, messaged_back=(f"'{tool_outputs}'"))
 
                 # Update the database if needed
                 if thread_main['agent'] is None and db_entry:
