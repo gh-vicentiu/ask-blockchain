@@ -2167,18 +2167,59 @@
                                                         }
                                                 }
                                         },
-                                        "0": {
-                                                "sent": {
-                                                        "role": "user",
-                                                        "content": " tell him to count to 4 and back",
-                                                        "timestamp": 1702404025
-                                                }
-                                        },
                                         "1": {
                                                 "replay": {
                                                         "role": "assistant",
                                                         "content": "The script to count from 1 to 4 and then back has been successfully created. If you have any more requests or need further assistance, feel free to let me know!",
                                                         "timestamp": 1702404053
+                                                }
+                                        }
+                                },
+                                "msg_6usCZNRZLLG8mGy4y7N0wwKV": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hello",
+                                                        "timestamp": 1702409093
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today? If you have any questions or need help, feel free to ask.",
+                                                        "timestamp": 1702409098
+                                                }
+                                        }
+                                },
+                                "msg_0ghCAwz7VSo0cb8nHy9wLRKm": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi bro",
+                                                        "timestamp": 1702412732
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today? If you have any questions or need help, feel free to ask.",
+                                                        "timestamp": 1702412736
+                                                }
+                                        }
+                                },
+                                "msg_1bXKFwYVYHY9z25BcgymBXFW": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702413136
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you with bitcoin-related questions?",
+                                                        "timestamp": 1702413141
                                                 }
                                         }
                                 }
@@ -2431,6 +2472,676 @@
                                                         "role": "assistant",
                                                         "content": "You didn't say anything specific last time. Is there anything I can help you with regarding Bitcoin or any other topic?",
                                                         "timestamp": 1702367301
+                                                }
+                                        }
+                                }
+                        }
+                }
+        },
+        "us_a101_2a8b": {
+                "a": {
+                        "last_assistant_id": "asst_oRerh2VTPJeB859g4AdTNwkb",
+                        "last_thread_id": "thread_ukVsiZalEW90Tv0msyiYxgBe"
+                },
+                "asst_oRerh2VTPJeB859g4AdTNwkb": {
+                        "thread_ukVsiZalEW90Tv0msyiYxgBe": {
+                                "msg_R2iqytYml4qbqNpnF53xlfF8": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702409900
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today?",
+                                                        "timestamp": 1702409904
+                                                }
+                                        }
+                                },
+                                "msg_EtJWzxn6LLinQCxrc1if9SGW": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "are you there?",
+                                                        "timestamp": 1702410357
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Yes, I'm here! How can I help you today? If you have any bitcoin-related questions, feel free to ask!",
+                                                        "timestamp": 1702410362
+                                                }
+                                        }
+                                },
+                                "msg_RFye2cCx3fe9eP3zG2U1Q9o4": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hey",
+                                                        "timestamp": 1702410553
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today? If you have any questions about bitcoin, feel free to ask.",
+                                                        "timestamp": 1702410557
+                                                }
+                                        }
+                                },
+                                "msg_8EztwFjugNlUxWUVU4oizKhV": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702410693
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today? If you have any questions about bitcoin, feel free to ask.",
+                                                        "timestamp": 1702410697
+                                                }
+                                        }
+                                },
+                                "msg_oH2hAXykdqFImppKQdsKgsxz": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hello",
+                                                        "timestamp": 1702410767
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hi there! Do you have any questions about bitcoin? I'm here to help!",
+                                                        "timestamp": 1702410771
+                                                }
+                                        }
+                                },
+                                "msg_5TUkaLG09R8hpfP0mSYBJVn7": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hey",
+                                                        "timestamp": 1702410875
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today? If you have any questions about bitcoin, feel free to ask.",
+                                                        "timestamp": 1702410879
+                                                }
+                                        }
+                                },
+                                "msg_Vzs1K9gKXwtvgvRLQbIoTBco": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "how are ya",
+                                                        "timestamp": 1702410888
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "I'm here and ready to assist you with any questions you may have! If you have any bitcoin-related queries, feel free to ask.",
+                                                        "timestamp": 1702410892
+                                                }
+                                        }
+                                },
+                                "msg_zlOD9pJmcwGAiC2Mi5pxKBXa": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "yo",
+                                                        "timestamp": 1702411566
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today? If you have any questions about bitcoin, feel free to ask.",
+                                                        "timestamp": 1702411571
+                                                }
+                                        }
+                                },
+                                "msg_Vp15xwux2qR30jast5hE2R9q": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "how are you?",
+                                                        "timestamp": 1702412137
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "I'm here and ready to help with any questions you have about bitcoin! If you have any bitcoin-related queries, feel free to ask.",
+                                                        "timestamp": 1702412141
+                                                }
+                                        }
+                                },
+                                "msg_z3Abptl8siSfQRQqEhTASZNp": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "are you ok/.?",
+                                                        "timestamp": 1702412191
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "I'm here and fully operational to assist you with any bitcoin-related questions you may have. If you have any queries, feel free to ask!",
+                                                        "timestamp": 1702412195
+                                                }
+                                        }
+                                },
+                                "msg_J18GPRFJNNqZVhy4GpEVFVN9": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "is this fine now?",
+                                                        "timestamp": 1702412206
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Absolutely! If you have any questions about bitcoin, I'm here to help. Feel free to ask anything related to bitcoin, and I'll be happy to assist you.",
+                                                        "timestamp": 1702412210
+                                                }
+                                        }
+                                },
+                                "msg_XCX0jleDkbT8XlwEJYELi1gN": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702412604
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today? If you have any questions about bitcoin, feel free to ask.",
+                                                        "timestamp": 1702412609
+                                                }
+                                        }
+                                },
+                                "msg_LHGTCKQ6jWO16ACX6AMhewOv": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "why",
+                                                        "timestamp": 1702412616
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "I'm here to help with any questions you may have about bitcoin. If you have something specific in mind or any inquiries about bitcoin, feel free to ask and I'll be happy to assist you!",
+                                                        "timestamp": 1702412620
+                                                }
+                                        }
+                                },
+                                "msg_SV68AuXOfVIcYTSb9Pc5gJjO": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702413230
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today? If you have any questions about bitcoin, feel free to ask.",
+                                                        "timestamp": 1702413235
+                                                }
+                                        }
+                                }
+                        }
+                }
+        },
+        "a1012a8b": {
+                "a": {
+                        "last_assistant_id": "asst_tUa2sWcBijp1TkQBDFiJ1Our",
+                        "last_thread_id": "thread_4SVxGYvkS1LVgNII818DkMrV",
+                        "agent_coder_assistant_id": "asst_NH7wcFU3QBhvL6VCIkBiCl4K",
+                        "agent_coder_thread_id": "thread_nuOqLrv9zl8vzYn6l70HrTpn"
+                },
+                "asst_tUa2sWcBijp1TkQBDFiJ1Our": {
+                        "thread_4SVxGYvkS1LVgNII818DkMrV": {
+                                "msg_8u0SJrf3iMtg0luY9hXwYPmB": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702413305
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today?",
+                                                        "timestamp": 1702413309
+                                                }
+                                        }
+                                },
+                                "msg_vKUtLz5T8o6Vuy1youGZ7FrS": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702413421
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today?",
+                                                        "timestamp": 1702413425
+                                                }
+                                        }
+                                },
+                                "msg_WQt1D0CnpIfEWEOFmUK9yaKu": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "tell agent coder to make ma a scripts that counts to 2",
+                                                        "timestamp": 1702413455
+                                                }
+                                        },
+                                        "thread_nuOqLrv9zl8vzYn6l70HrTpn": {},
+                                        "msg_sAgunGEJKJuM93OyJmpTZT9a": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please create a script that counts to 2.",
+                                                                "timestamp": 1702413460
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It seems there was an issue with executing the script. I'll look into this and ensure that the script is created as per your request. Thank you for your patience.",
+                                                        "timestamp": 1702413499
+                                                }
+                                        }
+                                },
+                                "msg_FmwO2oeKeflerEOG6US8uXZ7": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hello",
+                                                        "timestamp": 1702413753
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today? If you have any questions about Bitcoin, feel free to ask.",
+                                                        "timestamp": 1702413757
+                                                }
+                                        }
+                                },
+                                "msg_p0rHomiLRr0aUcOrqLdqKWhH": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "how are you?",
+                                                        "timestamp": 1702413774
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "I'm here and ready to help with any questions you have, especially if they're related to Bitcoin. Is there anything specific you'd like to know about Bitcoin?",
+                                                        "timestamp": 1702413778
+                                                }
+                                        }
+                                },
+                                "msg_zP20nPKqcWVPcnDgaswDsTLu": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "whatsup",
+                                                        "timestamp": 1702413795
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "I'm here and ready to assist you with any questions you have about Bitcoin. If you have any Bitcoin-related inquiries, feel free to ask!",
+                                                        "timestamp": 1702413799
+                                                }
+                                        }
+                                },
+                                "msg_9uumZ64Ed4XKMx7wadwlGPeu": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702413843
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today? If you have any questions about Bitcoin, feel free to ask.",
+                                                        "timestamp": 1702413846
+                                                }
+                                        }
+                                },
+                                "msg_lEwgpI74BXaBAE5E6eWooWf8": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "are you good?",
+                                                        "timestamp": 1702413857
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "I'm here and ready to help with any questions you have, especially if they're related to Bitcoin. Is there anything specific you'd like to know about Bitcoin?",
+                                                        "timestamp": 1702413861
+                                                }
+                                        }
+                                },
+                                "msg_NmMVjDvp5fH0RW93mXj7VziF": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "tell agent coder to make me a script that counts to 1",
+                                                        "timestamp": 1702413987
+                                                }
+                                        },
+                                        "msg_4RbveWD2p16M7d4AuSppGSiU": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please create a script that counts to 1.",
+                                                                "timestamp": 1702413992
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It seems there was an issue with executing the script again. I'll look into this and ensure that the script is created as per your request. Thank you for your patience.",
+                                                        "timestamp": 1702414021
+                                                }
+                                        }
+                                },
+                                "msg_1j0OStYKw6UEAydjwToAZWE0": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "tell him to make me a script that counts to 3",
+                                                        "timestamp": 1702414185
+                                                }
+                                        }
+                                },
+                                "msg_qpHtNYlrlw9m8j7Nd0nQgYF2": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": " tell him to make me a script that counts to 3",
+                                                        "timestamp": 1702414257
+                                                }
+                                        },
+                                        "msg_WurIrJ0udMPxhJMDQDjxPscU": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please create a script that counts to 3.",
+                                                                "timestamp": 1702414262
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It seems there was an issue with executing the script again. I'll look into this and ensure that the script is created as per your request. Thank you for your patience.",
+                                                        "timestamp": 1702414300
+                                                }
+                                        }
+                                },
+                                "msg_GqF198EwNwkGfspyZYb0MZ25": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "tell him to make me a script that counts to 3",
+                                                        "timestamp": 1702414448
+                                                }
+                                        },
+                                        "msg_2xdsjU8eJ3vfPnpH51dADJGa": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please create a script that counts to 3.",
+                                                                "timestamp": 1702414453
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It seems there was an issue with executing the script. I'll ensure that the script is created as per your request. Thank you for your patience.",
+                                                        "timestamp": 1702414488
+                                                }
+                                        }
+                                },
+                                "msg_iwtq7GduFORfF9Z9pacQeTjP": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "tell him to make me a script that counts to 1",
+                                                        "timestamp": 1702414534
+                                                }
+                                        },
+                                        "msg_KySC7hPN4TBjZI5XSLrxao8j": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please create a script that counts to 1.",
+                                                                "timestamp": 1702414539
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It seems there was an issue with executing the script. I'll ensure that the script is created as per your request. Thank you for your patience.",
+                                                        "timestamp": 1702414585
+                                                }
+                                        }
+                                },
+                                "msg_AeVOF5wehCNMGzOatParqzRh": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "make me a script that counts to 1 and back",
+                                                        "timestamp": 1702415048
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "It seems that there was an error while attempting to execute the script. I'll investigate the issue and make the necessary corrections. Thank you for your understanding.",
+                                                        "timestamp": 1702415058
+                                                }
+                                        }
+                                },
+                                "msg_xYhNvwbll2XrsRw5Q7XTnz3b": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "why",
+                                                        "timestamp": 1702415143
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "I encountered an error while attempting to execute the script. I'll work on resolving the issue and ensure that the script is created as per your request. Thank you for your patience. If you have any other questions, feel free to ask!",
+                                                        "timestamp": 1702415147
+                                                }
+                                        }
+                                },
+                                "msg_iJcbtjheeBIRRUyqyC49dh5N": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "tell him to make me a script that counts to 2 and back",
+                                                        "timestamp": 1702415359
+                                                }
+                                        },
+                                        "msg_g4DQGX2YHqVXRYc6k6LDNvNr": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please create a script that counts to 2 and back.",
+                                                                "timestamp": 1702415364
+                                                        }
+                                                }
+                                        }
+                                },
+                                "msg_rR1U9PWXaZDa36GxqLr7XfMH": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "tell him to make me a script that counts to 2 and back",
+                                                        "timestamp": 1702415537
+                                                }
+                                        },
+                                        "msg_6sDQTdxkrHCmpDUk1QgcVbaN": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please create a script that counts to 2 and back.",
+                                                                "timestamp": 1702415544
+                                                        }
+                                                }
+                                        }
+                                },
+                                "msg_HjaqUY2pLsMyLewaJJo49K04": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "tell him to make me a script that counts to 2 and back",
+                                                        "timestamp": 1702415776
+                                                }
+                                        },
+                                        "msg_14AL5npYRPJU1EbCX2kk492t": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please create a script that counts to 2 and back.",
+                                                                "timestamp": 1702415783
+                                                        }
+                                                }
+                                        }
+                                },
+                                "msg_tIYyBTi6G8WeI9e2RTKTIyce": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "tell him to make me a script that counts to 2 and back",
+                                                        "timestamp": 1702415821
+                                                }
+                                        },
+                                        "msg_JaL4BxAYohA34hMyqLhbwyIf": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please create a script that counts to 2 and back.",
+                                                                "timestamp": 1702415829
+                                                        }
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "I have created the script that counts to 2 and then back again.",
+                                                        "timestamp": 1702415847
+                                                }
+                                        }
+                                },
+                                "msg_VKaQXb3bO16DWBawXXzpmo5D": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "tell him to make me a script that counts to 2 and back",
+                                                        "timestamp": 1702416008
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "The script that counts to 2 and then back has been successfully created.",
+                                                        "timestamp": 1702416012
+                                                }
+                                        }
+                                },
+                                "msg_vJSioc0tGTEYhUUeEqxI7I5d": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "tell him to make me a script that counts to 3 and back",
+                                                        "timestamp": 1702416051
+                                                }
+                                        },
+                                        "msg_vwebteqk13Vv4FO6HgC15byf": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please create a script that counts to 3 and back.",
+                                                                "timestamp": 1702416056
+                                                        }
+                                                }
+                                        }
+                                },
+                                "msg_d9iI1UJDZonqrJCPdVHcqpWu": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "tell him to make me a script that counts to 3 and back",
+                                                        "timestamp": 1702416220
+                                                }
+                                        },
+                                        "msg_MDcV3JF2wHXjG9sZcVw2sqZv": {
+                                                "0": {
+                                                        "sent": {
+                                                                "role": "user",
+                                                                "content": "Please create a script that counts to 3 and back.",
+                                                                "timestamp": 1702416227
+                                                        }
+                                                }
+                                        },
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "tell him to make me a script that counts to 3 and back",
+                                                        "timestamp": 1702416220
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "I have created the script that counts to 3 and then back again.",
+                                                        "timestamp": 1702416246
                                                 }
                                         }
                                 }

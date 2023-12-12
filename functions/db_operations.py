@@ -64,5 +64,20 @@ def r_dbin():
         print("db_instructions.json.json not found, creating a new one.")
         return {}
 
+def w_udbin(data):
+    try:
+        with open('usdb.json', 'w') as file:
+            json.dump(data, file, indent=8)
+        print("Database updated. w_dbin")
+    except Exception as e:
+        print(f"Error updating database w_dbin: {e}")
+
+def r_udbin():
+    try:
+        with open('usdb.json', 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        print("usdb.json not found, creating a new one.")
+        return {}
     
     return message_id

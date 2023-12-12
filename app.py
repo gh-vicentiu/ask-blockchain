@@ -1,19 +1,27 @@
 import requests
 import threading
 import subprocess
-from flask import Flask, render_template, request, jsonify, Response, stream_with_context
 import json
 import queue
 import time
+import uuid
 from functions.return_response import send_message_to_hook
-
+from functions.db_operations import w_udbin, r_udbin
+from flask import Flask, render_template, request, jsonify, Response, stream_with_context, session, redirect
 
 app = Flask(__name__)
 messages_queue = queue.Queue()
+app.secret_key = 'your_secret_key_here'
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    if 'username' in session:
+        username = session['username']
+        users = r_udbin()
+        user_id = users.get(username, {}).get('user_id', 'Unknown')
+        return render_template('index.html', user_id=user_id)
+    return redirect('/login')
+
 
 @app.route('/send_message', methods=['POST'])
 def send_message():
@@ -58,7 +66,47 @@ def execute_command(user_id, messaged_us):
     if stderr:
         print("STDERR from main.py:", stderr.decode('utf-8'))
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if check_login(username, password):
+            session['username'] = username
+            return redirect('/')
+        else:
+            return "Login Failed"
+    return render_template('login.html')
 
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        user_id = register_user(username, password)
+        if user_id:
+            session['username'] = username
+            return redirect('/')
+        else:
+            return "Signup Failed"
+    return render_template('signup.html')
+
+
+def generate_user_id():
+    return f"{uuid.uuid4().hex[:4]}_{uuid.uuid4().hex[:4]}"
+
+def register_user(username, password):
+    users = r_udbin()
+    if username in users:
+        return False  # User already exists
+    user_id = generate_user_id()
+    users[username] = {"password": password, "user_id": user_id}
+    w_udbin(users)
+    return user_id
+
+def check_login(username, password):
+    users = r_udbin()
+    return users.get(username, {}).get('password') == password
 
 
 

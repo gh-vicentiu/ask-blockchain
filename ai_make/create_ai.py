@@ -17,7 +17,6 @@ def create_assistant(agent=None):
         name=agent,
         #instructions=("you are a relay node. use [btc_price] function to ask 'btc_price' any questions regarding bitcoin price. use [ask_blockchain] function to ask 'ask_blockchain' any questions regarding bitcoin price."),
         instructions=("Your a PR Agent, your task is to answer bitcoin related questions, and bitcoin related questions only. Any questions regarding btc price you will submit to agent_price and any questions that require blockchain full node intergotiations you will pass to agent_coder. Else, you can answer yourself."),
-
         tools=tool_list,
         model="gpt-3.5-turbo-1106"        
     )
