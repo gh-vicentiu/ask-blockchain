@@ -62,61 +62,76 @@
     <div id="chat-container">
         <div id="message-display"></div>
         <div id="message-input-area">
-            <input type="text" id="messageInput" placeholder="Type your message here...">
+            <input type="text" id="userIdInput" placeholder="Enter user ID (default: 11120)" />
+            <input type="text" id="messageInput" placeholder="Type your message here..." onkeypress="handleKeyPress(event)">
             <button id="sendButton" onclick="sendMessage()">Send</button>
         </div>
     </div>
 
     <script>
+        var currentUserId = '11120'; 
+        var eventSource = null;
+
         function sendMessage() {
             var message = document.getElementById("messageInput").value;
-            var userId = '11120'; // Example user ID
+            var userId = document.getElementById("userIdInput").value || '11120'; 
 
             fetch('/send_message', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ user_id: userId, message: message }),
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ user_id: userId, messaged_us: message })
             })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
-                document.getElementById("messageInput").value = ''; // Clear the input field
-                // Optionally, add the user's message to the chat window immediately
-                addMessageToChat(userId, message);
+                document.getElementById("messageInput").value = '';
+                addMessageToChat(userId, message, false); 
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
         }
 
-        function addMessageToChat(userId, message) {
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+
+        function addMessageToChat(userId, message, isSystemMessage) {
             var chatDiv = document.getElementById('message-display');
             var newMessage = document.createElement('div');
             newMessage.classList.add('message');
-            newMessage.textContent = `User ${userId}: ${message}`; // Display the actual message
+            var displayText = isSystemMessage ? `System: ${message}` : `User ${userId}: ${message}`;
+            newMessage.textContent = displayText;
             chatDiv.appendChild(newMessage);
         }
 
-        function pollMessages() {
-            fetch('/get_messages')
-            .then(response => response.json())
-            .then(messages => {
-                console.log("Received messages:", messages); // Debug: Log received messages
-                messages.forEach(msg => {
-                    addMessageToChat(msg[1], msg[2]); // msg[1] is the user ID, msg[2] is the message
-                });
-            })
-            .catch(error => {
-                console.error("Error fetching messages:", error); // Log errors if any
-            });
+        function updateEventSource() {
+            if (eventSource) {
+                eventSource.close();
+            }
+            eventSource = new EventSource('/stream/' + currentUserId);
 
-            setTimeout(pollMessages, 5000); // Poll every 5 seconds
+            eventSource.onmessage = function(event) {
+                var msgData = JSON.parse(event.data);
+                if (msgData.hasOwnProperty('messaged_back')) {
+                    var messageText = msgData.messaged_back;
+                    addMessageToChat(msgData.user_id, messageText, true);
+                }
+            };
+
         }
 
-        pollMessages(); // Start polling
+        document.getElementById('userIdInput').addEventListener('change', function() {
+            currentUserId = this.value || '11120';
+            updateEventSource();
+        });
 
+        updateEventSource();
     </script>
+    
+    
+    
 </body>
+
 </html>

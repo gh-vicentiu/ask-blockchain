@@ -79,14 +79,7 @@ def process_user(user_id, messaged_us):
     thread_main = {'u_bot_0_id': user_id, 'a_bot_0_id': assistant_id, 't_bot_0_id': thread_id, 'm_bot_0_id': message_u_id, 'agent': None}
     thread_full = run_assistant(thread_main)
     ai_replay = ai_parse_response(thread_full)
-    try:
-        result = send_message_to_hook(user_id, message=ai_replay)
-        if result is not None:
-            print("Message sent successfully:", result)
-        else:
-            print("Failed to send the message.")
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    result = send_message_to_hook(user_id, messaged_back=ai_replay)
 
     # Return the full conversation threads
     db[user_id][assistant_id][thread_id][message_u_id][1] = {"replay": {"role": "assistant", "content": ai_replay, "timestamp": int(time.time())}}
