@@ -3130,18 +3130,112 @@
                                                         }
                                                 }
                                         },
-                                        "0": {
-                                                "sent": {
-                                                        "role": "user",
-                                                        "content": "tell him to make me a script that counts to 3 and back",
-                                                        "timestamp": 1702416220
-                                                }
-                                        },
                                         "1": {
                                                 "replay": {
                                                         "role": "assistant",
                                                         "content": "I have created the script that counts to 3 and then back again.",
                                                         "timestamp": 1702416246
+                                                }
+                                        }
+                                }
+                        }
+                }
+        },
+        "f38f_1b11": {
+                "a": {
+                        "last_assistant_id": "asst_J2Gs1w6CfwyMznojt3qJv79Z",
+                        "last_thread_id": "thread_g2fQoU5EUdk2dSXjGuK5AW7y"
+                },
+                "asst_J2Gs1w6CfwyMznojt3qJv79Z": {
+                        "thread_g2fQoU5EUdk2dSXjGuK5AW7y": {
+                                "msg_454aF7CU1StYVyQhUNHW7cSZ": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "asd",
+                                                        "timestamp": 1702420665
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "I can only answer bitcoin-related questions, so if you have any questions about bitcoin, feel free to ask!",
+                                                        "timestamp": 1702420669
+                                                }
+                                        }
+                                },
+                                "msg_h6n0BHVGH0YciVvrLOpmMgHz": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "asdf",
+                                                        "timestamp": 1702421640
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "If you have any questions about bitcoin, feel free to ask and I'll be happy to help!",
+                                                        "timestamp": 1702421644
+                                                }
+                                        }
+                                }
+                        }
+                }
+        },
+        "": {
+                "a": {
+                        "last_assistant_id": "asst_qmugOVXmKYmVvejzjWOxvnfn",
+                        "last_thread_id": "thread_0sr1g8Rl9GY0mOlBv2qiUCb1"
+                },
+                "asst_qmugOVXmKYmVvejzjWOxvnfn": {
+                        "thread_0sr1g8Rl9GY0mOlBv2qiUCb1": {
+                                "msg_Wv0U18eQGXeWFYZQjtlRfLgP": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702424172
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today?",
+                                                        "timestamp": 1702424176
+                                                }
+                                        }
+                                }
+                        }
+                }
+        },
+        "b530_8588": {
+                "a": {
+                        "last_assistant_id": "asst_VODFlwxSf9qn7xzDvC9XEpDX",
+                        "last_thread_id": "thread_leS90th8Yz24H2aQxsVEypRX"
+                },
+                "asst_VODFlwxSf9qn7xzDvC9XEpDX": {
+                        "thread_leS90th8Yz24H2aQxsVEypRX": {
+                                "msg_GBnrrWwCJr5IljbPCobeQ4bE": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702424311
+                                                }
+                                        },
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702424311
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today?",
+                                                        "timestamp": 1702424315
                                                 }
                                         }
                                 }

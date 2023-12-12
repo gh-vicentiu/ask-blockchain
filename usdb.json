@@ -2,5 +2,13 @@
         "ed": {
                 "password": "qwe",
                 "user_id": "a1012a8b"
+        },
+        "catalin": {
+                "password": "1234",
+                "user_id": "f38f_1b11"
+        },
+        "catali": {
+                "password": "1234",
+                "user_id": "c51d_bed3"
         }
 }

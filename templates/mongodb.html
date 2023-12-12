@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MongoDB Databases and Collections</title>
+</head>
+<body>
+    <h1>MongoDB Databases and Collections</h1>
+    {% for db_name, collections in db_collections.items() %}
+        <h2>Database: {{ db_name }}</h2>
+        <ul>
+            {% for collection in collections %}
+                <li>{{ collection }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>
+

@@ -4,24 +4,46 @@ import subprocess
 import json
 import queue
 import time
-import uuid
-from functions.return_response import send_message_to_hook
-from functions.db_operations import w_udbin, r_udbin
 from flask import Flask, render_template, request, jsonify, Response, stream_with_context, session, redirect
+from db import get_mongo_client, test_mongo_connection
+from user_db import register_user, check_login
+import os
 
 app = Flask(__name__)
 messages_queue = queue.Queue()
-app.secret_key = 'your_secret_key_here'
+secret_key = os.urandom(16)
+app.secret_key = secret_key
 
 @app.route('/')
 def index():
     if 'username' in session:
         username = session['username']
-        users = r_udbin()
-        user_id = users.get(username, {}).get('user_id', 'Unknown')
-        return render_template('index.html', user_id=user_id)
+
+        # Get the MongoDB client and fetch the user's details
+        client = get_mongo_client()
+        db = client['user_database']  # Use your actual database name
+        users = db['users']  # Use your actual collection name
+
+        user = users.find_one({"username": username})
+        if user:
+            user_id = user.get('user_id', 'Unknown')
+        else:
+            user_id = 'Unknown'
+
+        return render_template('index.html', username=username, user_id=user_id)
     return redirect('/login')
 
+@app.route('/mongodb')
+def mongodb_page():
+    client = get_mongo_client()
+    try:
+        dbs = client.list_database_names()
+        db_collections = {db_name: client[db_name].list_collection_names() for db_name in dbs}
+        return render_template('mongodb.html', db_collections=db_collections)
+    except Exception as e:
+        return str(e)
+    finally:
+        client.close()
 
 @app.route('/send_message', methods=['POST'])
 def send_message():
@@ -57,7 +79,7 @@ def execute_command(user_id, messaged_us):
     command = ["python3", "main.py", json.dumps({"user_id": user_id, "messaged_us": messaged_us})]
     process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
-    # Optionally, read the output line by line for debugging (not sending it via send_message_to_hook)
+    # Optionally, read the output line by line for debugging
     for line in process.stdout:
         print("main.py output:", line.decode('utf-8').strip())
 
@@ -91,24 +113,11 @@ def signup():
             return "Signup Failed"
     return render_template('signup.html')
 
-
-def generate_user_id():
-    return f"{uuid.uuid4().hex[:4]}_{uuid.uuid4().hex[:4]}"
-
-def register_user(username, password):
-    users = r_udbin()
-    if username in users:
-        return False  # User already exists
-    user_id = generate_user_id()
-    users[username] = {"password": password, "user_id": user_id}
-    w_udbin(users)
-    return user_id
-
-def check_login(username, password):
-    users = r_udbin()
-    return users.get(username, {}).get('password') == password
-
-
+# Additional routes can be added here
 
 if __name__ == '__main__':
-    app.run(debug=True, threaded=True)
+    if test_mongo_connection():
+        print("Successfully connected to MongoDB.")
+        app.run(debug=True)
+    else:
+        print("Failed to connect to MongoDB.")
