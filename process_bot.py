@@ -12,6 +12,7 @@ from ai_run.send_mess import add_message_to_thread  # To add a message to a conv
 from ai_run.run_ai import run_assistant  # To run the AI assistant within a thread
 from functions.db_operations import read_db, write_db,w_dbin,r_dbin  # To handle database operations
 from functions.ai_parse_response import ai_parse_response
+from functions.return_response import send_message_to_hook
 
 
 client = openai.Client()
@@ -64,14 +65,7 @@ def process_bot(instruction, thread_main):
     thread_main = {'a_bot_1_id': assistant_id, 't_bot_1_id': thread_id, 'm_bot_1_id': message_u_id, 'agent': [thread_main['agent']], 'u_bot_0_id': [thread_main['u_bot_0_id']], 'a_bot_0_id': [thread_main['a_bot_0_id']], 't_bot_0_id': [thread_main['t_bot_0_id']], 'm_bot_0_id': [thread_main['m_bot_0_id']],}
     thread_full = run_assistant(thread_main)
     ai_replay = ai_parse_response(thread_full)
-    try:
-        result = send_message_to_hook(user_id, message=ai_replay)
-        if result is not None:
-            print("Message sent successfully:", result)
-        else:
-            print("Failed to send the message.")
-    except Exception as e:
-        print(f"An error occurred: {e}")    
+    result = send_message_to_hook(user_id=thread_main['u_bot_0_id'], messaged_back=ai_replay)   
     # Return the full conversation threads
     #db[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][message_u_id]['1'] = {"replay": {"role": "assistant", "content": ai_replay, "timestamp": int(time.time())}}
     write_db(db)
