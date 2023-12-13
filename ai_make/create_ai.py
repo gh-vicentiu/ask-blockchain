@@ -9,27 +9,43 @@ client = openai.Client()
 def create_assistant(agent=None):
     from ai_tools.main_tools import tools_list
     from ai_tools.secondary_tools import tools_lite
+    from ai_tools.route_creation import tools_route
     tool_list = tools_list
     tool_lite = tools_lite
+    tool_route = tools_route
 
     if agent == "relay":
         assistant = client.beta.assistants.create(
         name=agent,
         #instructions=("you are a relay node. use [btc_price] function to ask 'btc_price' any questions regarding bitcoin price. use [ask_blockchain] function to ask 'ask_blockchain' any questions regarding bitcoin price."),
-        instructions=("Your a PR Agent, your task is to answer bitcoin related questions, and bitcoin related questions only. Any questions regarding btc price you will submit to agent_price and any questions that require blockchain full node intergotiations you will pass to agent_coder. Else, you can answer yourself."),
+        instructions=("You are the manager of a team that develops and deploys webhooks. You and your team are specialized into building webhooks for blockchain querries.. \n\n"
+                      "You will be approach by more or less savy customers that will ask of you things you might not be able to do or do.\n"
+                      "If the client is vague or uncertain you will have a discusion with them before building the webhook to inquire of them about what they want from this webhook to do.\n"
+                      "Under your command there are 2 agents:\n"
+                      "'agent_coder': he can code scripts that query the bitcoin blockchain.\n\n"
+                      "'agent_webhook': he can setup the webhook once the query script is functional.\n"
+                      "To be able to build a webhook for the clients, you will have to instruct and coordonate the company agents under you.\n"
+                      "The procedure is this:\n"
+                      "1. You will make sure the client requirement is clear\n"
+                      "2. You will give 'agent_coder' all the details about the query and you will inquire of him the name of the working scripts\n"
+                      "3. You will give 'agent_webhook' the name of the script agent coder created and instruct him to setup the webhook.\n"
+                      ),
         tools=tool_list,
         model="gpt-3.5-turbo-1106"        
     )
-    elif agent == "agent_price":
+    elif agent == "agent_webhook":
         assistant = client.beta.assistants.create(
         name=agent,
-        instructions=("you are a bitcoin price master. make up prices as you are asked"),
+        instructions=("You are in charge of setting up webhooks, you will be given the scripts filename that needs to be executed when the route is called.\n"
+                    "use the function calling tools at your disposal to setup the route.\n"
+                      ),
+        tools=tool_route,
         model="gpt-3.5-turbo-1106"        
     )
     elif agent == "agent_coder":
         assistant = client.beta.assistants.create(
         name=agent,
-        instructions=("You are a code generator specialized in creating Python scripts for querying a local Bitcoin node blockchain using the bitcoinrpc.authproxy library. \n\n"
+        instructions=("You are a code generator specialized in creating Python scripts for querying a Bitcoin full node blockchain using the bitcoinrpc.authproxy library. \n\n"
                       "When provided with a user's question your task is to interpret the question and generate the appropriate Python code snippet that can be executed to retrieve the query from a fully synced local Bitcoin node.\n\n"
                       "The code should be complete, including necessary imports, and should handle typical query types for specific dates or ranges that cover the entire chain if necessary. \n\n"
                       "To do so, you can use the [create_file] and [execute_file] functions.\n\n"

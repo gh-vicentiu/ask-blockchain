@@ -304,8 +304,8 @@
                         "last_thread_id": "thread_o0CqYVLJ4qxVG6zjtkmOK2nF",
                         "agent_coder_assistant_id": "asst_uG0E1lCjtqlmTu1O7uRsQTQM",
                         "agent_coder_thread_id": "thread_RhhN5jaRetCLMe1wAtM2UWnU",
-                        "agent_price_assistant_id": "asst_QiciihdqCume14B7tn9Tp48L",
-                        "agent_price_thread_id": "thread_59KJ1GYUw8SmQVBBI11FHdhy"
+                        "agent_webhook_assistant_id": "asst_QiciihdqCume14B7tn9Tp48L",
+                        "agent_webhook_thread_id": "thread_59KJ1GYUw8SmQVBBI11FHdhy"
                 },
                 "asst_FOoSFrs2wbyyvAVseYhf4R9k": {
                         "thread_o0CqYVLJ4qxVG6zjtkmOK2nF": {
@@ -1070,7 +1070,7 @@
                                         "1": {
                                                 "replay": {
                                                         "role": "assistant",
-                                                        "content": "I can call the \"agent_price\" and \"agent_coder\" to get information related to bitcoin prices, transactions, blockchain data, and more. If you have any specific questions or requests, feel free to let me know!",
+                                                        "content": "I can call the \"agent_webhook\" and \"agent_coder\" to get information related to bitcoin prices, transactions, blockchain data, and more. If you have any specific questions or requests, feel free to let me know!",
                                                         "timestamp": 1702155038
                                                 }
                                         }

@@ -7,7 +7,9 @@ import time
 from flask import Flask, render_template, request, jsonify, Response, stream_with_context, session, redirect
 from db import get_mongo_client, test_mongo_connection
 from user_db import register_user, check_login
+from ai_tools.route_creation import load_dynamic_routes
 import os
+import subprocess
 
 app = Flask(__name__)
 messages_queue = queue.Queue()
@@ -118,6 +120,7 @@ def signup():
 if __name__ == '__main__':
     if test_mongo_connection():
         print("Successfully connected to MongoDB.")
+        load_dynamic_routes(app)
         app.run(host='0.0.0.0', port=5000, debug=True)
     else:
         print("Failed to connect to MongoDB.")
