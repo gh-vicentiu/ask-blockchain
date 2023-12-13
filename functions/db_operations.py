@@ -1,52 +1,35 @@
-# db_operations.py
+import os
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 
-import json  # Add this import statement
+# Function to get MongoDB client
+def get_mongo_client():
+    uri = os.getenv("MONGODB_URI")
+    return MongoClient(uri, server_api=ServerApi('1'))
 
+# Function to read data from MongoDB
 def read_db():
+    client = get_mongo_client()
+    db = client['AssistantsData']
+    collection = db['Assistants']
     try:
-        with open('iddb.json', 'r') as file:
-            return json.load(file)
-    except FileNotFoundError:
-        print("iddb.json not found, creating a new one.")
+        data = collection.find_one()  # Adjust this based on how you want to query data
+        return data if data else {}
+    except Exception as e:
+        print(f"Error reading from MongoDB: {e}")
         return {}
 
-def deep_merge(orig_dict, new_dict):
-    """
-    Recursively merges new_dict into orig_dict.
-    For each key in new_dict:
-        - If the key is not in orig_dict, it adds the key-value pair.
-        - If the key is in orig_dict and both values are dictionaries, it calls deep_merge recursively.
-        - Otherwise, it updates the value in orig_dict with the value from new_dict.
-    """
-    for key, value in new_dict.items():
-        if key in orig_dict:
-            if isinstance(value, dict) and isinstance(orig_dict[key], dict):
-                deep_merge(orig_dict[key], value)
-            else:
-                orig_dict[key] = value
-        else:
-            orig_dict[key] = value
-
+# Function to write data to MongoDB
 def write_db(new_data):
+    client = get_mongo_client()
+    db = client['AssistantsData']
+    collection = db['Assistants']
     try:
-        # Read existing data from the file
-        try:
-            with open('iddb.json', 'r') as file:
-                existing_data = json.load(file)
-        except FileNotFoundError:
-            existing_data = {}
-            print("Database file not found. A new file will be created.")
-
-        # Merge new data into existing data
-        deep_merge(existing_data, new_data)
-
-        # Write updated data to the file
-        with open('iddb.json', 'w') as file:
-            json.dump(existing_data, file, indent=8)
-
+        # Modify this based on whether you want to insert new documents or update existing ones
+        collection.update_one({}, {'$set': new_data}, upsert=True)
         print("Database updated.")
     except Exception as e:
-        print(f"Error updating database: {e}")
+        print(f"Error updating MongoDB: {e}")
 
 def w_dbin(data):
     try:

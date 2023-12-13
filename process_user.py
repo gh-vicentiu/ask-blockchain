@@ -85,15 +85,3 @@ def process_user(user_id, messaged_us):
     db[user_id][assistant_id][thread_id][message_u_id][1] = {"replay": {"role": "assistant", "content": ai_replay, "timestamp": int(time.time())}}
     write_db(db)
     return ai_replay
-
-# This block allows the script to be run as a standalone Python script for testing
-if __name__ == "__main__":
-    import sys
-
-    # Retrieve command line arguments for user ID and message
-    user_id = sys.argv[1]
-    messaged_us = json.loads(sys.argv[2])['message']
-
-    # Process the user's message and print the result
-    thread_full = process_user(user_id, messaged_us)
-    print(f"Process result: {ai_replay}")
