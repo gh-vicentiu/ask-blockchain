@@ -7240,3 +7240,71 @@ If you have any more questions or need further assistance, feel free to ask!
 2023-12-12 16:03:27,183:INFO:Run completed. Fetching messages...
 2023-12-12 16:03:27,398:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_VJdUlpplORLao4v2WBcWQ3nx/messages?limit=1&order=desc "HTTP/1.1 200 OK"
 2023-12-12 16:03:27,401:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_KlqGoavmXnZ9zsYWsBNfLrSb', assistant_id='asst_68lyoOSw57jXcC0ufThjBSZP', content=[MessageContentText(text=Text(annotations=[], value='Hello! How can I assist you today? If you have any questions about Bitcoin, feel free to ask.'), type='text')], created_at=1702425805, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_QoYE6vfVxTa7SRLWnNKNt9Be', thread_id='thread_VJdUlpplORLao4v2WBcWQ3nx')], object='list', first_id='msg_KlqGoavmXnZ9zsYWsBNfLrSb', last_id='msg_KlqGoavmXnZ9zsYWsBNfLrSb', has_more=True).
+2023-12-13 01:11:21,116:INFO:Processing user: 96b4_20f1 with message: hi
+2023-12-13 01:11:21,117:INFO:User 96b4_20f1 NOT found, creating a new entry.
+2023-12-13 01:11:21,126:INFO:User 96b4_20f1 found, proceed
+2023-12-13 01:11:21,126:INFO:Creating new assistant for the user 96b4_20f1.
+2023-12-13 01:11:21,445:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-13 01:11:21,459:INFO:Assistant asst_raYAAkfhRb2moi8EDd9rvVCD for 96b4_20f1.
+2023-12-13 01:11:21,459:INFO:Creating new thread for the user 96b4_20f1.
+2023-12-13 01:11:21,696:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-13 01:11:21,706:INFO:Thread thread_wKuh63xwYViVJMlQusprFBIq for 96b4_20f1.
+2023-12-13 01:11:21,706:INFO:Adding Message to  asst_raYAAkfhRb2moi8EDd9rvVCD - thread_wKuh63xwYViVJMlQusprFBIq for 96b4_20f1.
+2023-12-13 01:11:21,706:INFO:None Attempting to add message to thread: hi
+2023-12-13 01:11:21,948:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wKuh63xwYViVJMlQusprFBIq/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-13 01:11:22,202:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_wKuh63xwYViVJMlQusprFBIq/messages "HTTP/1.1 200 OK"
+2023-12-13 01:11:22,204:INFO:None Message ID registered: msg_8ulCPVFM1NUlrfha4DsDzHjz - hi
+2023-12-13 01:11:22,204:INFO:Message msg_8ulCPVFM1NUlrfha4DsDzHjz added to  asst_raYAAkfhRb2moi8EDd9rvVCD - thread_wKuh63xwYViVJMlQusprFBIq for 96b4_20f1.
+2023-12-13 01:11:22,213:INFO:Start Main Assistent: 'u_bot_0_id': 96b4_20f1, 'a_bot_0_id': asst_raYAAkfhRb2moi8EDd9rvVCD, 't_bot_0_id': thread_wKuh63xwYViVJMlQusprFBIq, 'm_bot_0_id': msg_8ulCPVFM1NUlrfha4DsDzHjz, 'agent': None
+2023-12-13 01:11:22,214:INFO:Starting the main assistant...
+2023-12-13 01:11:22,612:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_wKuh63xwYViVJMlQusprFBIq/runs "HTTP/1.1 200 OK"
+2023-12-13 01:11:22,615:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-13 01:11:22,615:INFO:Checking run status...
+2023-12-13 01:11:25,836:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wKuh63xwYViVJMlQusprFBIq/runs/run_NsxwUcNwc9ZDYJs55RRwOdKJ "HTTP/1.1 200 OK"
+2023-12-13 01:11:25,840:INFO:Run completed. Fetching messages...
+2023-12-13 01:11:26,081:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wKuh63xwYViVJMlQusprFBIq/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-13 01:11:26,086:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_6rCLQhPxpcXWwAk9Fym4Q19I', assistant_id='asst_raYAAkfhRb2moi8EDd9rvVCD', content=[MessageContentText(text=Text(annotations=[], value='Hello! How can I assist you today?'), type='text')], created_at=1702429883, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_NsxwUcNwc9ZDYJs55RRwOdKJ', thread_id='thread_wKuh63xwYViVJMlQusprFBIq')], object='list', first_id='msg_6rCLQhPxpcXWwAk9Fym4Q19I', last_id='msg_6rCLQhPxpcXWwAk9Fym4Q19I', has_more=True).
+2023-12-13 01:11:37,133:INFO:Processing user: 96b4_20f1 with message: hi
+2023-12-13 01:11:37,134:INFO:User 96b4_20f1 found, proceed
+2023-12-13 01:11:37,134:INFO:Assistant asst_raYAAkfhRb2moi8EDd9rvVCD for 96b4_20f1.
+2023-12-13 01:11:37,134:INFO:Thread thread_wKuh63xwYViVJMlQusprFBIq for 96b4_20f1.
+2023-12-13 01:11:37,134:INFO:Adding Message to  asst_raYAAkfhRb2moi8EDd9rvVCD - thread_wKuh63xwYViVJMlQusprFBIq for 96b4_20f1.
+2023-12-13 01:11:37,134:INFO:None Attempting to add message to thread: hi
+2023-12-13 01:11:37,334:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wKuh63xwYViVJMlQusprFBIq/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-13 01:11:37,505:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wKuh63xwYViVJMlQusprFBIq/runs/run_NsxwUcNwc9ZDYJs55RRwOdKJ "HTTP/1.1 200 OK"
+2023-12-13 01:11:37,738:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_wKuh63xwYViVJMlQusprFBIq/messages "HTTP/1.1 200 OK"
+2023-12-13 01:11:37,741:INFO:None Message ID registered: msg_9NCROLAyyFEJyjkhJy2WPWyX - hi
+2023-12-13 01:11:37,741:INFO:Message msg_9NCROLAyyFEJyjkhJy2WPWyX added to  asst_raYAAkfhRb2moi8EDd9rvVCD - thread_wKuh63xwYViVJMlQusprFBIq for 96b4_20f1.
+2023-12-13 01:11:37,750:INFO:Start Main Assistent: 'u_bot_0_id': 96b4_20f1, 'a_bot_0_id': asst_raYAAkfhRb2moi8EDd9rvVCD, 't_bot_0_id': thread_wKuh63xwYViVJMlQusprFBIq, 'm_bot_0_id': msg_9NCROLAyyFEJyjkhJy2WPWyX, 'agent': None
+2023-12-13 01:11:37,750:INFO:Starting the main assistant...
+2023-12-13 01:11:38,124:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_wKuh63xwYViVJMlQusprFBIq/runs "HTTP/1.1 200 OK"
+2023-12-13 01:11:38,127:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-13 01:11:38,127:INFO:Checking run status...
+2023-12-13 01:11:41,364:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wKuh63xwYViVJMlQusprFBIq/runs/run_D0GWti8ElobQ6Kf3ufaNYlgB "HTTP/1.1 200 OK"
+2023-12-13 01:11:41,368:INFO:Run completed. Fetching messages...
+2023-12-13 01:11:41,544:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_wKuh63xwYViVJMlQusprFBIq/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-13 01:11:41,548:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_uZoH6h5kwA7k1tM3mkOdcjSa', assistant_id='asst_raYAAkfhRb2moi8EDd9rvVCD', content=[MessageContentText(text=Text(annotations=[], value='Hello! How can I assist you today? If you have any questions about bitcoin, feel free to ask.'), type='text')], created_at=1702429898, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_D0GWti8ElobQ6Kf3ufaNYlgB', thread_id='thread_wKuh63xwYViVJMlQusprFBIq')], object='list', first_id='msg_uZoH6h5kwA7k1tM3mkOdcjSa', last_id='msg_uZoH6h5kwA7k1tM3mkOdcjSa', has_more=True).
+2023-12-13 01:14:43,977:INFO:Processing user: 326f_a6f2 with message: hi
+2023-12-13 01:14:43,978:INFO:User 326f_a6f2 NOT found, creating a new entry.
+2023-12-13 01:14:43,987:INFO:User 326f_a6f2 found, proceed
+2023-12-13 01:14:43,987:INFO:Creating new assistant for the user 326f_a6f2.
+2023-12-13 01:14:44,241:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-13 01:14:44,261:INFO:Assistant asst_Gn3dhbNrOei22X0R0AOPVcpK for 326f_a6f2.
+2023-12-13 01:14:44,261:INFO:Creating new thread for the user 326f_a6f2.
+2023-12-13 01:14:44,444:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-13 01:14:44,454:INFO:Thread thread_YPYZoKh8JEGWimhgB6Nx63Zp for 326f_a6f2.
+2023-12-13 01:14:44,454:INFO:Adding Message to  asst_Gn3dhbNrOei22X0R0AOPVcpK - thread_YPYZoKh8JEGWimhgB6Nx63Zp for 326f_a6f2.
+2023-12-13 01:14:44,454:INFO:None Attempting to add message to thread: hi
+2023-12-13 01:14:44,681:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YPYZoKh8JEGWimhgB6Nx63Zp/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-13 01:14:45,028:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_YPYZoKh8JEGWimhgB6Nx63Zp/messages "HTTP/1.1 200 OK"
+2023-12-13 01:14:45,031:INFO:None Message ID registered: msg_D52AGl1ZK2W3dwpJ8ndIQBdM - hi
+2023-12-13 01:14:45,031:INFO:Message msg_D52AGl1ZK2W3dwpJ8ndIQBdM added to  asst_Gn3dhbNrOei22X0R0AOPVcpK - thread_YPYZoKh8JEGWimhgB6Nx63Zp for 326f_a6f2.
+2023-12-13 01:14:45,040:INFO:Start Main Assistent: 'u_bot_0_id': 326f_a6f2, 'a_bot_0_id': asst_Gn3dhbNrOei22X0R0AOPVcpK, 't_bot_0_id': thread_YPYZoKh8JEGWimhgB6Nx63Zp, 'm_bot_0_id': msg_D52AGl1ZK2W3dwpJ8ndIQBdM, 'agent': None
+2023-12-13 01:14:45,040:INFO:Starting the main assistant...
+2023-12-13 01:14:45,579:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_YPYZoKh8JEGWimhgB6Nx63Zp/runs "HTTP/1.1 200 OK"
+2023-12-13 01:14:45,582:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-13 01:14:45,582:INFO:Checking run status...
+2023-12-13 01:14:48,840:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YPYZoKh8JEGWimhgB6Nx63Zp/runs/run_rUpopfi9WkglxXsFjQpEytkd "HTTP/1.1 200 OK"
+2023-12-13 01:14:48,843:INFO:Run completed. Fetching messages...
+2023-12-13 01:14:49,066:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_YPYZoKh8JEGWimhgB6Nx63Zp/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-13 01:14:49,072:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_JvIQpN4QMwOx2U3cuGu3Dj0u', assistant_id='asst_Gn3dhbNrOei22X0R0AOPVcpK', content=[MessageContentText(text=Text(annotations=[], value='Hello! How can I assist you today?'), type='text')], created_at=1702430086, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_rUpopfi9WkglxXsFjQpEytkd', thread_id='thread_YPYZoKh8JEGWimhgB6Nx63Zp')], object='list', first_id='msg_JvIQpN4QMwOx2U3cuGu3Dj0u', last_id='msg_JvIQpN4QMwOx2U3cuGu3Dj0u', has_more=True).

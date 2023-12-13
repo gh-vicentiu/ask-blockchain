@@ -118,6 +118,6 @@ def signup():
 if __name__ == '__main__':
     if test_mongo_connection():
         print("Successfully connected to MongoDB.")
-        app.run(debug=True)
+        app.run(host='0.0.0.0', port=5000, debug=True)
     else:
         print("Failed to connect to MongoDB.")
