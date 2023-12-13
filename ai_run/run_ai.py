@@ -12,26 +12,29 @@ from functions.return_response import send_message_to_hook
 
 client = openai.Client()  # Initialize the OpenAI client
 # Read the current state of the database
-dbc = read_db_chats()
+
 
 
 def run_assistant(thread_main):
 
-    if thread_main['agent'] is None:
+    if thread_main['agent'] == 'relay':
         thread_id=thread_main['t_bot_0_id'] 
         assistant_id=thread_main['a_bot_0_id']
         message_u_id=thread_main['m_bot_0_id']
         logging.info("Starting the main assistant...")
+        
     else:
         thread_id=thread_main['t_bot_1_id'] 
         assistant_id=thread_main['a_bot_1_id']
         message_u_id=thread_main['m_bot_1_id']
         logging.info("Starting the secondery bots...")
     user_id = thread_main['u_bot_0_id']
-
+    agent = thread_main['agent']
     
     run = client.beta.threads.runs.create(thread_id=thread_id, assistant_id=assistant_id, instructions="")
     
+
+
     logging.info("Main Assistant run initiated. Dumping initial run status:")
     #logging.info(json.dumps(run, default=str, indent=4))
 
@@ -71,27 +74,25 @@ def run_assistant(thread_main):
                     "move_files": handle_move_files
                 }
 
-                db_entry = {}  # Initialize an empty dictionary for database entry
                 if func_name in handlers:
-                    handlers[func_name](arguments, thread_main, tool_outputs, db_entry, action_id)
+                    handlers[func_name](arguments, thread_main, tool_outputs, action_id)
                     result = send_message_to_hook(user_id, messaged_back=(f"'{tool_outputs}'"))
+                    if agent == 'relay':
+                        dbc = read_db_chats()
+                        dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']]['2'] = {"tool":{func_name: tool_outputs, "timestamp": int(time.time())}}
+                        write_db_chats(dbc)
+                    else:
+                        dbc = read_db_chats()
+                        dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id][message_u_id]['3'] = {"tool":{func_name: tool_outputs, "timestamp": int(time.time())}}
+                        write_db_chats(dbc)
+                        
 
-                # Update the database if needed
-                if thread_main['agent'] is None and db_entry:
-                    dbc[user_id][assistant_id][thread_id][message_u_id] = db_entry
-                    write_db_chats(dbc)
-
-               
             print("Submitting outputs back to the Assistant...")
             client.beta.threads.runs.submit_tool_outputs(
                 thread_id=thread_id,
                 run_id=run.id,
                 tool_outputs=tool_outputs
             )
-
-            if thread_main['agent'] is None:
-                dbc[user_id][assistant_id][thread_id][message_u_id]['3'] = {"tool":{func_name: tool_outputs, "timestamp": int(time.time())}}
-                write_db_chats(dbc)
 
             logging.info(f"Submitting outputs back: {tool_outputs}")
             #logging.info(json.dumps(run, default=str, indent=4))

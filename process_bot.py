@@ -54,14 +54,14 @@ def process_bot(instruction, thread_main):
 
     logging.info(f"Message {message_u_id} added to  {assistant_id} - {thread_id} for {thread_main['u_bot_0_id']}.")
 
-
+    dbc = read_db_chats()    
     if thread_id not in dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']]:
         dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id] = {}
     
     if message_u_id not in dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id]:
         dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id][message_u_id] = {}
     
-    dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id][message_u_id]['0'] = {"sent": {"role": "user", "content": instruction, "timestamp": int(time.time())}}
+    dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id][message_u_id]['0'] = {"sent": {"role": thread_main['agent'], "content": instruction, "timestamp": int(time.time())}}
     write_db_chats(dbc)
 
     # Run the assistant to process the thread and get a response
@@ -81,8 +81,7 @@ def process_bot(instruction, thread_main):
     
     # Return the full conversation threads
     dbc = read_db_chats()
-    dba = read_db_agents()
-    dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id][message_u_id]['1'] = {"replay": {"role": "assistant", "content": ai_replay, "timestamp": int(time.time())}}
+    dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id][message_u_id]['1'] = {"replay": {"role": thread_main['agent'], "content": ai_replay, "timestamp": int(time.time())}}
     write_db_chats(dbc)
 
     return ai_replay

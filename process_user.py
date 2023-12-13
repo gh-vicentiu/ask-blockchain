@@ -77,23 +77,22 @@ def process_user(user_id, messaged_us):
     #logging.info(f"{db[user_id][assistant_id][thread_id][message_u_id]}")
     #logging.info(f"{db[user_id][assistant_id][thread_id][message_u_id][0] = {"sent": {"role": "user", "content": messaged_us, "timestamp": int(time.time())}}}")
     
-
+    dbc = read_db_chats()  
     if message_u_id not in dbc[user_id][assistant_id][thread_id]:
         dbc[user_id][assistant_id][thread_id][message_u_id] = {}
-    dbc[user_id][assistant_id][thread_id][message_u_id]['0'] = {"sent": {"role": "user", "content": messaged_us, "timestamp": int(time.time())}}
+    dbc[user_id][assistant_id][thread_id][message_u_id]['0'] = {"sent": {"role": "relay", "content": messaged_us, "timestamp": int(time.time())}}
     write_db_chats(dbc)
       
 
     # Run the assistant to process the thread and get a response
-    logging.info(f"Start Main Assistent: 'u_bot_0_id': {user_id}, 'a_bot_0_id': {assistant_id}, 't_bot_0_id': {thread_id}, 'm_bot_0_id': {message_u_id}, 'agent': None")
-    thread_main = {'u_bot_0_id': user_id, 'a_bot_0_id': assistant_id, 't_bot_0_id': thread_id, 'm_bot_0_id': message_u_id, 'agent': None}
+    logging.info(f"Start Main Assistent: 'u_bot_0_id': {user_id}, 'a_bot_0_id': {assistant_id}, 't_bot_0_id': {thread_id}, 'm_bot_0_id': {message_u_id}, 'agent': 'relay'")
+    thread_main = {'u_bot_0_id': user_id, 'a_bot_0_id': assistant_id, 't_bot_0_id': thread_id, 'm_bot_0_id': message_u_id, 'agent': 'relay'}
     thread_full = run_assistant(thread_main)
     ai_replay = ai_parse_response(thread_full)
     result = send_message_to_hook(user_id, messaged_back=ai_replay)
     
     dbc = read_db_chats()
-    dba = read_db_agents()
     # Return the full conversation threads
-    dbc[user_id][assistant_id][thread_id][message_u_id]['1'] = {"replay": {"role": "assistant", "content": ai_replay, "timestamp": int(time.time())}}
+    dbc[user_id][assistant_id][thread_id][message_u_id]['1'] = {"replay": {"role": thread_main['agent'], "content": ai_replay, "timestamp": int(time.time())}}
     write_db_chats(dbc)
     return ai_replay
