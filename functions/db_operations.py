@@ -8,10 +8,10 @@ def get_mongo_client():
     return MongoClient(uri, server_api=ServerApi('1'))
 
 # Function to read data from MongoDB
-def read_db():
+def read_db_chats():
     client = get_mongo_client()
     db = client['AssistantsData']
-    collection = db['Assistants']
+    collection = db['Chats']
     try:
         data = collection.find_one()  # Adjust this based on how you want to query data
         return data if data else {}
@@ -20,10 +20,33 @@ def read_db():
         return {}
 
 # Function to write data to MongoDB
-def write_db(new_data):
+def write_db_chats(new_data):
     client = get_mongo_client()
     db = client['AssistantsData']
-    collection = db['Assistants']
+    collection = db['Chats']
+    try:
+        # Modify this based on whether you want to insert new documents or update existing ones
+        collection.update_one({}, {'$set': new_data}, upsert=True)
+        print("Database updated.")
+    except Exception as e:
+        print(f"Error updating MongoDB: {e}")
+
+def read_db_agents():
+    client = get_mongo_client()
+    db = client['AssistantsData']
+    collection = db['Agents']
+    try:
+        data = collection.find_one()  # Adjust this based on how you want to query data
+        return data if data else {}
+    except Exception as e:
+        print(f"Error reading from MongoDB: {e}")
+        return {}
+
+# Function to write data to MongoDB
+def write_db_agents(new_data):
+    client = get_mongo_client()
+    db = client['AssistantsData']
+    collection = db['Agents']
     try:
         # Modify this based on whether you want to insert new documents or update existing ones
         collection.update_one({}, {'$set': new_data}, upsert=True)
@@ -38,6 +61,7 @@ def w_dbin(data):
         print("Database updated. w_dbin")
     except Exception as e:
         print(f"Error updating database w_dbin: {e}")
+
 
 def r_dbin():
     try:

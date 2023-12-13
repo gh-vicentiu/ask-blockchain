@@ -3,10 +3,10 @@ import sys
 import json
 import process_user
 import logging
-from functions.db_operations import read_db, write_db,w_dbin,r_dbin  # To handle database operations
+from functions.db_operations import read_db_chats, write_db_chats,w_dbin,r_dbin  # To handle database operations
 
 # Read the current state of the database
-db = read_db()
+db = read_db_chats()
 
 
 # Set up basic logging

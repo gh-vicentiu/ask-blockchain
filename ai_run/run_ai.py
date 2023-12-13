@@ -5,14 +5,14 @@ import logging
 from ai_tools.main_tools import call_agent_price, call_agent_coder
 from ai_tools.secondary_tools import execute_file, create_file, move_files
 from ai_tools.tool_calls import handle_call_agent_price, handle_call_agent_coder, handle_create_file, handle_execute_file, handle_move_files
-from functions.db_operations import read_db, write_db, r_dbin, w_dbin  # To handle database operations
+from functions.db_operations import read_db_chats, write_db_chats, r_dbin, w_dbin  # To handle database operations
 from functions.return_response import send_message_to_hook
 
 
 
 client = openai.Client()  # Initialize the OpenAI client
 # Read the current state of the database
-db = read_db()
+dbc = read_db_chats()
 
 
 def run_assistant(thread_main):
@@ -78,8 +78,8 @@ def run_assistant(thread_main):
 
                 # Update the database if needed
                 if thread_main['agent'] is None and db_entry:
-                    db[user_id][assistant_id][thread_id][message_u_id] = db_entry
-                    write_db(db)
+                    dbc[user_id][assistant_id][thread_id][message_u_id] = db_entry
+                    write_db_chats(dbc)
 
                
             print("Submitting outputs back to the Assistant...")
@@ -90,8 +90,8 @@ def run_assistant(thread_main):
             )
 
             if thread_main['agent'] is None:
-                db[user_id][assistant_id][thread_id][message_u_id][3] = {"tool":{func_name: tool_outputs, "timestamp": int(time.time())}}
-                write_db(db)
+                dbc[user_id][assistant_id][thread_id][message_u_id]['3'] = {"tool":{func_name: tool_outputs, "timestamp": int(time.time())}}
+                write_db_chats(dbc)
 
             logging.info(f"Submitting outputs back: {tool_outputs}")
             #logging.info(json.dumps(run, default=str, indent=4))

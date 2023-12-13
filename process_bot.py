@@ -10,7 +10,7 @@ from ai_make.create_ai import create_assistant
 from ai_make.create_thread import create_thread  # To create a new conversation thread
 from ai_run.send_mess import add_message_to_thread  # To add a message to a conversation thread
 from ai_run.run_ai import run_assistant  # To run the AI assistant within a thread
-from functions.db_operations import read_db, write_db,w_dbin,r_dbin  # To handle database operations
+from functions.db_operations import read_db_chats, write_db_chats, read_db_agents, write_db_agents, w_dbin,r_dbin  # To handle database operations
 from functions.ai_parse_response import ai_parse_response
 from functions.return_response import send_message_to_hook
 
@@ -20,67 +20,69 @@ client = openai.Client()
 
 # Main function to process a user message
 def process_bot(instruction, thread_main):
-    db = read_db()
+    dbc = read_db_chats()
+    dba = read_db_agents()
     # Log the incoming user ID and message
     logging.info(f"Processing bot {thread_main['agent']}: {thread_main['u_bot_0_id']} with message: {instruction}")
     thread_full = None
-    ids = 'a'
+    ids = 'active'
 
     # Retrieve or create an assistant ID for the bot
-    assistant_id = db[thread_main['u_bot_0_id']][ids].get(thread_main['agent'] + '_assistant_id')
+    assistant_id = dba[ids].get(thread_main['agent'] + '_assistant_id')
     if not assistant_id:
         logging.info(f"Creating new assistant for {thread_main['agent']}.")
         assistant = create_assistant(thread_main['agent'])
         assistant_id = assistant.id
-        db[thread_main['u_bot_0_id']][ids][thread_main['agent'] + "_assistant_id"] = assistant_id
-        write_db(db)
+        dba[ids][thread_main['agent'] + "_assistant_id"] = assistant_id
+        write_db_agents(dba)
+    logging.info(f"Global Assistant {thread_main['agent']}: {assistant_id}.")
+
 
     # Retrieve or create a thread ID for the conversation
-    thread_id = db[thread_main['u_bot_0_id']][ids].get(thread_main['agent'] + '_thread_id')
+    thread_id = dbc[thread_main['u_bot_0_id']][ids].get('active_' + thread_main['agent'] + '_thread_id')
     if not thread_id:
         logging.info(f"Creating new thread for {thread_main['agent']}.")
         thread_id = create_thread()
-        db[thread_main['u_bot_0_id']][ids][thread_main['agent'] + '_thread_id'] = thread_id
-        db[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id] = {}
-        write_db(db)
-
+        dbc[thread_main['u_bot_0_id']][ids]['active_' + thread_main['agent'] + '_thread_id'] = thread_id
+        write_db_chats(dbc)
+    logging.info(f"Global Assistant {thread_main['agent']}: {thread_id}.")
+   
+   
    
     
     message_u_id = add_message_to_thread(thread_id, instruction, role='user', agent=thread_main['agent'])
 
     logging.info(f"Message {message_u_id} added to  {assistant_id} - {thread_id} for {thread_main['u_bot_0_id']}.")
-    write_db(db)
-
-    if message_u_id not in db[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']]:
-        db[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][message_u_id] = {}
-    db[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][message_u_id]['0'] = {"sent": {"role": "user", "content": instruction, "timestamp": int(time.time())}}
-    write_db(db)
-
-    print(f"Type of message_u_id: {type(message_u_id)}")
-    print(f"Nested dict access: {db[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']]}")
 
 
+    if thread_id not in dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']]:
+        dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id] = {}
+    
+    if message_u_id not in dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id]:
+        dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id][message_u_id] = {}
+    
+    dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id][message_u_id]['0'] = {"sent": {"role": "user", "content": instruction, "timestamp": int(time.time())}}
+    write_db_chats(dbc)
 
     # Run the assistant to process the thread and get a response
-    thread_main = {'a_bot_1_id': assistant_id, 't_bot_1_id': thread_id, 'm_bot_1_id': message_u_id, 'agent': [thread_main['agent']], 'u_bot_0_id': [thread_main['u_bot_0_id']], 'a_bot_0_id': [thread_main['a_bot_0_id']], 't_bot_0_id': [thread_main['t_bot_0_id']], 'm_bot_0_id': [thread_main['m_bot_0_id']],}
+    thread_main = {
+    'a_bot_1_id': assistant_id, 
+    't_bot_1_id': thread_id, 
+    'm_bot_1_id': message_u_id, 
+    'agent': thread_main['agent'], 
+    'u_bot_0_id': thread_main['u_bot_0_id'], 
+    'a_bot_0_id': thread_main['a_bot_0_id'], 
+    't_bot_0_id': thread_main['t_bot_0_id'], 
+    'm_bot_0_id': thread_main['m_bot_0_id']
+}
     thread_full = run_assistant(thread_main)
     ai_replay = ai_parse_response(thread_full)
     result = send_message_to_hook(user_id=thread_main['u_bot_0_id'], messaged_back=ai_replay)   
+    
     # Return the full conversation threads
-    #db[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][message_u_id]['1'] = {"replay": {"role": "assistant", "content": ai_replay, "timestamp": int(time.time())}}
-    write_db(db)
+    dbc = read_db_chats()
+    dba = read_db_agents()
+    dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id][message_u_id]['1'] = {"replay": {"role": "assistant", "content": ai_replay, "timestamp": int(time.time())}}
+    write_db_chats(dbc)
 
     return ai_replay
-
-
-# This block allows the script to be run as a standalone Python script for testing
-if __name__ == "__main__":
-    import sys
-
-    # Retrieve command line arguments for user ID and message
-    user_id = sys.argv[1]
-    messaged_us = json.loads(sys.argv[2])['message']
-
-    # Process the user's message and print the result
-    thread_full = process_bot(user_id, messaged_us)
-    print(f"Process result: {ai_replay}")
