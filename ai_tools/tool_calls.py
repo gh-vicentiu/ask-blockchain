@@ -21,21 +21,21 @@ def handle_call_agent_coder(arguments, thread_main, tool_outputs, action_id):
     return output
 
 def handle_create_file(arguments, thread_main, tool_outputs, action_id):
-    output = create_file(**arguments)
+    output = create_file(**arguments, user_id=thread_main['u_bot_0_id'])
     tool_outputs.append({"tool_call_id": action_id, "output": output})  # Corrected here
     result = send_message_to_hook(user_id=thread_main['u_bot_0_id'], messaged_back=(f"'{output}'"))
     #db_entry.update({"tool": {'instruction': arguments, "timestamp": int(time.time())}})
     return output
 
 def handle_execute_file(arguments, thread_main, tool_outputs, action_id):
-    output = execute_file(**arguments)
+    output = execute_file(**arguments, user_id=thread_main['u_bot_0_id'])
     tool_outputs.append({"tool_call_id": action_id, "output": output})  # Corrected here
     #db_entry.update({"tool": {'instruction': arguments, "timestamp": int(time.time())}})
     return output
 
 def handle_move_files(arguments, thread_main, tool_outputs, action_id):
     if 'fileMoves' in arguments:
-        output = move_files(file_moves=arguments['fileMoves'])
+        output = move_files(file_moves=arguments['fileMoves'], user_id=thread_main['u_bot_0_id'])
         output_str = '\n'.join(output)
         tool_outputs.append({"tool_call_id": action_id, "output": output_str})  # Corrected here
         #db_entry.update({"tool": {'instruction': arguments, "timestamp": int(time.time())}})
