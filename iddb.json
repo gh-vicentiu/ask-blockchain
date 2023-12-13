@@ -3224,18 +3224,102 @@
                                                         "timestamp": 1702424311
                                                 }
                                         },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today?",
+                                                        "timestamp": 1702424315
+                                                }
+                                        }
+                                },
+                                "msg_p6n9GNUMbwBRDqIAtZxwTAtI": {
                                         "0": {
                                                 "sent": {
                                                         "role": "user",
                                                         "content": "hi",
-                                                        "timestamp": 1702424311
+                                                        "timestamp": 1702425696
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today? If you have any questions about Bitcoin, feel free to ask!",
+                                                        "timestamp": 1702425700
+                                                }
+                                        }
+                                }
+                        }
+                }
+        },
+        "86ce_266f": {
+                "a": {
+                        "last_assistant_id": "asst_BaOd4L0A3jq4YReJwJRmOLOU",
+                        "last_thread_id": "thread_ppdDrY0vVg4oS2jf50CXm8Yi"
+                },
+                "asst_BaOd4L0A3jq4YReJwJRmOLOU": {
+                        "thread_ppdDrY0vVg4oS2jf50CXm8Yi": {
+                                "msg_LlLxjphF4gGsNrlUC0mN8AUa": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702425520
                                                 }
                                         },
                                         "1": {
                                                 "replay": {
                                                         "role": "assistant",
                                                         "content": "Hello! How can I assist you today?",
-                                                        "timestamp": 1702424315
+                                                        "timestamp": 1702425525
+                                                }
+                                        }
+                                }
+                        }
+                }
+        },
+        "3cad_387d": {
+                "a": {
+                        "last_assistant_id": "asst_68lyoOSw57jXcC0ufThjBSZP",
+                        "last_thread_id": "thread_VJdUlpplORLao4v2WBcWQ3nx"
+                },
+                "asst_68lyoOSw57jXcC0ufThjBSZP": {
+                        "thread_VJdUlpplORLao4v2WBcWQ3nx": {
+                                "msg_FeFMXKKs41hi8vdEoeoIWr7l": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702425789
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today?",
+                                                        "timestamp": 1702425793
+                                                }
+                                        }
+                                },
+                                "msg_dOpV3K2P8FrHQIHQLFBOZe4r": {
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702425803
+                                                }
+                                        },
+                                        "0": {
+                                                "sent": {
+                                                        "role": "user",
+                                                        "content": "hi",
+                                                        "timestamp": 1702425803
+                                                }
+                                        },
+                                        "1": {
+                                                "replay": {
+                                                        "role": "assistant",
+                                                        "content": "Hello! How can I assist you today? If you have any questions about Bitcoin, feel free to ask.",
+                                                        "timestamp": 1702425807
                                                 }
                                         }
                                 }
