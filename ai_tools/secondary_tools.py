@@ -4,8 +4,8 @@ import os
 import shutil
 from flask import jsonify
 
-def create_file(fileName, fileContent):
-    sandbox_dir = "sandbox"
+def create_file(fileName, fileContent, user_id):
+    sandbox_dir = os.path.join("sandbox", user_id)  # Construct the directory path with user_id
     # Ensure the sandbox directory exists
     if not os.path.exists(sandbox_dir):
         os.makedirs(sandbox_dir)
@@ -21,8 +21,8 @@ def create_file(fileName, fileContent):
         return f"Error creating file: {e}"
    
 
-def execute_file(fileName):
-    sandbox_dir = "sandbox"
+def execute_file(fileName, user_id):
+    sandbox_dir =  os.path.join("sandbox", user_id)
     # Adjust the file path to include the sandbox directory
     filePath = os.path.join(sandbox_dir, fileName)
 
@@ -32,8 +32,8 @@ def execute_file(fileName):
     except subprocess.CalledProcessError as e:
         return f"Error executing file: {e.output}"
 
-def move_files(file_moves):
-    sandbox_dir = "sandbox"
+def move_files(file_moves, user_id):
+    sandbox_dir =  os.path.join("sandbox", user_id)
     results = []
 
     # Ensure the sandbox directory exists
