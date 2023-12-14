@@ -23,7 +23,7 @@ def add_to_webhook(script_path, thread_main):
         response_data = response.json()
         if response_data.get("success"):
             print(f"Path '{url_path}' added successfully with script path '{script_path}'")
-            return "f(success: /webhook/{url_path})"
+            return (f"(success: /webhook/{url_path})")
         else:
             print("Error adding data:", response_data.get("error"))
             return "Error"
@@ -38,7 +38,7 @@ tools_route = [
             "name": "add_to_webhook",
             "description": "Adds a dynamic route to a Flask app",
             "parameters": {
-                "type": "object",
+                "type": "string",
                 "properties": {
                     "script_path": {
                         "type": "string",

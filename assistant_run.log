@@ -4587,3 +4587,217 @@
 2023-12-14 05:18:54,938:INFO:Run completed. Fetching messages...
 2023-12-14 05:18:55,240:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/messages?limit=1&order=desc "HTTP/1.1 200 OK"
 2023-12-14 05:18:55,243:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_Bnhud4nyKMQ7gnD89B0GaELH', assistant_id='asst_mFwde3KlDjlyw1QWICSyiUNx', content=[MessageContentText(text=Text(annotations=[], value='The webhook for hy.py has been successfully set up at the following URL: /webhook/{url_path}'), type='text')], created_at=1702523932, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_oadfqaPFJLlxgObWKEAdrDRY', thread_id='thread_FN1jb4pEGqi3kdWnebG2vRpx')], object='list', first_id='msg_Bnhud4nyKMQ7gnD89B0GaELH', last_id='msg_Bnhud4nyKMQ7gnD89B0GaELH', has_more=True).
+2023-12-14 11:33:52,833:INFO:Processing user: 1749_bbf3 with message: make me a hook that prints "yo bro"
+2023-12-14 11:33:53,756:INFO:User 1749_bbf3 found, proceed
+2023-12-14 11:33:53,757:INFO:Assistant asst_mFwde3KlDjlyw1QWICSyiUNx for 1749_bbf3.
+2023-12-14 11:33:53,757:INFO:Thread thread_FN1jb4pEGqi3kdWnebG2vRpx for 1749_bbf3.
+2023-12-14 11:33:53,757:INFO:Adding Message to  asst_mFwde3KlDjlyw1QWICSyiUNx - thread_FN1jb4pEGqi3kdWnebG2vRpx for 1749_bbf3.
+2023-12-14 11:33:53,758:INFO:None Attempting to add message to thread: make me a hook that prints "yo bro"
+2023-12-14 11:33:54,240:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:33:54,530:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_oadfqaPFJLlxgObWKEAdrDRY "HTTP/1.1 200 OK"
+2023-12-14 11:33:54,844:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/messages "HTTP/1.1 200 OK"
+2023-12-14 11:33:54,847:INFO:None Message ID registered: msg_MPSVfbRVSxLJjVvw08QNebIW - make me a hook that prints "yo bro"
+2023-12-14 11:33:54,847:INFO:Message msg_MPSVfbRVSxLJjVvw08QNebIW added to  asst_mFwde3KlDjlyw1QWICSyiUNx - thread_FN1jb4pEGqi3kdWnebG2vRpx for 1749_bbf3.
+2023-12-14 11:33:55,827:INFO:Start Main Assistent: 'u_bot_0_id': 1749_bbf3, 'a_bot_0_id': asst_mFwde3KlDjlyw1QWICSyiUNx, 't_bot_0_id': thread_FN1jb4pEGqi3kdWnebG2vRpx, 'm_bot_0_id': msg_MPSVfbRVSxLJjVvw08QNebIW, 'agent': 'relay'
+2023-12-14 11:33:55,827:INFO:Starting the main assistant...
+2023-12-14 11:33:56,509:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs "HTTP/1.1 200 OK"
+2023-12-14 11:33:56,513:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-14 11:33:56,513:INFO:Checking run status...
+2023-12-14 11:34:00,180:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_gCmaGWQ0IcgKGpnFH311VJt5 "HTTP/1.1 200 OK"
+2023-12-14 11:34:00,183:INFO:Waiting for the Assistant to process...
+2023-12-14 11:34:03,187:INFO:Checking run status...
+2023-12-14 11:34:06,462:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_gCmaGWQ0IcgKGpnFH311VJt5 "HTTP/1.1 200 OK"
+2023-12-14 11:34:06,465:INFO:Function Calling
+2023-12-14 11:34:06,466:INFO:{'tool_calls': [{'id': 'call_bCurauoioNiOFxc3T5vxfGZr', 'function': {'arguments': '{"sentTo":"agent_coder","sentFrom":"manager","instruction":"Please create a script that prints \'yo bro\'."}', 'name': 'call_agent_coder'}, 'type': 'function'}]}
+2023-12-14 11:34:07,744:INFO:Processing bot agent_coder: 1749_bbf3 with message: Please create a script that prints 'yo bro'.
+2023-12-14 11:34:07,744:INFO:Creating new assistant for agent_coder.
+2023-12-14 11:34:08,265:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-14 11:34:08,745:INFO:Global Assistant agent_coder: asst_3fKPTQitCo3b5jUR9LEC1T68.
+2023-12-14 11:34:08,746:INFO:Creating new thread for agent_coder.
+2023-12-14 11:34:09,054:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-14 11:34:09,556:INFO:Global Assistant agent_coder: thread_L6oYjBBUVVx1MhDOJzmNVbFw.
+2023-12-14 11:34:09,556:INFO:agent_coder Attempting to add message to thread: Please create a script that prints 'yo bro'.
+2023-12-14 11:34:09,875:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:34:10,173:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/messages "HTTP/1.1 200 OK"
+2023-12-14 11:34:10,176:INFO:agent_coder Message ID registered: msg_AaeHyfA4ZMldE9lvjvtr8rjs - Please create a script that prints 'yo bro'.
+2023-12-14 11:34:10,177:INFO:Message msg_AaeHyfA4ZMldE9lvjvtr8rjs added to  asst_3fKPTQitCo3b5jUR9LEC1T68 - thread_L6oYjBBUVVx1MhDOJzmNVbFw for 1749_bbf3.
+2023-12-14 11:34:11,132:INFO:Starting the secondery bots...
+2023-12-14 11:34:11,593:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs "HTTP/1.1 200 OK"
+2023-12-14 11:34:11,596:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-14 11:34:11,597:INFO:Checking run status...
+2023-12-14 11:34:14,880:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs/run_qGiu7ewXUVmZnMJhlZQjexz6 "HTTP/1.1 200 OK"
+2023-12-14 11:34:14,884:INFO:Function Calling
+2023-12-14 11:34:14,885:INFO:{'tool_calls': [{'id': 'call_0G6ubdGK32xE7dCz4DYQa8tU', 'function': {'arguments': '{"fileName":"print_yo_bro.py","fileContent":"print(\'yo bro\')"}', 'name': 'create_file'}, 'type': 'function'}]}
+2023-12-14 11:34:16,471:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs/run_qGiu7ewXUVmZnMJhlZQjexz6/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-14 11:34:16,475:INFO:Submitting outputs back: [{'tool_call_id': 'call_0G6ubdGK32xE7dCz4DYQa8tU', 'output': "File 'sandbox/1749_bbf3/print_yo_bro.py' created successfully."}]
+2023-12-14 11:34:16,475:INFO:Checking run status...
+2023-12-14 11:34:19,826:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs/run_qGiu7ewXUVmZnMJhlZQjexz6 "HTTP/1.1 200 OK"
+2023-12-14 11:34:19,830:INFO:Function Calling
+2023-12-14 11:34:19,831:INFO:{'tool_calls': [{'id': 'call_OvUbgJJCgGWe0IXrBMeDX9ls', 'function': {'arguments': '{"fileName":"print_yo_bro.py"}', 'name': 'execute_file'}, 'type': 'function'}]}
+2023-12-14 11:34:21,364:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs/run_qGiu7ewXUVmZnMJhlZQjexz6/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-14 11:34:21,368:INFO:Submitting outputs back: [{'tool_call_id': 'call_OvUbgJJCgGWe0IXrBMeDX9ls', 'output': 'yo bro\n'}]
+2023-12-14 11:34:21,368:INFO:Checking run status...
+2023-12-14 11:34:24,586:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs/run_qGiu7ewXUVmZnMJhlZQjexz6 "HTTP/1.1 200 OK"
+2023-12-14 11:34:24,590:INFO:Run completed. Fetching messages...
+2023-12-14 11:34:25,008:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:34:25,012:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_jNy7RIxKAtd4xEv1XQzR8PsQ', assistant_id='asst_3fKPTQitCo3b5jUR9LEC1T68', content=[MessageContentText(text=Text(annotations=[], value="The script has been executed successfully and it printed 'yo bro' as expected.\n\nThe file 'print_yo_bro.py' has been created and the script has been executed."), type='text')], created_at=1702546462, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_qGiu7ewXUVmZnMJhlZQjexz6', thread_id='thread_L6oYjBBUVVx1MhDOJzmNVbFw')], object='list', first_id='msg_jNy7RIxKAtd4xEv1XQzR8PsQ', last_id='msg_jNy7RIxKAtd4xEv1XQzR8PsQ', has_more=True).
+2023-12-14 11:34:27,483:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_gCmaGWQ0IcgKGpnFH311VJt5/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-14 11:34:27,486:INFO:Submitting outputs back: [{'tool_call_id': 'call_bCurauoioNiOFxc3T5vxfGZr', 'output': "result The script has been executed successfully and it printed 'yo bro' as expected.\n\nThe file 'print_yo_bro.py' has been created and the script has been executed."}]
+2023-12-14 11:34:27,487:INFO:Checking run status...
+2023-12-14 11:34:30,701:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_gCmaGWQ0IcgKGpnFH311VJt5 "HTTP/1.1 200 OK"
+2023-12-14 11:34:30,705:INFO:Function Calling
+2023-12-14 11:34:30,705:INFO:{'tool_calls': [{'id': 'call_t2yku8YXJ18HFvZSOb8kzodV', 'function': {'arguments': '{"sentTo":"agent_webhook","sentFrom":"manager","instruction":"Please set up print_yo_bro.py with a URL."}', 'name': 'call_agent_webhook'}, 'type': 'function'}]}
+2023-12-14 11:34:31,759:INFO:Processing bot agent_webhook: 1749_bbf3 with message: Please set up print_yo_bro.py with a URL.
+2023-12-14 11:34:31,760:INFO:Global Assistant agent_webhook: asst_OWqIQgmx652cjREgV9XfvmQS.
+2023-12-14 11:34:31,760:INFO:Global Assistant agent_webhook: thread_bqdDazcIUr7usHDxcI5ZK6DO.
+2023-12-14 11:34:31,760:INFO:agent_webhook Attempting to add message to thread: Please set up print_yo_bro.py with a URL.
+2023-12-14 11:34:32,223:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:34:32,503:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/runs/run_NzHlC68A8A5QVb3KD2KMoRai "HTTP/1.1 200 OK"
+2023-12-14 11:34:32,823:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/messages "HTTP/1.1 200 OK"
+2023-12-14 11:34:32,826:INFO:agent_webhook Message ID registered: msg_3rAx9fVnxWnu5sX0LgGF8DJV - Please set up print_yo_bro.py with a URL.
+2023-12-14 11:34:32,827:INFO:Message msg_3rAx9fVnxWnu5sX0LgGF8DJV added to  asst_OWqIQgmx652cjREgV9XfvmQS - thread_bqdDazcIUr7usHDxcI5ZK6DO for 1749_bbf3.
+2023-12-14 11:34:33,832:INFO:Starting the secondery bots...
+2023-12-14 11:34:34,311:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/runs "HTTP/1.1 200 OK"
+2023-12-14 11:34:34,314:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-14 11:34:34,314:INFO:Checking run status...
+2023-12-14 11:34:37,600:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/runs/run_7qxgwzpJOE8o3yy72NLKp7nl "HTTP/1.1 200 OK"
+2023-12-14 11:34:37,604:INFO:Function Calling
+2023-12-14 11:34:37,604:INFO:{'tool_calls': [{'id': 'call_HZcdSV4tL1z8fpvouj9pJYY0', 'function': {'arguments': '{"script_path":"print_yo_bro.py"}', 'name': 'add_to_webhook'}, 'type': 'function'}]}
+2023-12-14 11:34:39,125:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/runs/run_7qxgwzpJOE8o3yy72NLKp7nl/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-14 11:34:39,128:INFO:Submitting outputs back: [{'tool_call_id': 'call_HZcdSV4tL1z8fpvouj9pJYY0', 'output': 'f(success: /webhook/{url_path})'}]
+2023-12-14 11:34:39,128:INFO:Checking run status...
+2023-12-14 11:34:42,378:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/runs/run_7qxgwzpJOE8o3yy72NLKp7nl "HTTP/1.1 200 OK"
+2023-12-14 11:34:42,380:INFO:Run completed. Fetching messages...
+2023-12-14 11:34:42,651:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:34:42,655:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_ZgC8xGouT8EXqor5PSGj6TgJ', assistant_id='asst_OWqIQgmx652cjREgV9XfvmQS', content=[MessageContentText(text=Text(annotations=[], value='The webhook for print_yo_bro.py has been successfully set up at the following URL: /webhook/{url_path}'), type='text')], created_at=1702546480, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_7qxgwzpJOE8o3yy72NLKp7nl', thread_id='thread_bqdDazcIUr7usHDxcI5ZK6DO')], object='list', first_id='msg_ZgC8xGouT8EXqor5PSGj6TgJ', last_id='msg_ZgC8xGouT8EXqor5PSGj6TgJ', has_more=True).
+2023-12-14 11:34:46,138:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_gCmaGWQ0IcgKGpnFH311VJt5/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-14 11:34:46,140:INFO:Submitting outputs back: [{'tool_call_id': 'call_t2yku8YXJ18HFvZSOb8kzodV', 'output': 'result The webhook for print_yo_bro.py has been successfully set up at the following URL: /webhook/{url_path}'}]
+2023-12-14 11:34:46,141:INFO:Checking run status...
+2023-12-14 11:34:49,366:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_gCmaGWQ0IcgKGpnFH311VJt5 "HTTP/1.1 200 OK"
+2023-12-14 11:34:49,369:INFO:Run completed. Fetching messages...
+2023-12-14 11:34:49,642:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:34:49,645:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_ETIUAzObHvy8IVkeU5fpbPwZ', assistant_id='asst_mFwde3KlDjlyw1QWICSyiUNx', content=[MessageContentText(text=Text(annotations=[], value='The webhook for the script that prints "yo bro" has been successfully set up at the following URL: /webhook/{url_path}.'), type='text')], created_at=1702546487, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_gCmaGWQ0IcgKGpnFH311VJt5', thread_id='thread_FN1jb4pEGqi3kdWnebG2vRpx')], object='list', first_id='msg_ETIUAzObHvy8IVkeU5fpbPwZ', last_id='msg_ETIUAzObHvy8IVkeU5fpbPwZ', has_more=True).
+2023-12-14 11:37:19,731:INFO:Processing user: 1749_bbf3 with message: make me a hook that gets the weather today in buchares
+2023-12-14 11:37:20,688:INFO:User 1749_bbf3 found, proceed
+2023-12-14 11:37:20,689:INFO:Assistant asst_mFwde3KlDjlyw1QWICSyiUNx for 1749_bbf3.
+2023-12-14 11:37:20,689:INFO:Thread thread_FN1jb4pEGqi3kdWnebG2vRpx for 1749_bbf3.
+2023-12-14 11:37:20,689:INFO:Adding Message to  asst_mFwde3KlDjlyw1QWICSyiUNx - thread_FN1jb4pEGqi3kdWnebG2vRpx for 1749_bbf3.
+2023-12-14 11:37:20,690:INFO:None Attempting to add message to thread: make me a hook that gets the weather today in buchares
+2023-12-14 11:37:21,009:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:37:21,230:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_gCmaGWQ0IcgKGpnFH311VJt5 "HTTP/1.1 200 OK"
+2023-12-14 11:37:21,504:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/messages "HTTP/1.1 200 OK"
+2023-12-14 11:37:21,507:INFO:None Message ID registered: msg_2SyzxLa1jDKbrQgDe2F9qwkm - make me a hook that gets the weather today in buchares
+2023-12-14 11:37:21,508:INFO:Message msg_2SyzxLa1jDKbrQgDe2F9qwkm added to  asst_mFwde3KlDjlyw1QWICSyiUNx - thread_FN1jb4pEGqi3kdWnebG2vRpx for 1749_bbf3.
+2023-12-14 11:37:22,463:INFO:Start Main Assistent: 'u_bot_0_id': 1749_bbf3, 'a_bot_0_id': asst_mFwde3KlDjlyw1QWICSyiUNx, 't_bot_0_id': thread_FN1jb4pEGqi3kdWnebG2vRpx, 'm_bot_0_id': msg_2SyzxLa1jDKbrQgDe2F9qwkm, 'agent': 'relay'
+2023-12-14 11:37:22,463:INFO:Starting the main assistant...
+2023-12-14 11:37:22,956:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs "HTTP/1.1 200 OK"
+2023-12-14 11:37:22,959:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-14 11:37:22,960:INFO:Checking run status...
+2023-12-14 11:37:26,236:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_DUS69dndP4zO7Mh1PMbijxQE "HTTP/1.1 200 OK"
+2023-12-14 11:37:26,240:INFO:Function Calling
+2023-12-14 11:37:26,240:INFO:{'tool_calls': [{'id': 'call_JsnHry32BEPaavgfBbqudXUE', 'function': {'arguments': '{"sentTo":"agent_coder","sentFrom":"manager","instruction":"Please create a script that gets the weather today in Bucharest."}', 'name': 'call_agent_coder'}, 'type': 'function'}]}
+2023-12-14 11:37:27,370:INFO:Processing bot agent_coder: 1749_bbf3 with message: Please create a script that gets the weather today in Bucharest.
+2023-12-14 11:37:27,371:INFO:Global Assistant agent_coder: asst_3fKPTQitCo3b5jUR9LEC1T68.
+2023-12-14 11:37:27,372:INFO:Global Assistant agent_coder: thread_L6oYjBBUVVx1MhDOJzmNVbFw.
+2023-12-14 11:37:27,372:INFO:agent_coder Attempting to add message to thread: Please create a script that gets the weather today in Bucharest.
+2023-12-14 11:37:27,630:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:37:27,850:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs/run_qGiu7ewXUVmZnMJhlZQjexz6 "HTTP/1.1 200 OK"
+2023-12-14 11:37:28,096:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/messages "HTTP/1.1 200 OK"
+2023-12-14 11:37:28,098:INFO:agent_coder Message ID registered: msg_SwUSnRbKsUoC2NEFsYM6SGB0 - Please create a script that gets the weather today in Bucharest.
+2023-12-14 11:37:28,099:INFO:Message msg_SwUSnRbKsUoC2NEFsYM6SGB0 added to  asst_3fKPTQitCo3b5jUR9LEC1T68 - thread_L6oYjBBUVVx1MhDOJzmNVbFw for 1749_bbf3.
+2023-12-14 11:37:29,066:INFO:Starting the secondery bots...
+2023-12-14 11:37:29,479:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs "HTTP/1.1 200 OK"
+2023-12-14 11:37:29,483:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-14 11:37:29,483:INFO:Checking run status...
+2023-12-14 11:37:32,773:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs/run_6XKmc1TfZx2QKOmCiFjyMxUH "HTTP/1.1 200 OK"
+2023-12-14 11:37:32,777:INFO:Run completed. Fetching messages...
+2023-12-14 11:37:33,029:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:37:33,032:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_sgz4h3XSZ4slPUG0oeHIek5J', assistant_id='asst_3fKPTQitCo3b5jUR9LEC1T68', content=[MessageContentText(text=Text(annotations=[], value="I'm a code generator specialized in creating Python scripts for querying a Bitcoin full node blockchain. I don't have the capability to retrieve weather data. Please let me know if you have a different query related to Bitcoin or blockchain."), type='text')], created_at=1702546650, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_6XKmc1TfZx2QKOmCiFjyMxUH', thread_id='thread_L6oYjBBUVVx1MhDOJzmNVbFw')], object='list', first_id='msg_sgz4h3XSZ4slPUG0oeHIek5J', last_id='msg_sgz4h3XSZ4slPUG0oeHIek5J', has_more=True).
+2023-12-14 11:37:35,452:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_DUS69dndP4zO7Mh1PMbijxQE/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-14 11:37:35,455:INFO:Submitting outputs back: [{'tool_call_id': 'call_JsnHry32BEPaavgfBbqudXUE', 'output': "result I'm a code generator specialized in creating Python scripts for querying a Bitcoin full node blockchain. I don't have the capability to retrieve weather data. Please let me know if you have a different query related to Bitcoin or blockchain."}]
+2023-12-14 11:37:35,456:INFO:Checking run status...
+2023-12-14 11:37:38,671:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_DUS69dndP4zO7Mh1PMbijxQE "HTTP/1.1 200 OK"
+2023-12-14 11:37:38,674:INFO:Run completed. Fetching messages...
+2023-12-14 11:37:38,894:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:37:38,897:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_WDBxfbVDn7FhhjK6fqoaQUZB', assistant_id='asst_mFwde3KlDjlyw1QWICSyiUNx', content=[MessageContentText(text=Text(annotations=[], value='It seems that the request to get the weather today in Bucharest is outside the scope of our current capabilities. If you have a different query related to Bitcoin or blockchain, please let me know and I will be happy to assist.'), type='text')], created_at=1702546656, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_DUS69dndP4zO7Mh1PMbijxQE', thread_id='thread_FN1jb4pEGqi3kdWnebG2vRpx')], object='list', first_id='msg_WDBxfbVDn7FhhjK6fqoaQUZB', last_id='msg_WDBxfbVDn7FhhjK6fqoaQUZB', has_more=True).
+2023-12-14 11:38:17,481:INFO:Processing user: 1749_bbf3 with message: make me a hook that counts to 5
+2023-12-14 11:38:18,499:INFO:User 1749_bbf3 found, proceed
+2023-12-14 11:38:18,500:INFO:Assistant asst_mFwde3KlDjlyw1QWICSyiUNx for 1749_bbf3.
+2023-12-14 11:38:18,505:INFO:Thread thread_FN1jb4pEGqi3kdWnebG2vRpx for 1749_bbf3.
+2023-12-14 11:38:18,506:INFO:Adding Message to  asst_mFwde3KlDjlyw1QWICSyiUNx - thread_FN1jb4pEGqi3kdWnebG2vRpx for 1749_bbf3.
+2023-12-14 11:38:18,506:INFO:None Attempting to add message to thread: make me a hook that counts to 5
+2023-12-14 11:38:18,791:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:38:19,042:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_DUS69dndP4zO7Mh1PMbijxQE "HTTP/1.1 200 OK"
+2023-12-14 11:38:19,271:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/messages "HTTP/1.1 200 OK"
+2023-12-14 11:38:19,274:INFO:None Message ID registered: msg_dsbp0tQjetdeDxx0scrxV4Xe - make me a hook that counts to 5
+2023-12-14 11:38:19,274:INFO:Message msg_dsbp0tQjetdeDxx0scrxV4Xe added to  asst_mFwde3KlDjlyw1QWICSyiUNx - thread_FN1jb4pEGqi3kdWnebG2vRpx for 1749_bbf3.
+2023-12-14 11:38:20,489:INFO:Start Main Assistent: 'u_bot_0_id': 1749_bbf3, 'a_bot_0_id': asst_mFwde3KlDjlyw1QWICSyiUNx, 't_bot_0_id': thread_FN1jb4pEGqi3kdWnebG2vRpx, 'm_bot_0_id': msg_dsbp0tQjetdeDxx0scrxV4Xe, 'agent': 'relay'
+2023-12-14 11:38:20,489:INFO:Starting the main assistant...
+2023-12-14 11:38:20,948:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs "HTTP/1.1 200 OK"
+2023-12-14 11:38:20,951:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-14 11:38:20,952:INFO:Checking run status...
+2023-12-14 11:38:24,235:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_knRVCfxhQbZNisGXvNAYFZo1 "HTTP/1.1 200 OK"
+2023-12-14 11:38:24,238:INFO:Function Calling
+2023-12-14 11:38:24,239:INFO:{'tool_calls': [{'id': 'call_wo76ooK25sPTSEjH3IZVoRvw', 'function': {'arguments': '{"sentTo":"agent_coder","sentFrom":"manager","instruction":"Please create a script that counts to 5."}', 'name': 'call_agent_coder'}, 'type': 'function'}]}
+2023-12-14 11:38:25,228:INFO:Processing bot agent_coder: 1749_bbf3 with message: Please create a script that counts to 5.
+2023-12-14 11:38:25,229:INFO:Global Assistant agent_coder: asst_3fKPTQitCo3b5jUR9LEC1T68.
+2023-12-14 11:38:25,230:INFO:Global Assistant agent_coder: thread_L6oYjBBUVVx1MhDOJzmNVbFw.
+2023-12-14 11:38:25,230:INFO:agent_coder Attempting to add message to thread: Please create a script that counts to 5.
+2023-12-14 11:38:25,557:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:38:25,778:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs/run_6XKmc1TfZx2QKOmCiFjyMxUH "HTTP/1.1 200 OK"
+2023-12-14 11:38:26,014:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/messages "HTTP/1.1 200 OK"
+2023-12-14 11:38:26,017:INFO:agent_coder Message ID registered: msg_jrgeGPtssnc9u3JKsUV3Ttf7 - Please create a script that counts to 5.
+2023-12-14 11:38:26,017:INFO:Message msg_jrgeGPtssnc9u3JKsUV3Ttf7 added to  asst_3fKPTQitCo3b5jUR9LEC1T68 - thread_L6oYjBBUVVx1MhDOJzmNVbFw for 1749_bbf3.
+2023-12-14 11:38:27,041:INFO:Starting the secondery bots...
+2023-12-14 11:38:27,425:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs "HTTP/1.1 200 OK"
+2023-12-14 11:38:27,428:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-14 11:38:27,428:INFO:Checking run status...
+2023-12-14 11:38:30,702:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs/run_P5U8kGL1PPIlawvo4F5DpGQ0 "HTTP/1.1 200 OK"
+2023-12-14 11:38:30,706:INFO:Function Calling
+2023-12-14 11:38:30,707:INFO:{'tool_calls': [{'id': 'call_QhXu2SOpz8yEZToBEuh6gPDK', 'function': {'arguments': '{"fileName":"count_to_5.py","fileContent":"for i in range(1, 6):\\n    print(i)"}', 'name': 'create_file'}, 'type': 'function'}]}
+2023-12-14 11:38:32,173:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs/run_P5U8kGL1PPIlawvo4F5DpGQ0/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-14 11:38:32,177:INFO:Submitting outputs back: [{'tool_call_id': 'call_QhXu2SOpz8yEZToBEuh6gPDK', 'output': "File 'sandbox/1749_bbf3/count_to_5.py' created successfully."}]
+2023-12-14 11:38:32,178:INFO:Checking run status...
+2023-12-14 11:38:35,441:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/runs/run_P5U8kGL1PPIlawvo4F5DpGQ0 "HTTP/1.1 200 OK"
+2023-12-14 11:38:35,445:INFO:Run completed. Fetching messages...
+2023-12-14 11:38:35,714:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_L6oYjBBUVVx1MhDOJzmNVbFw/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:38:35,718:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_1MJGxZObWGO52v8bulJXkNly', assistant_id='asst_3fKPTQitCo3b5jUR9LEC1T68', content=[MessageContentText(text=Text(annotations=[], value='The script has been created successfully. Now, I will execute the script to verify its functionality.\n\n[execute_file]'), type='text')], created_at=1702546714, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_P5U8kGL1PPIlawvo4F5DpGQ0', thread_id='thread_L6oYjBBUVVx1MhDOJzmNVbFw')], object='list', first_id='msg_1MJGxZObWGO52v8bulJXkNly', last_id='msg_1MJGxZObWGO52v8bulJXkNly', has_more=True).
+2023-12-14 11:38:38,179:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_knRVCfxhQbZNisGXvNAYFZo1/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-14 11:38:38,182:INFO:Submitting outputs back: [{'tool_call_id': 'call_wo76ooK25sPTSEjH3IZVoRvw', 'output': 'result The script has been created successfully. Now, I will execute the script to verify its functionality.\n\n[execute_file]'}]
+2023-12-14 11:38:38,183:INFO:Checking run status...
+2023-12-14 11:38:41,397:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_knRVCfxhQbZNisGXvNAYFZo1 "HTTP/1.1 200 OK"
+2023-12-14 11:38:41,400:INFO:Waiting for the Assistant to process...
+2023-12-14 11:38:44,404:INFO:Checking run status...
+2023-12-14 11:38:47,682:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_knRVCfxhQbZNisGXvNAYFZo1 "HTTP/1.1 200 OK"
+2023-12-14 11:38:47,685:INFO:Function Calling
+2023-12-14 11:38:47,685:INFO:{'tool_calls': [{'id': 'call_ES1zJUdq4yULqWZgID1SG3nc', 'function': {'arguments': '{"sentTo":"agent_webhook","sentFrom":"manager","instruction":"Please set up the count_to_5.py script with a URL."}', 'name': 'call_agent_webhook'}, 'type': 'function'}]}
+2023-12-14 11:38:48,732:INFO:Processing bot agent_webhook: 1749_bbf3 with message: Please set up the count_to_5.py script with a URL.
+2023-12-14 11:38:48,732:INFO:Global Assistant agent_webhook: asst_OWqIQgmx652cjREgV9XfvmQS.
+2023-12-14 11:38:48,732:INFO:Global Assistant agent_webhook: thread_bqdDazcIUr7usHDxcI5ZK6DO.
+2023-12-14 11:38:48,733:INFO:agent_webhook Attempting to add message to thread: Please set up the count_to_5.py script with a URL.
+2023-12-14 11:38:49,041:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:38:49,262:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/runs/run_7qxgwzpJOE8o3yy72NLKp7nl "HTTP/1.1 200 OK"
+2023-12-14 11:38:49,512:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/messages "HTTP/1.1 200 OK"
+2023-12-14 11:38:49,514:INFO:agent_webhook Message ID registered: msg_OZpS1YBerAFs6lHNKhsNovaC - Please set up the count_to_5.py script with a URL.
+2023-12-14 11:38:49,515:INFO:Message msg_OZpS1YBerAFs6lHNKhsNovaC added to  asst_OWqIQgmx652cjREgV9XfvmQS - thread_bqdDazcIUr7usHDxcI5ZK6DO for 1749_bbf3.
+2023-12-14 11:38:50,464:INFO:Starting the secondery bots...
+2023-12-14 11:38:50,903:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/runs "HTTP/1.1 200 OK"
+2023-12-14 11:38:50,905:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-14 11:38:50,905:INFO:Checking run status...
+2023-12-14 11:38:54,176:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/runs/run_YQuEqjDBIq5AcBaFsBNljMYR "HTTP/1.1 200 OK"
+2023-12-14 11:38:54,178:INFO:Function Calling
+2023-12-14 11:38:54,179:INFO:{'tool_calls': [{'id': 'call_EragfTl8g81M3Tvr3loToB96', 'function': {'arguments': '{"script_path":"count_to_5.py"}', 'name': 'add_to_webhook'}, 'type': 'function'}]}
+2023-12-14 11:38:55,549:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/runs/run_YQuEqjDBIq5AcBaFsBNljMYR/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-14 11:38:55,552:INFO:Submitting outputs back: [{'tool_call_id': 'call_EragfTl8g81M3Tvr3loToB96', 'output': "(success: /webhook/'OlQW2LE0')"}]
+2023-12-14 11:38:55,552:INFO:Checking run status...
+2023-12-14 11:38:58,886:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/runs/run_YQuEqjDBIq5AcBaFsBNljMYR "HTTP/1.1 200 OK"
+2023-12-14 11:38:58,889:INFO:Run completed. Fetching messages...
+2023-12-14 11:38:59,135:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_bqdDazcIUr7usHDxcI5ZK6DO/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:38:59,139:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_3hAHQF69sKkCGeeUlnVXzhpF', assistant_id='asst_OWqIQgmx652cjREgV9XfvmQS', content=[MessageContentText(text=Text(annotations=[], value="The webhook for count_to_5.py has been successfully set up at the following URL: /webhook/'OlQW2LE0'"), type='text')], created_at=1702546736, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_YQuEqjDBIq5AcBaFsBNljMYR', thread_id='thread_bqdDazcIUr7usHDxcI5ZK6DO')], object='list', first_id='msg_3hAHQF69sKkCGeeUlnVXzhpF', last_id='msg_3hAHQF69sKkCGeeUlnVXzhpF', has_more=True).
+2023-12-14 11:39:01,543:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_knRVCfxhQbZNisGXvNAYFZo1/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-14 11:39:01,546:INFO:Submitting outputs back: [{'tool_call_id': 'call_ES1zJUdq4yULqWZgID1SG3nc', 'output': "result The webhook for count_to_5.py has been successfully set up at the following URL: /webhook/'OlQW2LE0'"}]
+2023-12-14 11:39:01,546:INFO:Checking run status...
+2023-12-14 11:39:04,792:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/runs/run_knRVCfxhQbZNisGXvNAYFZo1 "HTTP/1.1 200 OK"
+2023-12-14 11:39:04,795:INFO:Run completed. Fetching messages...
+2023-12-14 11:39:05,022:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_FN1jb4pEGqi3kdWnebG2vRpx/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 11:39:05,025:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_lyQYGpCMz8v7RcqhFvZ6A7SS', assistant_id='asst_mFwde3KlDjlyw1QWICSyiUNx', content=[MessageContentText(text=Text(annotations=[], value="The webhook for the script that counts to 5 has been successfully set up at the following URL: /webhook/'OlQW2LE0'"), type='text')], created_at=1702546742, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_knRVCfxhQbZNisGXvNAYFZo1', thread_id='thread_FN1jb4pEGqi3kdWnebG2vRpx')], object='list', first_id='msg_lyQYGpCMz8v7RcqhFvZ6A7SS', last_id='msg_lyQYGpCMz8v7RcqhFvZ6A7SS', has_more=True).
