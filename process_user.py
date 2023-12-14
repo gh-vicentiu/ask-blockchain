@@ -1,87 +1,58 @@
-# process_user.py
-#filename process_user.py - keep this comment always
-import time
-import json
+import asyncio
 import logging
-import openai  # Import the OpenAI library for AI-related operations
-
-# Importing necessary functions from other modules
-from ai_make.create_ai import create_assistant  # To create a new AI assistant
-from ai_make.create_thread import create_thread  # To create a new conversation thread
-from ai_run.send_mess import add_message_to_thread  # To add a message to a conversation thread
-from ai_run.run_ai import run_assistant  # To run the AI assistant within a thread
-from functions.db_operations import read_db, write_db,w_dbin,r_dbin  # To handle database operations
+import openai
+from ai_make.create_ai import create_assistant
+from ai_make.create_thread import create_thread
+from ai_run.send_mess import add_message_to_thread
+from ai_run.run_ai import run_assistant
+from functions.db_operations import read_db_async, write_db_async
 from functions.ai_parse_response import ai_parse_response
-from functions.return_response import send_message_to_hook
+from functions.return_response import send_message_to_hook_async
 
+client = openai.Client(api_key='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')
 
-client = openai.Client()
-
-# Main function to process a user message
-def process_user(user_id, messaged_us):
-    # Log the incoming user ID and message
+async def process_user_async(user_id, messaged_us):
     logging.info(f"Processing user: {user_id} with message: {messaged_us}")
-    # Read the current state of the database
-    db = read_db()
 
-    # Initialize variable for the full thread
-    thread_full = None
-    last_assistant_id = None
-    ids = 'a'
+    db = await read_db_async()
 
-    # Check if the user ID exists in the database; if not, create a new entry
     if user_id not in db:
         logging.info(f"User {user_id} NOT found, creating a new entry.")
         db[user_id] = {}
-        db[user_id][ids] = {}
-        write_db(db)
-    logging.info(f"User {user_id} found, proceed")
-    
-    # Retrieve or create an assistant ID for the user
-    assistant_id = db[user_id][ids].get('last_assistant_id')
+        await write_db_async(db)
+
+    assistant_id = db[user_id].get('last_assistant_id')
     if not assistant_id:
-        logging.info(f"Creating new assistant for the user {user_id}.")
         assistant = create_assistant("relay")
         assistant_id = assistant.id
-        db[user_id][ids]['last_assistant_id'] = assistant_id
-        db[user_id][assistant_id] = {}
-        write_db(db)
-    logging.info(f"Assistant {assistant_id} for {user_id}.")
-    
-    # Retrieve or create a thread ID for the conversation
-    thread_id = db[user_id][ids].get('last_thread_id')
+        db[user_id]['last_assistant_id'] = assistant_id
+        db[user_id][assistant_id] = {}  # Initialize sub-dictionary
+        await write_db_async(db)
+
+    thread_id = db[user_id].get('last_thread_id')
     if not thread_id:
-        logging.info(f"Creating new thread for the user {user_id}.")
         thread_id = create_thread()
-        db[user_id][ids]['last_thread_id'] = thread_id
+        db[user_id]['last_thread_id'] = thread_id
+        db[user_id][assistant_id][thread_id] = {}  # Initialize sub-sub-dictionary
+        await write_db_async(db)
+
+    if assistant_id not in db[user_id]:
+        db[user_id][assistant_id] = {}
+
+    if thread_id not in db[user_id][assistant_id]:
         db[user_id][assistant_id][thread_id] = {}
-        write_db(db)
-    logging.info(f"Thread {thread_id} for {user_id}.")
 
-    
-    logging.info(f"Adding Message to  {assistant_id} - {thread_id} for {user_id}.")
-    message_u_id = add_message_to_thread(thread_id, messaged_us, role='user', agent=None)
-   
+    message_u_id = add_message_to_thread(thread_id, messaged_us, role='user')
+    db[user_id][assistant_id][thread_id][message_u_id] = {"sent": {"role": "user", "content": messaged_us}}
+    await write_db_async(db)
 
-
-    logging.info(f"Message {message_u_id} added to  {assistant_id} - {thread_id} for {user_id}.")
-
-    #logging.info(f"{db[user_id][assistant_id][thread_id][message_u_id]}")
-    #logging.info(f"{db[user_id][assistant_id][thread_id][message_u_id][0] = {"sent": {"role": "user", "content": messaged_us, "timestamp": int(time.time())}}}")
-    
-    db[user_id][assistant_id][thread_id][message_u_id] = {}
-    db[user_id][assistant_id][thread_id][message_u_id][0] = {"sent": {"role": "user", "content": messaged_us, "timestamp": int(time.time())}}
-    write_db(db)
-      
-
-    # Run the assistant to process the thread and get a response
-    logging.info(f"Start Main Assistent: 'u_bot_0_id': {user_id}, 'a_bot_0_id': {assistant_id}, 't_bot_0_id': {thread_id}, 'm_bot_0_id': {message_u_id}, 'agent': None")
     thread_main = {'u_bot_0_id': user_id, 'a_bot_0_id': assistant_id, 't_bot_0_id': thread_id, 'm_bot_0_id': message_u_id, 'agent': None}
-    thread_full = run_assistant(thread_main)
-    ai_replay = ai_parse_response(thread_full)
-    result = send_message_to_hook(user_id, messaged_back=ai_replay)
+    thread_full = await run_assistant(thread_main)
+    ai_reply = ai_parse_response(thread_full)
 
-    # Return the full conversation threads
-    db[user_id][assistant_id][thread_id][message_u_id][1] = {"replay": {"role": "assistant", "content": ai_replay, "timestamp": int(time.time())}}
-    write_db(db)
-    return ai_replay
+    await send_message_to_hook_async(user_id, ai_reply)
+
+    db[user_id][assistant_id][thread_id][message_u_id]['reply'] = {"role": "assistant", "content": ai_reply}
+    await write_db_async(db)
+
+    return ai_reply

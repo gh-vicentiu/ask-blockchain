@@ -1,37 +1,41 @@
-from db import get_mongo_client
+from db import get_mongo_client_async  # Ensure this is the async version
 import uuid
+import asyncio
 
-def check_login(username, password):
+
+async def check_login_async(username, password):
     """
-    Checks the login credentials of a user.
+    Checks the login credentials of a user asynchronously.
     Returns True if credentials are correct, False otherwise.
     """
-    client = get_mongo_client()
+    client = await get_mongo_client_async()
     db = client['user_database']
     users = db['users']
-    
-    user = users.find_one({"username": username, "password": password})
+
+    user = await users.find_one({"username": username, "password": password})
     return bool(user)
 
-def register_user(username, password):
+
+async def register_user_async(username, password):
     """
-    Registers a new user in the MongoDB database.
+    Registers a new user in the MongoDB database asynchronously.
     Returns the user_id if successful, False otherwise.
     """
-    client = get_mongo_client()
+    client = await get_mongo_client_async()
     db = client['user_database']
     users = db['users']
 
-    if users.find_one({"username": username}):
+    if await users.find_one({"username": username}):
         return False  # User already exists
 
     user_id = generate_user_id()
     try:
-        users.insert_one({"username": username, "password": password, "user_id": user_id})
+        await users.insert_one({"username": username, "password": password, "user_id": user_id})
         return user_id
     except Exception as e:
         print(f"Error in register_user: {e}")
         return False
+
 
 def generate_user_id():
     """

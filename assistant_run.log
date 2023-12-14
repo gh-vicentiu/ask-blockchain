@@ -43,3 +43,217 @@
 2023-12-13 02:39:38,698:INFO:Run completed. Fetching messages...
 2023-12-13 02:39:38,922:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_r3FtPnQWsUBm9OuWamtJpqLC/messages?limit=1&order=desc "HTTP/1.1 200 OK"
 2023-12-13 02:39:38,925:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_dRw1TDbNLxps9ynhHMBbHj6Q', assistant_id='asst_87TUgiyZ0mdIC9AnNaNaQHV2', content=[MessageContentText(text=Text(annotations=[], value='Hello! How can I assist you today?'), type='text')], created_at=1702463977, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_wKj2cYxsP0kaa6cAUiaFl5kH', thread_id='thread_r3FtPnQWsUBm9OuWamtJpqLC')], object='list', first_id='msg_dRw1TDbNLxps9ynhHMBbHj6Q', last_id='msg_dRw1TDbNLxps9ynhHMBbHj6Q', has_more=True).
+2023-12-14 16:14:26,905:INFO:Processing user: b530_8588 with message: hey
+2023-12-14 16:14:57,160:INFO:User b530_8588 NOT found, creating a new entry.
+2023-12-14 16:15:27,385:INFO:User b530_8588 found, proceed
+2023-12-14 16:15:27,387:INFO:Creating new assistant for the user b530_8588.
+2023-12-14 16:15:28,131:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-14 16:15:30,965:INFO:Processing user: b530_8588 with message: hey
+2023-12-14 16:15:58,538:INFO:Assistant asst_KEXTOcZqBDOV4fVxpyYvZiaG for b530_8588.
+2023-12-14 16:15:58,539:INFO:Creating new thread for the user b530_8588.
+2023-12-14 16:15:59,045:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-14 16:16:01,285:INFO:User b530_8588 NOT found, creating a new entry.
+2023-12-14 16:19:30,926:INFO:Processing user: b530_8588 with message: hey
+2023-12-14 16:19:32,160:INFO:User b530_8588 NOT found, creating a new entry.
+2023-12-14 16:19:33,275:INFO:User b530_8588 found, proceed
+2023-12-14 16:19:33,277:INFO:Creating new assistant for the user b530_8588.
+2023-12-14 16:19:33,855:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-14 16:19:34,914:INFO:Assistant asst_mOZKNWiKJv21If74ptytiFNg for b530_8588.
+2023-12-14 16:19:34,915:INFO:Creating new thread for the user b530_8588.
+2023-12-14 16:19:35,325:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-14 16:19:36,435:INFO:Thread thread_SNnPFK0htJ69IC4XnuqACJOB for b530_8588.
+2023-12-14 16:19:36,436:INFO:Adding Message to  asst_mOZKNWiKJv21If74ptytiFNg - thread_SNnPFK0htJ69IC4XnuqACJOB for b530_8588.
+2023-12-14 16:19:36,437:INFO:None Attempting to add message to thread: hey
+2023-12-14 16:19:36,930:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 16:19:37,266:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/messages "HTTP/1.1 200 OK"
+2023-12-14 16:19:37,290:INFO:None Message ID registered: msg_CR11XtSh2EWV0N1Q9Eztn3u4 - hey
+2023-12-14 16:19:37,291:INFO:Message msg_CR11XtSh2EWV0N1Q9Eztn3u4 added to  asst_mOZKNWiKJv21If74ptytiFNg - thread_SNnPFK0htJ69IC4XnuqACJOB for b530_8588.
+2023-12-14 16:19:38,340:INFO:Start Main Assistent: 'u_bot_0_id': b530_8588, 'a_bot_0_id': asst_mOZKNWiKJv21If74ptytiFNg, 't_bot_0_id': thread_SNnPFK0htJ69IC4XnuqACJOB, 'm_bot_0_id': msg_CR11XtSh2EWV0N1Q9Eztn3u4, 'agent': None
+2023-12-14 16:19:38,341:INFO:Starting the main assistant...
+2023-12-14 16:19:38,948:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs "HTTP/1.1 200 OK"
+2023-12-14 16:19:38,970:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-14 16:19:38,971:INFO:Checking run status...
+2023-12-14 16:19:42,261:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs/run_6RmOE9XP1wYz3diQwOollazE "HTTP/1.1 200 OK"
+2023-12-14 16:19:42,296:INFO:Run completed. Fetching messages...
+2023-12-14 16:20:06,875:INFO:Processing user: b530_8588 with message: do you know the price of bitcoin?
+2023-12-14 16:20:08,191:INFO:User b530_8588 found, proceed
+2023-12-14 16:20:08,192:INFO:Assistant asst_mOZKNWiKJv21If74ptytiFNg for b530_8588.
+2023-12-14 16:20:08,193:INFO:Thread thread_SNnPFK0htJ69IC4XnuqACJOB for b530_8588.
+2023-12-14 16:20:08,194:INFO:Adding Message to  asst_mOZKNWiKJv21If74ptytiFNg - thread_SNnPFK0htJ69IC4XnuqACJOB for b530_8588.
+2023-12-14 16:20:08,194:INFO:None Attempting to add message to thread: do you know the price of bitcoin?
+2023-12-14 16:20:08,739:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 16:20:09,013:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs/run_6RmOE9XP1wYz3diQwOollazE "HTTP/1.1 200 OK"
+2023-12-14 16:20:09,321:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/messages "HTTP/1.1 200 OK"
+2023-12-14 16:20:09,342:INFO:None Message ID registered: msg_aXwInOlhswEBs6o3Ph2xBvKd - do you know the price of bitcoin?
+2023-12-14 16:20:09,343:INFO:Message msg_aXwInOlhswEBs6o3Ph2xBvKd added to  asst_mOZKNWiKJv21If74ptytiFNg - thread_SNnPFK0htJ69IC4XnuqACJOB for b530_8588.
+2023-12-14 16:20:10,261:INFO:Start Main Assistent: 'u_bot_0_id': b530_8588, 'a_bot_0_id': asst_mOZKNWiKJv21If74ptytiFNg, 't_bot_0_id': thread_SNnPFK0htJ69IC4XnuqACJOB, 'm_bot_0_id': msg_aXwInOlhswEBs6o3Ph2xBvKd, 'agent': None
+2023-12-14 16:20:10,262:INFO:Starting the main assistant...
+2023-12-14 16:20:10,817:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs "HTTP/1.1 200 OK"
+2023-12-14 16:20:10,949:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-14 16:20:10,953:INFO:Checking run status...
+2023-12-14 16:20:14,498:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs/run_a49bWi2cuhvWcYRidC3OXms3 "HTTP/1.1 200 OK"
+2023-12-14 16:20:14,573:INFO:Function Calling
+2023-12-14 16:20:14,574:INFO:{'tool_calls': [{'id': 'call_lmfiMuKfAyfvD9OIa5eJEgVH', 'function': {'arguments': '{"sentTo":"agent_price","sentFrom":"agent","instruction":"What is the current price of Bitcoin?"}', 'name': 'call_agent_price'}, 'type': 'function'}]}
+2023-12-14 16:24:37,870:INFO:Processing user: b530_8588 with message: do you know the current price of bitcoin?
+2023-12-14 16:24:38,880:INFO:User b530_8588 found, proceed
+2023-12-14 16:24:38,881:INFO:Assistant asst_mOZKNWiKJv21If74ptytiFNg for b530_8588.
+2023-12-14 16:24:38,882:INFO:Thread thread_SNnPFK0htJ69IC4XnuqACJOB for b530_8588.
+2023-12-14 16:24:38,882:INFO:Adding Message to  asst_mOZKNWiKJv21If74ptytiFNg - thread_SNnPFK0htJ69IC4XnuqACJOB for b530_8588.
+2023-12-14 16:24:38,883:INFO:None Attempting to add message to thread: do you know the current price of bitcoin?
+2023-12-14 16:24:39,497:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 16:24:39,789:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs/run_a49bWi2cuhvWcYRidC3OXms3 "HTTP/1.1 200 OK"
+2023-12-14 16:24:39,829:INFO:Active run detected. Status: requires_action. Attempting to cancel.
+2023-12-14 16:24:41,329:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs/run_a49bWi2cuhvWcYRidC3OXms3/cancel "HTTP/1.1 200 OK"
+2023-12-14 16:24:43,746:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/messages "HTTP/1.1 200 OK"
+2023-12-14 16:24:43,784:INFO:None Message ID registered: msg_dHJvndm8qUQ3W1bC92WRelq4 - do you know the current price of bitcoin?
+2023-12-14 16:24:43,786:INFO:Message msg_dHJvndm8qUQ3W1bC92WRelq4 added to  asst_mOZKNWiKJv21If74ptytiFNg - thread_SNnPFK0htJ69IC4XnuqACJOB for b530_8588.
+2023-12-14 16:24:44,968:INFO:Start Main Assistent: 'u_bot_0_id': b530_8588, 'a_bot_0_id': asst_mOZKNWiKJv21If74ptytiFNg, 't_bot_0_id': thread_SNnPFK0htJ69IC4XnuqACJOB, 'm_bot_0_id': msg_dHJvndm8qUQ3W1bC92WRelq4, 'agent': None
+2023-12-14 16:24:44,969:INFO:Starting the main assistant...
+2023-12-14 16:24:45,827:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs "HTTP/1.1 200 OK"
+2023-12-14 16:24:45,853:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-14 16:24:45,854:INFO:Checking run status...
+2023-12-14 16:24:49,141:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs/run_HMJxBsA7oDh1HahZr4gTVFbB "HTTP/1.1 200 OK"
+2023-12-14 16:24:49,220:INFO:Run completed. Fetching messages...
+2023-12-14 16:24:49,547:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 16:24:49,648:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_2LR6gXAgoO3kuh2qQMkvlTTw', assistant_id='asst_mOZKNWiKJv21If74ptytiFNg', content=[MessageContentText(text=Text(annotations=[], value="I've sent a request to get the current price of Bitcoin. I should have the information for you shortly."), type='text')], created_at=1702563887, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_HMJxBsA7oDh1HahZr4gTVFbB', thread_id='thread_SNnPFK0htJ69IC4XnuqACJOB')], object='list', first_id='msg_2LR6gXAgoO3kuh2qQMkvlTTw', last_id='msg_2LR6gXAgoO3kuh2qQMkvlTTw', has_more=True).
+2023-12-14 16:26:14,703:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/messages?limit=1&order=desc "HTTP/1.1 502 Bad Gateway"
+2023-12-14 16:26:14,705:INFO:Retrying request to /threads/thread_SNnPFK0htJ69IC4XnuqACJOB/messages in 0.826656 seconds
+2023-12-14 16:26:15,785:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 16:26:15,810:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_2LR6gXAgoO3kuh2qQMkvlTTw', assistant_id='asst_mOZKNWiKJv21If74ptytiFNg', content=[MessageContentText(text=Text(annotations=[], value="I've sent a request to get the current price of Bitcoin. I should have the information for you shortly."), type='text')], created_at=1702563887, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_HMJxBsA7oDh1HahZr4gTVFbB', thread_id='thread_SNnPFK0htJ69IC4XnuqACJOB')], object='list', first_id='msg_2LR6gXAgoO3kuh2qQMkvlTTw', last_id='msg_2LR6gXAgoO3kuh2qQMkvlTTw', has_more=True).
+2023-12-14 16:35:25,469:INFO:Processing user: b530_8588 with message: do you have the current price of bitcoin?
+2023-12-14 16:35:26,008:INFO:User b530_8588 found, proceed
+2023-12-14 16:35:26,009:INFO:Assistant asst_mOZKNWiKJv21If74ptytiFNg for b530_8588.
+2023-12-14 16:35:26,009:INFO:Thread thread_SNnPFK0htJ69IC4XnuqACJOB for b530_8588.
+2023-12-14 16:35:26,009:INFO:Adding Message to  asst_mOZKNWiKJv21If74ptytiFNg - thread_SNnPFK0htJ69IC4XnuqACJOB for b530_8588.
+2023-12-14 16:35:26,010:INFO:None Attempting to add message to thread: do you have the current price of bitcoin?
+2023-12-14 16:35:26,819:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 16:35:27,089:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs/run_HMJxBsA7oDh1HahZr4gTVFbB "HTTP/1.1 200 OK"
+2023-12-14 16:35:27,399:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/messages "HTTP/1.1 200 OK"
+2023-12-14 16:35:27,401:INFO:None Message ID registered: msg_XvOvle854zyAqsfgarepQRP3 - do you have the current price of bitcoin?
+2023-12-14 16:35:27,401:INFO:Message msg_XvOvle854zyAqsfgarepQRP3 added to  asst_mOZKNWiKJv21If74ptytiFNg - thread_SNnPFK0htJ69IC4XnuqACJOB for b530_8588.
+2023-12-14 16:35:27,878:INFO:Start Main Assistent: 'u_bot_0_id': b530_8588, 'a_bot_0_id': asst_mOZKNWiKJv21If74ptytiFNg, 't_bot_0_id': thread_SNnPFK0htJ69IC4XnuqACJOB, 'm_bot_0_id': msg_XvOvle854zyAqsfgarepQRP3, 'agent': None
+2023-12-14 16:35:27,879:INFO:Starting the main assistant...
+2023-12-14 16:35:28,497:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs "HTTP/1.1 200 OK"
+2023-12-14 16:35:28,505:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-14 16:35:28,506:INFO:Checking run status...
+2023-12-14 16:35:31,825:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/runs/run_06b71g1ax884AXPLx5sC5ktn "HTTP/1.1 200 OK"
+2023-12-14 16:35:31,833:INFO:Run completed. Fetching messages...
+2023-12-14 16:35:32,117:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_SNnPFK0htJ69IC4XnuqACJOB/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 16:35:32,124:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_zMvmttjY22JSRopI1CL77STV', assistant_id='asst_mOZKNWiKJv21If74ptytiFNg', content=[MessageContentText(text=Text(annotations=[], value="I apologize, but I do not have the current price of Bitcoin at the moment. I'm still waiting for the information."), type='text')], created_at=1702564529, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_06b71g1ax884AXPLx5sC5ktn', thread_id='thread_SNnPFK0htJ69IC4XnuqACJOB')], object='list', first_id='msg_zMvmttjY22JSRopI1CL77STV', last_id='msg_zMvmttjY22JSRopI1CL77STV', has_more=True).
+2023-12-14 19:47:35,676:INFO:Processing user: b530_8588 with message: do you know the prices of bitcoin?
+2023-12-14 20:17:10,754:INFO:Processing user: b530_8588 with message: do you know the price of bitcoin?
+2023-12-14 20:17:11,835:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-14 20:17:13,001:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-14 20:17:13,739:INFO:None Attempting to add message to thread: do you know the price of bitcoin?
+2023-12-14 20:17:14,082:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 20:17:14,385:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/messages "HTTP/1.1 200 OK"
+2023-12-14 20:17:14,392:INFO:None Message ID registered: msg_p9k8ShQVO5XFzpdreZ3SSasq - do you know the price of bitcoin?
+2023-12-14 20:21:18,833:INFO:Processing user: b530_8588 with message: do you know the price of bitcoin?
+2023-12-14 20:21:19,407:INFO:None Attempting to add message to thread: do you know the price of bitcoin?
+2023-12-14 20:21:19,748:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 20:21:19,992:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/messages "HTTP/1.1 200 OK"
+2023-12-14 20:21:19,996:INFO:None Message ID registered: msg_PTgEQbsPCzjknx1AEtBk62XH - do you know the price of bitcoin?
+2023-12-14 20:21:21,119:INFO:Starting the main assistant...
+2023-12-14 20:21:21,666:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs "HTTP/1.1 200 OK"
+2023-12-14 20:21:21,675:INFO:Main Assistant run initiated.
+2023-12-14 20:21:21,675:INFO:Checking run status...
+2023-12-14 20:21:24,961:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_DbOFwhclm2wQUxo7Phqxurlf "HTTP/1.1 200 OK"
+2023-12-14 20:21:24,972:INFO:Function Calling
+2023-12-14 20:21:25,059:INFO:HTTP Request: POST http://localhost:5000/receive_update "HTTP/1.1 200 "
+2023-12-14 20:21:25,103:INFO:HTTP Request: POST http://localhost:5000/receive_update "HTTP/1.1 200 "
+2023-12-14 20:21:25,380:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_DbOFwhclm2wQUxo7Phqxurlf/submit_tool_outputs "HTTP/1.1 400 Bad Request"
+2023-12-14 20:28:25,001:INFO:Processing user: b530_8588 with message: do you know the price of bitcoin?
+2023-12-14 20:28:25,604:INFO:None Attempting to add message to thread: do you know the price of bitcoin?
+2023-12-14 20:28:26,475:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 20:28:27,245:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_DbOFwhclm2wQUxo7Phqxurlf "HTTP/1.1 200 OK"
+2023-12-14 20:28:27,256:INFO:Active run detected. Status: requires_action. Attempting to cancel.
+2023-12-14 20:28:27,956:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_DbOFwhclm2wQUxo7Phqxurlf/cancel "HTTP/1.1 200 OK"
+2023-12-14 20:28:30,274:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/messages "HTTP/1.1 200 OK"
+2023-12-14 20:28:30,281:INFO:None Message ID registered: msg_XUHUTdB9iodI3lzi5mQXyCql - do you know the price of bitcoin?
+2023-12-14 20:28:31,404:INFO:Starting the main assistant...
+2023-12-14 20:28:31,874:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs "HTTP/1.1 200 OK"
+2023-12-14 20:28:31,882:INFO:Assistant run initiated.
+2023-12-14 20:28:31,882:INFO:Checking run status...
+2023-12-14 20:28:35,299:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_ZAHzHM8RrdqnL7zn7VWfNKPL "HTTP/1.1 200 OK"
+2023-12-14 20:28:35,309:INFO:Function calling...
+2023-12-14 20:28:35,368:INFO:HTTP Request: POST http://localhost:5000/receive_update "HTTP/1.1 200 "
+2023-12-14 20:31:31,208:INFO:Processing user: b530_8588 with message: do you know the price of bitcoin?
+2023-12-14 20:31:31,853:INFO:None Attempting to add message to thread: do you know the price of bitcoin?
+2023-12-14 20:31:32,166:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 20:31:32,398:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_ZAHzHM8RrdqnL7zn7VWfNKPL "HTTP/1.1 200 OK"
+2023-12-14 20:31:32,409:INFO:Active run detected. Status: requires_action. Attempting to cancel.
+2023-12-14 20:31:32,708:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_ZAHzHM8RrdqnL7zn7VWfNKPL/cancel "HTTP/1.1 200 OK"
+2023-12-14 20:31:34,987:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/messages "HTTP/1.1 200 OK"
+2023-12-14 20:31:34,993:INFO:None Message ID registered: msg_WujJ5qd4eUvIUKpck9xyEgRe - do you know the price of bitcoin?
+2023-12-14 20:31:36,261:INFO:Starting the main assistant...
+2023-12-14 20:31:36,787:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs "HTTP/1.1 200 OK"
+2023-12-14 20:31:36,791:INFO:Assistant run initiated.
+2023-12-14 20:31:36,791:INFO:Checking run status...
+2023-12-14 20:31:40,095:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_7nQxKwTFhvZgONgjx35DK3t7 "HTTP/1.1 200 OK"
+2023-12-14 20:31:40,098:INFO:Function calling...
+2023-12-14 20:31:40,136:INFO:HTTP Request: POST http://localhost:5000/receive_update "HTTP/1.1 200 "
+2023-12-14 20:31:40,202:INFO:HTTP Request: POST http://localhost:5000/receive_update "HTTP/1.1 200 "
+2023-12-14 20:31:40,608:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_7nQxKwTFhvZgONgjx35DK3t7/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-14 20:31:40,617:INFO:Checking run status...
+2023-12-14 20:31:43,842:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_7nQxKwTFhvZgONgjx35DK3t7 "HTTP/1.1 200 OK"
+2023-12-14 20:31:43,853:INFO:Waiting for the Assistant to process...
+2023-12-14 20:31:46,857:INFO:Checking run status...
+2023-12-14 20:31:50,172:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_7nQxKwTFhvZgONgjx35DK3t7 "HTTP/1.1 200 OK"
+2023-12-14 20:31:50,183:INFO:Function calling...
+2023-12-14 20:31:50,239:INFO:HTTP Request: POST http://localhost:5000/receive_update "HTTP/1.1 200 "
+2023-12-14 20:31:50,277:INFO:HTTP Request: POST http://localhost:5000/receive_update "HTTP/1.1 200 "
+2023-12-14 20:31:50,631:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_7nQxKwTFhvZgONgjx35DK3t7/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-14 20:31:50,640:INFO:Checking run status...
+2023-12-14 20:31:53,865:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_7nQxKwTFhvZgONgjx35DK3t7 "HTTP/1.1 200 OK"
+2023-12-14 20:31:53,871:INFO:Waiting for the Assistant to process...
+2023-12-14 20:31:56,874:INFO:Checking run status...
+2023-12-14 20:32:00,136:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_7nQxKwTFhvZgONgjx35DK3t7 "HTTP/1.1 200 OK"
+2023-12-14 20:32:00,148:INFO:Run completed. Fetching messages...
+2023-12-14 20:32:00,440:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 20:32:00,449:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_58Nn5gENCVXfq4lCTEbpMIWk', assistant_id='asst_WEF22YFm1qGBd9fkVmS70Jss', content=[MessageContentText(text=Text(annotations=[], value='I have requested the current price of bitcoin. I will let you know once I receive the information.'), type='text')], created_at=1702578713, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_7nQxKwTFhvZgONgjx35DK3t7', thread_id='thread_7GW8cIC7gRmGCrojozJqpyXf')], object='list', first_id='msg_58Nn5gENCVXfq4lCTEbpMIWk', last_id='msg_58Nn5gENCVXfq4lCTEbpMIWk', has_more=True).
+2023-12-14 20:32:00,508:INFO:HTTP Request: POST http://localhost:5000/receive_update "HTTP/1.1 200 "
+2023-12-14 20:43:05,886:INFO:Processing user: b530_8588 with message: do you know the price of bitcoin?
+2023-12-14 20:43:06,477:INFO:None Attempting to add message to thread: do you know the price of bitcoin?
+2023-12-14 20:43:06,810:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 20:43:07,095:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_7nQxKwTFhvZgONgjx35DK3t7 "HTTP/1.1 200 OK"
+2023-12-14 20:43:07,417:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/messages "HTTP/1.1 200 OK"
+2023-12-14 20:43:07,422:INFO:None Message ID registered: msg_PxmgncLMX4IzzAysbIVUjyow - do you know the price of bitcoin?
+2023-12-14 20:43:08,508:INFO:Starting the main assistant...
+2023-12-14 20:43:08,971:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs "HTTP/1.1 200 OK"
+2023-12-14 20:43:08,979:INFO:Assistant run initiated.
+2023-12-14 20:43:08,980:INFO:Checking run status...
+2023-12-14 20:43:12,254:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_F91FqB4Psh4k4BjCXMoBcY8m "HTTP/1.1 200 OK"
+2023-12-14 20:43:12,260:INFO:Run completed. Fetching messages...
+2023-12-14 20:43:12,545:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 20:43:12,549:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_Xjq5QPbh0gIwOwK3mU72vyiZ', assistant_id='asst_WEF22YFm1qGBd9fkVmS70Jss', content=[MessageContentText(text=Text(annotations=[], value='I have requested the current price of bitcoin. I will let you know once I receive the information.'), type='text')], created_at=1702579390, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_F91FqB4Psh4k4BjCXMoBcY8m', thread_id='thread_7GW8cIC7gRmGCrojozJqpyXf')], object='list', first_id='msg_Xjq5QPbh0gIwOwK3mU72vyiZ', last_id='msg_Xjq5QPbh0gIwOwK3mU72vyiZ', has_more=True).
+2023-12-14 20:43:12,589:INFO:HTTP Request: POST http://localhost:5000/receive_update "HTTP/1.1 200 "
+2023-12-14 20:46:39,801:INFO:Processing user: b530_8588 with message: do you have the prices of bitcoin?
+2023-12-14 20:46:40,493:INFO:None Attempting to add message to thread: do you have the prices of bitcoin?
+2023-12-14 20:46:40,806:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 20:46:41,029:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_F91FqB4Psh4k4BjCXMoBcY8m "HTTP/1.1 200 OK"
+2023-12-14 20:46:41,269:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/messages "HTTP/1.1 200 OK"
+2023-12-14 20:46:41,276:INFO:None Message ID registered: msg_ACzFoPJiH3Xefd0ncoX1fFnm - do you have the prices of bitcoin?
+2023-12-14 20:46:42,581:INFO:Starting the main assistant...
+2023-12-14 20:46:43,027:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs "HTTP/1.1 200 OK"
+2023-12-14 20:46:43,030:INFO:Assistant run initiated.
+2023-12-14 20:46:43,030:INFO:Checking run status...
+2023-12-14 20:46:46,308:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_c1u89lYCJXEFm5qwPnXhvfC3 "HTTP/1.1 200 OK"
+2023-12-14 20:46:46,320:INFO:Run completed. Fetching messages...
+2023-12-14 20:46:46,545:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 20:46:46,548:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_f1TowvgEqZy4FeiNyEKOqO4s', assistant_id='asst_WEF22YFm1qGBd9fkVmS70Jss', content=[MessageContentText(text=Text(annotations=[], value='I have requested the current price of bitcoin. I will let you know once I receive the information.'), type='text')], created_at=1702579603, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_c1u89lYCJXEFm5qwPnXhvfC3', thread_id='thread_7GW8cIC7gRmGCrojozJqpyXf')], object='list', first_id='msg_f1TowvgEqZy4FeiNyEKOqO4s', last_id='msg_f1TowvgEqZy4FeiNyEKOqO4s', has_more=True).
+2023-12-14 20:46:46,596:INFO:HTTP Request: POST http://localhost:5000/receive_update "HTTP/1.1 200 "
+2023-12-14 20:52:46,817:INFO:Processing user: b530_8588 with message: do you have the prices of bitcoin?
+2023-12-14 20:52:47,628:INFO:None Attempting to add message to thread: do you have the prices of bitcoin?
+2023-12-14 20:52:48,112:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 20:52:48,526:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_c1u89lYCJXEFm5qwPnXhvfC3 "HTTP/1.1 200 OK"
+2023-12-14 20:52:48,823:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/messages "HTTP/1.1 200 OK"
+2023-12-14 20:52:48,828:INFO:None Message ID registered: msg_ANTSAoPm2fCFVYYbFQJGQt5m - do you have the prices of bitcoin?
+2023-12-14 20:52:50,059:INFO:Starting the main assistant...
+2023-12-14 20:52:50,541:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs "HTTP/1.1 200 OK"
+2023-12-14 20:52:50,543:INFO:Assistant run initiated.
+2023-12-14 20:52:50,543:INFO:Checking run status...
+2023-12-14 20:52:53,838:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs/run_sjEoRYvtU0gPdi2PzS6abzPX "HTTP/1.1 200 OK"
+2023-12-14 20:52:53,848:INFO:Run completed. Fetching messages...
+2023-12-14 20:52:54,141:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-14 20:52:54,143:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_10TznmUB5V0wjVZRL4tkLTM9', assistant_id='asst_WEF22YFm1qGBd9fkVmS70Jss', content=[MessageContentText(text=Text(annotations=[], value='I have requested the current price of bitcoin. I will let you know once I receive the information.'), type='text')], created_at=1702579971, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_sjEoRYvtU0gPdi2PzS6abzPX', thread_id='thread_7GW8cIC7gRmGCrojozJqpyXf')], object='list', first_id='msg_10TznmUB5V0wjVZRL4tkLTM9', last_id='msg_10TznmUB5V0wjVZRL4tkLTM9', has_more=True).
+2023-12-14 20:52:54,180:INFO:HTTP Request: POST http://localhost:5000/receive_update "HTTP/1.1 200 "

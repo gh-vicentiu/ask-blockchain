@@ -1,17 +1,14 @@
-import threading
-import requests
+import httpx
+import asyncio
 
-def send_message_to_hook(user_id, messaged_back):
-    def do_request():
-        url = 'http://localhost:5000/receive_update'
-        data = {
-            'user_id': user_id,
-            'messaged_back': messaged_back
-        }
+async def send_message_to_hook_async(user_id, messaged_back):
+    url = 'http://localhost:5000/receive_update'
+    data = {
+        'user_id': user_id,
+        'messaged_back': messaged_back
+    }
+    async with httpx.AsyncClient() as client:
         try:
-            requests.post(url, json=data)
-        except requests.exceptions.RequestException as e:
+            await client.post(url, json=data)
+        except httpx.RequestError as e:
             print(f"Error sending message: {e}")
-
-    # Run the request in a background thread
-    threading.Thread(target=do_request).start()

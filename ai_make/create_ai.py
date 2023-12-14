@@ -3,7 +3,7 @@ import openai
 import json
 import logging
 
-client = openai.Client()
+client = openai.Client(api_key = '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')
 
 
 def create_assistant(agent=None):

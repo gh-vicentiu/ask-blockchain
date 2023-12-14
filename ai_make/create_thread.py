@@ -1,7 +1,7 @@
 #filename setup/create_thread.py - keep this comment always
 import openai  # Make sure to import openai
 
-client = openai.Client()  # Initialize the OpenAI client
+client = openai.Client(api_key = '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')  # Initialize the OpenAI client
 
 def create_thread():
     # Make an API call to create a thread and return the thread ID
