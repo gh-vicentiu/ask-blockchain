@@ -12,7 +12,7 @@ from functions.return_response import send_message_to_hook
 
 
 def handle_add_to_webhook(arguments, thread_main, tool_outputs, action_id):
-    output = add_to_webhook(**arguments, thread_main=thread_main)
+    output = add_to_webhook(**arguments, user_id = thread_main['u_bot_0_id'])
     tool_outputs.append({"tool_call_id": action_id, "output": output})  # Corrected here
     #db_entry.update({"tool": {'instruction': arguments, "timestamp": int(time.time())}})
     return output

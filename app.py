@@ -25,7 +25,7 @@ def load_from_file(filename='data.json'):
         return []
 
 # Load existing data
-paths = load_from_file()
+user_paths = load_from_file()
 
 @app.route('/')
 def index():
@@ -124,28 +124,31 @@ def signup():
 def webhook():
     if request.is_json:
         data = request.get_json()
+        user_id = data.get('user_id')
         path = data.get('path')
         script_path = data.get('script_path')
 
-        if path and script_path:
-            paths[path] = script_path
-            save_to_file(paths)
-            return jsonify({"success": True, "path": path, "script_path": script_path})
+        if user_id and path and script_path:
+            if user_id not in user_paths:
+                user_paths[user_id] = {}
+            user_paths[user_id][path] = script_path
+            save_to_file(user_paths)
+            return jsonify({"success": True, "user_id": user_id, "path": path, "script_path": script_path})
         
     return jsonify({"success": False, "error": "Invalid data"})
 
 
-@app.route('/webhook/<path:path>')
-def custom_path(path):
-    script_path = paths.get(path)
-    if script_path:
+@app.route('/webhook/<user_id>/<path:path>')
+def custom_path(user_id, path):
+    if user_id in user_paths and path in user_paths[user_id]:
+        script_path = user_paths[user_id][path]
         try:
             output = subprocess.check_output(['python3', script_path], stderr=subprocess.STDOUT, text=True)
             return jsonify({"output": output})
         except subprocess.CalledProcessError as e:
             return jsonify({"error": f"Error executing script for path {path}: {e.output}"})
     else:
-        return jsonify({"error": "Path not found"})
+        return jsonify({"error": "User ID or Path not found"})
 
 #start
 
