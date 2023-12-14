@@ -88,3 +88,19 @@ def r_udbin():
         return {}
     
     return message_id
+
+def save_to_db(data, db_name='user_database', collection_name='user_paths'):
+    client = get_mongo_client()
+    db = client[db_name]
+    collection = db[collection_name]
+    for user_id, paths in data.items():
+        collection.update_one({"_id": user_id}, {"$set": paths}, upsert=True)
+
+# Load data from MongoDB
+def load_from_db(db_name='user_database', collection_name='user_paths'):
+    client = get_mongo_client()
+    db = client[db_name]
+    collection = db[collection_name]
+    result = collection.find({})
+    data = {item['_id']: item for item in result}
+    return data

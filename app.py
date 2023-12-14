@@ -7,25 +7,13 @@ import time
 from db import get_mongo_client, test_mongo_connection
 from user_db import register_user, check_login
 import os
+from functions.db_operations import load_from_db, save_to_db
 
 app = Flask(__name__)
 messages_queue = queue.Queue()
 secret_key = os.urandom(16)
 app.secret_key = secret_key
-
-def save_to_file(data, filename='data.json'):
-    with open(filename, 'w') as file:
-        json.dump(data, file)
-
-def load_from_file(filename='data.json'):
-    try:
-        with open(filename, 'r') as file:
-            return json.load(file)
-    except FileNotFoundError:
-        return []
-
-# Load existing data
-user_paths = load_from_file()
+user_paths = load_from_db()
 
 @app.route('/')
 def index():
@@ -122,6 +110,8 @@ def signup():
 
 @app.route('/dohook/', methods=['POST'])
 def webhook():
+    user_paths = load_from_db()  # Load the latest data from MongoDB
+
     if request.is_json:
         data = request.get_json()
         user_id = data.get('user_id')
@@ -132,14 +122,15 @@ def webhook():
             if user_id not in user_paths:
                 user_paths[user_id] = {}
             user_paths[user_id][path] = script_path
-            save_to_file(user_paths)
+            save_to_db(user_paths)  # Save to MongoDB
             return jsonify({"success": True, "user_id": user_id, "path": path, "script_path": script_path})
-        
-    return jsonify({"success": False, "error": "Invalid data"})
 
+    return jsonify({"success": False, "error": "Invalid data"})
 
 @app.route('/webhook/<user_id>/<path:path>')
 def custom_path(user_id, path):
+    user_paths = load_from_db()  # Fetch fresh data from MongoDB
+
     if user_id in user_paths and path in user_paths[user_id]:
         script_path = user_paths[user_id][path]
         try:

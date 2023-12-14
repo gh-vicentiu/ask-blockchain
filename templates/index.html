@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+    <div style="width: 100%; height: 50px; background-color: amber;"></div> <!-- Banner -->
+    {% include 'menu.html' %}
+    
+    <!-- <div style="width: 500px; height: 300px; border: 1px solid black;"></div> Blank Box -->
+    
     <div id="chat-container">
         <div id="message-display"></div>
         <div id="message-input-area">
@@ -83,7 +88,7 @@
     </script>
     
     
-    
+    {% include 'footer.html' %}
 </body>
 
 </html>
