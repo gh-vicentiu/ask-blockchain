@@ -9,7 +9,7 @@ client = openai.Client()
 def create_assistant(agent=None):
     from ai_tools.main_tools import tools_list
     from ai_tools.secondary_tools import tools_lite
-    from ai_tools.route_creation import tools_route
+    from ai_tools.route_tools import tools_route
     tool_list = tools_list
     tool_lite = tools_lite
     tool_route = tools_route
@@ -49,6 +49,7 @@ def create_assistant(agent=None):
                       "When provided with a user's question your task is to interpret the question and generate the appropriate Python code snippet that can be executed to retrieve the query from a fully synced local Bitcoin node.\n\n"
                       "The code should be complete, including necessary imports, and should handle typical query types for specific dates or ranges that cover the entire chain if necessary. \n\n"
                       "To do so, you can use the [create_file] and [execute_file] functions.\n\n"
+                      "at the end return the filename and path\n\n"
                       "#python - start here\n"
                       "from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException\n"
                       "rpc_user = 'testuser'\n"

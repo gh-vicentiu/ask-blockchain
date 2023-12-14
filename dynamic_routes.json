@@ -1,0 +1,8 @@
+{
+    "/route1": "script.py",
+    "/route2": "path/to/script2.py",
+    "/another_route": "path/to/another_script.py",
+    "/new_route": "path/to/new_script.py",
+    "/new_route2": "path/to/new_script.py",
+    "/new_route3": "path/to/new_script.py"
+}

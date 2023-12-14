@@ -1,39 +1,44 @@
-import requests
-import threading
-import subprocess
 import json
+import subprocess
+from flask import Flask, render_template, request, jsonify, Response, stream_with_context, session, redirect
+import threading
 import queue
 import time
-from flask import Flask, render_template, request, jsonify, Response, stream_with_context, session, redirect
 from db import get_mongo_client, test_mongo_connection
 from user_db import register_user, check_login
-from ai_tools.route_creation import load_dynamic_routes
 import os
-import subprocess
 
 app = Flask(__name__)
 messages_queue = queue.Queue()
 secret_key = os.urandom(16)
 app.secret_key = secret_key
 
+def save_to_file(data, filename='data.json'):
+    with open(filename, 'w') as file:
+        json.dump(data, file)
+
+def load_from_file(filename='data.json'):
+    try:
+        with open(filename, 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return []
+
+# Load existing data
+paths = load_from_file()
+
 @app.route('/')
 def index():
     if 'username' in session:
         username = session['username']
-
-        # Get the MongoDB client and fetch the user's details
         client = get_mongo_client()
-        db = client['user_database']  # Use your actual database name
-        users = db['users']  # Use your actual collection name
-
+        db = client['user_database']
+        users = db['users']
         user = users.find_one({"username": username})
-        if user:
-            user_id = user.get('user_id', 'Unknown')
-        else:
-            user_id = 'Unknown'
-
+        user_id = user.get('user_id', 'Unknown') if user else 'Unknown'
         return render_template('index.html', username=username, user_id=user_id)
     return redirect('/login')
+
 
 @app.route('/mongodb')
 def mongodb_page():
@@ -115,12 +120,38 @@ def signup():
             return "Signup Failed"
     return render_template('signup.html')
 
-# Additional routes can be added here
+@app.route('/dohook/', methods=['POST'])
+def webhook():
+    if request.is_json:
+        data = request.get_json()
+        path = data.get('path')
+        script_path = data.get('script_path')
+
+        if path and script_path:
+            paths[path] = script_path
+            save_to_file(paths)
+            return jsonify({"success": True, "path": path, "script_path": script_path})
+        
+    return jsonify({"success": False, "error": "Invalid data"})
+
+
+@app.route('/webhook/<path:path>')
+def custom_path(path):
+    script_path = paths.get(path)
+    if script_path:
+        try:
+            output = subprocess.check_output(['python3', script_path], stderr=subprocess.STDOUT, text=True)
+            return jsonify({"output": output})
+        except subprocess.CalledProcessError as e:
+            return jsonify({"error": f"Error executing script for path {path}: {e.output}"})
+    else:
+        return jsonify({"error": "Path not found"})
+
+#start
 
 if __name__ == '__main__':
     if test_mongo_connection():
         print("Successfully connected to MongoDB.")
-        load_dynamic_routes(app)
         app.run(host='0.0.0.0', port=5000, debug=True)
     else:
         print("Failed to connect to MongoDB.")

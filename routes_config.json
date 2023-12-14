@@ -1,8 +1,0 @@
-{
-    "routes": [
-        {"path": "/route1", "file_path": "script1.py"},
-        {"path": "/route2", "file_path": "script2.py"}
-        // ... other routes
-    ]
-}
-
