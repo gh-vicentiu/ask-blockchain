@@ -10,7 +10,7 @@ from functions.db_operations import read_db_async, write_db_async
 from functions.ai_parse_response import ai_parse_response
 from functions.return_response import send_message_to_hook_async
 
-client = openai.Client(api_key='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')
+client = openai.Client()
 
 async def process_bot(instruction, thread_main):
     logging.info(f"Processing bot {thread_main['agent']}: {thread_main['u_bot_0_id']} with message: {instruction}")

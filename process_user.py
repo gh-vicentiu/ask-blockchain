@@ -9,7 +9,7 @@ from functions.db_operations import read_db_async, write_db_async
 from functions.ai_parse_response import ai_parse_response
 from functions.return_response import send_message_to_hook_async
 
-client = openai.Client(api_key='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')
+client = openai.Client()
 
 async def process_user_async(user_id, messaged_us):
     logging.info(f"Processing user: {user_id} with message: {messaged_us}")

@@ -3,8 +3,37 @@
 <head>
     <title>Chat Interface</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body.dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+        /* Other styles ... */
+
+        /* Toggle Switch Styles */
+        .switch {
+            position: absolute; /* Positioning relative to the nearest positioned ancestor or the viewport */
+            top: 10px;         /* 10 pixels from the top */
+            left: 10px;        /* 10 pixels from the left */
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+            background-color: #ccc;
+            border-radius: 34px;
+            transition: background-color 0.4s;
+        }
+
+        /* More styles... */
+    </style>
+</head>
 </head>
 <body>
+    <div id="theme-toggle-container">
+        <label class="switch">
+            <input type="checkbox" id="themeToggleButton" onclick="toggleTheme()">
+            <span class="slider round"></span> <!-- Removed onclick handler here -->
+        </label>
+    </div>
     <div id="chat-container">
         <div id="message-display"></div>
         <div id="message-input-area">
@@ -25,7 +54,7 @@
             fetch('/send_message', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ user_id: userId, messaged_us: message })
+                body: JSON.stringify({ user_id: userId, message: message })
             })
             .then(response => response.json())
             .then(data => {
@@ -60,8 +89,8 @@
 
             eventSource.onmessage = function(event) {
                 var msgData = JSON.parse(event.data);
-                if (msgData.hasOwnProperty('messaged_back')) {
-                    var messageText = msgData.messaged_back;
+                if (msgData.hasOwnProperty('message')) {
+                    var messageText = msgData.message;
                     addMessageToChat(msgData.user_id, messageText, true);
                 }
             };
@@ -69,13 +98,37 @@
             eventSource.onerror = function(error) {
                 console.error('EventSource failed:', error);
                 eventSource.close();
-                // Optional: Implement logic to attempt reconnecting
             };
         }
 
         document.getElementById('userIdInput').addEventListener('change', function() {
             currentUserId = this.value || '{{user_id}}';
             updateEventSource();
+        });
+
+        function toggleTheme() {
+            var bodyElement = document.body;
+            bodyElement.classList.toggle('dark-mode');
+
+            // Save the user's theme preference in localStorage
+            if (bodyElement.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                document.getElementById('themeToggleButton').checked = true;
+            } else {
+                localStorage.setItem('theme', 'light');
+                document.getElementById('themeToggleButton').checked = false;
+            }
+        }
+
+        // Check for saved user preference, if any, and apply it
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var themeToggleButton = document.getElementById('themeToggleButton');
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeToggleButton.checked = true;
+            } else {
+                themeToggleButton.checked = false;
+            }
         });
 
         updateEventSource();

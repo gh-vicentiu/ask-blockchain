@@ -257,3 +257,34 @@
 2023-12-14 20:52:54,141:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/messages?limit=1&order=desc "HTTP/1.1 200 OK"
 2023-12-14 20:52:54,143:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_10TznmUB5V0wjVZRL4tkLTM9', assistant_id='asst_WEF22YFm1qGBd9fkVmS70Jss', content=[MessageContentText(text=Text(annotations=[], value='I have requested the current price of bitcoin. I will let you know once I receive the information.'), type='text')], created_at=1702579971, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_sjEoRYvtU0gPdi2PzS6abzPX', thread_id='thread_7GW8cIC7gRmGCrojozJqpyXf')], object='list', first_id='msg_10TznmUB5V0wjVZRL4tkLTM9', last_id='msg_10TznmUB5V0wjVZRL4tkLTM9', has_more=True).
 2023-12-14 20:52:54,180:INFO:HTTP Request: POST http://localhost:5000/receive_update "HTTP/1.1 200 "
+2023-12-14 21:41:20,322:INFO:Processing user: b530_8588 with message: do you have the prices of bitcoin?
+2023-12-14 21:41:21,046:INFO:None Attempting to add message to thread: do you have the prices of bitcoin?
+2023-12-14 21:41:21,307:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs?limit=1&order=desc "HTTP/1.1 401 Unauthorized"
+2023-12-14 21:42:38,742:INFO:Processing user: b530_8588 with message: do you have the prices of bitcoin?
+2023-12-14 21:42:39,532:INFO:None Attempting to add message to thread: do you have the prices of bitcoin?
+2023-12-14 21:42:39,817:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs?limit=1&order=desc "HTTP/1.1 401 Unauthorized"
+2023-12-14 21:44:22,640:INFO:Processing user: do you have the prices of bitcoin? with message: do you have the prices of bitcoin?
+2023-12-14 21:44:23,150:INFO:User do you have the prices of bitcoin? NOT found, creating a new entry.
+2023-12-14 21:44:24,053:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 401 Unauthorized"
+2023-12-15 10:51:11,852:INFO:Processing user: b530_8588 with message: default_message
+2023-12-15 10:51:12,601:INFO:None Attempting to add message to thread: default_message
+2023-12-15 10:51:12,994:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_7GW8cIC7gRmGCrojozJqpyXf/runs?limit=1&order=desc "HTTP/1.1 401 Unauthorized"
+2023-12-15 12:25:51,815:INFO:Processing user: Unknown with message: default_message
+2023-12-15 12:25:52,717:INFO:User Unknown NOT found, creating a new entry.
+2023-12-15 12:25:53,619:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 401 Unauthorized"
+2023-12-15 13:58:02,449:INFO:Processing user: Unknown with message: default_message
+2023-12-15 13:58:03,468:INFO:HTTP Request: POST https://api.openai.com/v1/assistants "HTTP/1.1 200 OK"
+2023-12-15 13:58:04,363:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-15 13:58:04,908:INFO:None Attempting to add message to thread: default_message
+2023-12-15 13:58:05,286:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_pVLpzIt3YjnS1ugnUFshwOFp/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-15 13:58:05,588:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_pVLpzIt3YjnS1ugnUFshwOFp/messages "HTTP/1.1 200 OK"
+2023-12-15 13:58:05,592:INFO:None Message ID registered: msg_BMMhZWJelf0ftocK74yFU9g4 - default_message
+2023-12-15 13:58:06,722:INFO:Starting the main assistant...
+2023-12-15 13:58:07,268:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_pVLpzIt3YjnS1ugnUFshwOFp/runs "HTTP/1.1 200 OK"
+2023-12-15 13:58:07,276:INFO:Assistant run initiated.
+2023-12-15 13:58:07,277:INFO:Checking run status...
+2023-12-15 13:58:10,543:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_pVLpzIt3YjnS1ugnUFshwOFp/runs/run_opbBULC3DkOa184k2AfNRZYu "HTTP/1.1 200 OK"
+2023-12-15 13:58:10,546:INFO:Run completed. Fetching messages...
+2023-12-15 13:58:10,817:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_pVLpzIt3YjnS1ugnUFshwOFp/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-15 13:58:10,825:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_MqcYVhxmAipcQFlQjUC1wTVH', assistant_id='asst_aikKhfeQKpWjTO4qowYWRTFv', content=[MessageContentText(text=Text(annotations=[], value='How can I help you with Bitcoin today?'), type='text')], created_at=1702641489, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_opbBULC3DkOa184k2AfNRZYu', thread_id='thread_pVLpzIt3YjnS1ugnUFshwOFp')], object='list', first_id='msg_MqcYVhxmAipcQFlQjUC1wTVH', last_id='msg_MqcYVhxmAipcQFlQjUC1wTVH', has_more=True).
+2023-12-15 13:58:10,890:INFO:HTTP Request: POST http://localhost:5000/receive_update "HTTP/1.1 200 "

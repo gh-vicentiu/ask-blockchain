@@ -4,7 +4,7 @@ import json
 import time
 
 
-client = openai.Client(api_key = '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')
+client = openai.Client()
 
 def add_message_to_thread(thread_id, messaged_us, role='user', agent=None):
     logging.info(f"{agent} Attempting to add message to thread: {messaged_us}")

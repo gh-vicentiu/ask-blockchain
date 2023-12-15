@@ -9,7 +9,7 @@ from ai_tools.tool_calls import (handle_call_agent_price, handle_call_agent_code
 from functions.db_operations import read_db_async, write_db_async
 from functions.return_response import send_message_to_hook_async
 
-client = openai.Client(api_key='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')
+client = openai.Client()
 
 async def run_assistant(thread_main):
     db = await read_db_async()  # Async read from DB
