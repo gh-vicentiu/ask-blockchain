@@ -7,7 +7,7 @@ import time
 from db import get_mongo_client, test_mongo_connection
 from user_db import register_user, check_login
 import os
-from functions.db_operations import load_from_db, save_to_db
+from functions.db_operations import load_from_db, save_to_db, get_user_paths
 
 app = Flask(__name__)
 messages_queue = queue.Queue()
@@ -23,7 +23,7 @@ def index():
         db = client['user_database']
         users = db['users']
         user = users.find_one({"username": username})
-        user_id = user.get('user_id', 'Unknown') if user else 'Unknown'
+        user_id = user.get('_id', 'Unknown') if user else 'Unknown'
         return render_template('index.html', username=username, user_id=user_id)
     return redirect('/login')
 
@@ -108,6 +108,12 @@ def signup():
             return "Signup Failed"
     return render_template('signup.html')
 
+
+@app.route('/get_user_paths/<user_id>')
+def user_paths(user_id):
+    paths = get_user_paths(user_id)
+    return jsonify(paths)
+
 @app.route('/dohook/', methods=['POST'])
 def webhook():
     user_paths = load_from_db()  # Load the latest data from MongoDB
@@ -116,28 +122,37 @@ def webhook():
         data = request.get_json()
         user_id = data.get('user_id')
         path = data.get('path')
-        script_path = data.get('script_path')
+        hook_info = {
+            "script_path": data.get('script_path'),
+            "hook_name": data.get('hook_name'),
+            "hook_description": data.get('hook_description')
+        }
 
-        if user_id and path and script_path:
+        if user_id and path and hook_info["script_path"]:
             if user_id not in user_paths:
                 user_paths[user_id] = {}
-            user_paths[user_id][path] = script_path
+            user_paths[user_id][path] = hook_info
             save_to_db(user_paths)  # Save to MongoDB
-            return jsonify({"success": True, "user_id": user_id, "path": path, "script_path": script_path})
+            return jsonify({"success": True, "user_id": user_id, "path": path, "hook_info": hook_info})
 
     return jsonify({"success": False, "error": "Invalid data"})
+
 
 @app.route('/webhook/<user_id>/<path:path>')
 def custom_path(user_id, path):
     user_paths = load_from_db()  # Fetch fresh data from MongoDB
 
     if user_id in user_paths and path in user_paths[user_id]:
-        script_path = user_paths[user_id][path]
-        try:
-            output = subprocess.check_output(['python3', script_path], stderr=subprocess.STDOUT, text=True)
-            return jsonify({"output": output})
-        except subprocess.CalledProcessError as e:
-            return jsonify({"error": f"Error executing script for path {path}: {e.output}"})
+        path_info = user_paths[user_id][path]
+        if isinstance(path_info, dict) and 'script_path' in path_info:
+            script_path = path_info['script_path']
+            try:
+                output = subprocess.check_output(['python3', script_path], stderr=subprocess.STDOUT, text=True)
+                return jsonify({"output": output})
+            except subprocess.CalledProcessError as e:
+                return jsonify({"error": f"Error executing script for path {path}: {e.output}"})
+        else:
+            return jsonify({"error": f"Path information for {path} is incorrect"})
     else:
         return jsonify({"error": "User ID or Path not found"})
 

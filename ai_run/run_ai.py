@@ -5,7 +5,7 @@ import logging
 from ai_tools.main_tools import call_agent_webhook, call_agent_coder
 from ai_tools.secondary_tools import execute_file, create_file, move_files
 from ai_tools.tool_calls import handle_add_to_webhook, handle_call_agent_webhook, handle_call_agent_coder, handle_create_file, handle_execute_file, handle_move_files
-from functions.db_operations import read_db_chats, write_db_chats, r_dbin, w_dbin  # To handle database operations
+from functions.db_operations import read_db_chats, write_db_chats  # To handle database operations
 from functions.return_response import send_message_to_hook
 
 
@@ -79,13 +79,13 @@ def run_assistant(thread_main):
                     handlers[func_name](arguments, thread_main, tool_outputs, action_id)
                     result = send_message_to_hook(user_id, messaged_back=(f"'{tool_outputs}'"))
                     if agent == 'relay':
-                        dbc = read_db_chats()
-                        dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']]['2'] = {"tool":{func_name: tool_outputs, "timestamp": int(time.time())}}
-                        write_db_chats(dbc)
+                        dbc = read_db_chats(user_id)
+                        dbc[thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']]['2'] = {"tool":{func_name: tool_outputs, "timestamp": int(time.time())}}
+                        write_db_chats(user_id, dbc)
                     else:
-                        dbc = read_db_chats()
-                        dbc[thread_main['u_bot_0_id']][thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id][message_u_id]['3'] = {"tool":{func_name: tool_outputs, "timestamp": int(time.time())}}
-                        write_db_chats(dbc)
+                        dbc = read_db_chats(user_id)
+                        dbc[thread_main['a_bot_0_id']][thread_main['t_bot_0_id']][thread_main['m_bot_0_id']][thread_id][message_u_id]['3'] = {"tool":{func_name: tool_outputs, "timestamp": int(time.time())}}
+                        write_db_chats(user_id, dbc)
                         
 
             print("Submitting outputs back to the Assistant...")

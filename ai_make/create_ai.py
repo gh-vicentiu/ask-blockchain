@@ -54,7 +54,7 @@ def create_assistant(agent=None):
                       "from bitcoinrpc.authproxy import AuthServiceProxy, JSONRPCException\n"
                       "rpc_user = 'testuser'\n"
                       "rpc_password = 'testpassword'\n"
-                      "rpc_host = 'localhost'\n"
+                      "rpc_host = '62.231.64.203'\n"
                       "rpc_port = 8332\n"
                       "rpc_connection = AuthServiceProxy(f\"http://{rpc_user}:{rpc_password}@{rpc_host}:{rpc_port}\")\n"
                       "#rest of the script:\n"

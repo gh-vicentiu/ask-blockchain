@@ -1,3 +1,5 @@
+# user_db.py
+
 from db import get_mongo_client
 import uuid
 
@@ -22,12 +24,12 @@ def register_user(username, password):
     db = client['user_database']
     users = db['users']
 
-    if users.find_one({"username": username}):
+    if users.find_one({"_id": username}):
         return False  # User already exists
 
     user_id = generate_user_id()
     try:
-        users.insert_one({"username": username, "password": password, "user_id": user_id})
+        users.insert_one({"_id": user_id, "username": username, "password": password})
         return user_id
     except Exception as e:
         print(f"Error in register_user: {e}")

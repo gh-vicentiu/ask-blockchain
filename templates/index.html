@@ -4,12 +4,6 @@
     <title>Chat Interface</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Chat Interface</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
 <body>
     <div style="width: 100%; height: 50px; background-color: amber;"></div> <!-- Banner -->
     {% include 'menu.html' %}
@@ -24,69 +18,106 @@
             <button id="sendButton" onclick="sendMessage()">Send</button>
         </div>
     </div>
-
+    <div id="paths-display"></div>
     <script>
-        var currentUserId = '{{user_id}}'; 
-        var eventSource = null;
-
+        let currentUserId = '{{user_id}}';
+        let eventSource = null;
+    
+        function initializeEventSource() {
+            if (eventSource) {
+                eventSource.close();
+            }
+    
+            eventSource = new EventSource('/stream/' + currentUserId);
+            eventSource.onmessage = (event) => {
+                const msgData = JSON.parse(event.data);
+                if (msgData.hasOwnProperty('messaged_back')) {
+                    addMessageToChat(msgData.user_id, msgData.messaged_back, true);
+                }
+            };
+        }
+    
+        document.getElementById('userIdInput').addEventListener('change', (event) => {
+            currentUserId = event.target.value || '{{user_id}}';
+            initializeEventSource();
+        });
+    
         function sendMessage() {
-            var message = document.getElementById("messageInput").value;
-            var userId = document.getElementById("userIdInput").value || '{{user_id}}'; 
-
+            const messageInput = document.getElementById("messageInput");
+            const message = messageInput.value;
+            const userId = document.getElementById("userIdInput").value || '{{user_id}}';
+    
             fetch('/send_message', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({ user_id: userId, messaged_us: message })
             })
             .then(response => response.json())
-            .then(data => {
-                document.getElementById("messageInput").value = '';
-                addMessageToChat(userId, message, false); 
+            .then(() => {
+                messageInput.value = '';
+                addMessageToChat(userId, message, false);
             })
             .catch((error) => {
                 console.error('Error:', error);
             });
         }
-
-        function handleKeyPress(event) {
+    
+        document.addEventListener('keypress', (event) => {
             if (event.key === 'Enter') {
                 sendMessage();
             }
-        }
-
+        });
+    
         function addMessageToChat(userId, message, isSystemMessage) {
-            var chatDiv = document.getElementById('message-display');
-            var newMessage = document.createElement('div');
-            newMessage.classList.add('message');
-            var displayText = isSystemMessage ? `System: ${message}` : `User ${userId}: ${message}`;
-            newMessage.textContent = displayText;
+            const chatDiv = document.getElementById('message-display');
+            const newMessage = document.createElement('div');
+            newMessage.className = 'message';
+            newMessage.textContent = isSystemMessage ? `System: ${message}` : `User ${userId}: ${message}`;
             chatDiv.appendChild(newMessage);
         }
-
-        function updateEventSource() {
-            if (eventSource) {
-                eventSource.close();
-            }
-            eventSource = new EventSource('/stream/' + currentUserId);
-
-            eventSource.onmessage = function(event) {
-                var msgData = JSON.parse(event.data);
-                if (msgData.hasOwnProperty('messaged_back')) {
-                    var messageText = msgData.messaged_back;
-                    addMessageToChat(msgData.user_id, messageText, true);
-                }
-            };
-
+    
+        function fetchInitialMessages() {
+            fetch('/stream/' + currentUserId)
+            .then(response => response.json())
+            .then(messages => {
+                messages.forEach(message => {
+                    addMessageToChat(message.userId, message.text, message.isSystemMessage);
+                });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    
+        function getUserPaths(userId) {
+            fetch('/get_user_paths/' + userId)
+            .then(response => response.json())
+            .then(paths => {
+                displayUserPaths(paths);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    
+        function displayUserPaths(paths) {
+            const pathsDiv = document.getElementById('paths-display');
+            pathsDiv.innerHTML = ''; // Clear previous content
+            paths.forEach(pathHTML => {
+                const newPath = document.createElement('div');
+                newPath.innerHTML = pathHTML; // Use innerHTML instead of textContent
+                pathsDiv.appendChild(newPath);
+            });
         }
 
-        document.getElementById('userIdInput').addEventListener('change', function() {
-            currentUserId = this.value || '{{user_id}}';
-            updateEventSource();
-        });
-
-        updateEventSource();
-    </script>
     
+        document.addEventListener("DOMContentLoaded", () => {
+            getUserPaths(currentUserId);
+            fetchInitialMessages();
+            initializeEventSource();
+        });
+    </script>
+     
     
     {% include 'footer.html' %}
 </body>

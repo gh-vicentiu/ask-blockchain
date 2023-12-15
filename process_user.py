@@ -10,7 +10,7 @@ from ai_make.create_ai import create_assistant  # To create a new AI assistant
 from ai_make.create_thread import create_thread  # To create a new conversation thread
 from ai_run.send_mess import add_message_to_thread  # To add a message to a conversation thread
 from ai_run.run_ai import run_assistant  # To run the AI assistant within a thread
-from functions.db_operations import read_db_chats, write_db_chats, read_db_agents, write_db_agents, w_dbin,r_dbin  # To handle database operations
+from functions.db_operations import read_db_chats, write_db_chats, read_db_agents, write_db_agents  # To handle database operations
 from functions.ai_parse_response import ai_parse_response
 from functions.return_response import send_message_to_hook
 
@@ -22,7 +22,7 @@ def process_user(user_id, messaged_us):
     # Log the incoming user ID and message
     logging.info(f"Processing user: {user_id} with message: {messaged_us}")
     # Read the current state of the database
-    dbc = read_db_chats()
+    dbc = read_db_chats(user_id)
     dba = read_db_agents()
 
     # Initialize variable for the full thread
@@ -30,14 +30,7 @@ def process_user(user_id, messaged_us):
     last_assistant_id = None
     ids = 'active'
 
-    # Check if the user ID exists in the database; if not, create a new entry
-    if user_id not in dbc:
-        logging.info(f"User {user_id} NOT found, creating a new entry.")
-        dbc[user_id] = {}
-        dbc[user_id][ids] = {}
-        write_db_chats(dbc)
-    logging.info(f"User {user_id} found, proceed")
-    
+   
     if ids not in dba:
         dba[ids] = {}
 
@@ -51,37 +44,33 @@ def process_user(user_id, messaged_us):
         write_db_agents(dba)
     logging.info(f"Assistant {assistant_id} for {user_id}.")
     
-    # Ensure that the assistant ID key exists in the dbc[user_id] dictionary
-    if assistant_id not in dbc[user_id]:
-        dbc[user_id][assistant_id] = {}
-        write_db_chats(dbc)
-    
+   
     # Retrieve or create a thread ID for the conversation
-    thread_id = dbc[user_id][ids].get('active_relay_thread_id')
+    dbc = read_db_chats(user_id)
+    thread_id = dbc.get('active', {}).get('active_relay_thread_id')
     if not thread_id:
         logging.info(f"Creating new thread for the user {user_id}.")
-        thread_id = create_thread()
-        dbc[user_id][ids]['active_relay_thread_id'] = thread_id
-        dbc[user_id][assistant_id][thread_id] = {}
-        write_db_chats(dbc)
-    logging.info(f"Thread {thread_id} for {user_id}.")
+        thread_id = create_thread()  # Your function to create a new thread ID
+        if 'active' not in dbc:
+            dbc['active'] = {}
+        dbc['active']['active_relay_thread_id'] = thread_id
+        if assistant_id not in dbc:
+            dbc[assistant_id] = {}
+        dbc[assistant_id][thread_id] = {}
+        write_db_chats(user_id, dbc)
+        logging.info(f"Thread {thread_id} for {user_id}.")
 
     
     logging.info(f"Adding Message to  {assistant_id} - {thread_id} for {user_id}.")
     message_u_id = add_message_to_thread(thread_id, messaged_us, role='user', agent=None)
    
-
-
     logging.info(f"Message {message_u_id} added to  {assistant_id} - {thread_id} for {user_id}.")
-
-    #logging.info(f"{db[user_id][assistant_id][thread_id][message_u_id]}")
-    #logging.info(f"{db[user_id][assistant_id][thread_id][message_u_id][0] = {"sent": {"role": "user", "content": messaged_us, "timestamp": int(time.time())}}}")
-    
-    dbc = read_db_chats()  
-    if message_u_id not in dbc[user_id][assistant_id][thread_id]:
-        dbc[user_id][assistant_id][thread_id][message_u_id] = {}
-    dbc[user_id][assistant_id][thread_id][message_u_id]['0'] = {"sent": {"role": "relay", "content": messaged_us, "timestamp": int(time.time())}}
-    write_db_chats(dbc)
+   
+    dbc = read_db_chats(user_id)  
+    if message_u_id not in dbc[assistant_id][thread_id]:
+        dbc[assistant_id][thread_id][message_u_id] = {}
+    dbc[assistant_id][thread_id][message_u_id]['0'] = {"sent": {"role": "relay", "content": messaged_us, "timestamp": int(time.time())}}
+    write_db_chats(user_id, dbc)
       
 
     # Run the assistant to process the thread and get a response
@@ -91,8 +80,8 @@ def process_user(user_id, messaged_us):
     ai_replay = ai_parse_response(thread_full)
     result = send_message_to_hook(user_id, messaged_back=ai_replay)
     
-    dbc = read_db_chats()
+    dbc = read_db_chats(user_id)
     # Return the full conversation threads
-    dbc[user_id][assistant_id][thread_id][message_u_id]['1'] = {"replay": {"role": thread_main['agent'], "content": ai_replay, "timestamp": int(time.time())}}
-    write_db_chats(dbc)
+    dbc[assistant_id][thread_id][message_u_id]['1'] = {"replay": {"role": thread_main['agent'], "content": ai_replay, "timestamp": int(time.time())}}
+    write_db_chats(user_id, dbc)
     return ai_replay
