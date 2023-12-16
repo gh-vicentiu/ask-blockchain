@@ -1,19 +1,52 @@
 import json
 import subprocess
-from flask import Flask, render_template, request, jsonify, Response, stream_with_context, session, redirect
 import threading
 import queue
 import time
+import uuid
+import os
+from flask import Flask, render_template, request, jsonify, Response, stream_with_context, session, redirect
 from db import get_mongo_client, test_mongo_connection
 from user_db import register_user, check_login
-import os
-from functions.db_operations import load_from_db, save_to_db, get_user_paths, remove_user_paths
+from functions.db_operations import load_from_db, save_to_db, get_user_paths, remove_user_paths, edit_user_path
 
 app = Flask(__name__)
 messages_queue = queue.Queue()
 secret_key = os.urandom(16)
 app.secret_key = secret_key
 user_paths = load_from_db()
+message_acknowledgments = {}
+
+
+
+def generate_unique_message_id():
+    return str(uuid.uuid4())
+
+def send_message_to_queue(user_id, messaged_us):
+    message_id = generate_unique_message_id()
+    message = {"user_id": user_id, "messaged_back": messaged_us, "message_id": message_id}
+    messages_queue.put(message)
+    message_acknowledgments[message_id] = {"message": message, "acknowledged": False, "timestamp": time.time()}
+
+def message_resender():
+    while True:
+        for message_id, message_info in list(message_acknowledgments.items()):
+            if not message_info['acknowledged'] and time.time() - message_info['timestamp'] > 10:
+                print(f"Resending message {message_id}")
+                messages_queue.put(message_info['message'])
+                message_info['timestamp'] = time.time()
+        time.sleep(5)
+
+threading.Thread(target=message_resender, daemon=True).start()
+
+@app.route('/acknowledge_message', methods=['POST'])
+def acknowledge_message():
+    data = request.json
+    message_id = data.get('message_id')
+    if message_id in message_acknowledgments:
+        message_acknowledgments[message_id]['acknowledged'] = True
+        return jsonify({"status": "Acknowledgment received"})
+    return jsonify({"status": "Message ID not found"})
 
 @app.route('/')
 def index():
@@ -26,7 +59,6 @@ def index():
         user_id = user.get('_id', 'Unknown') if user else 'Unknown'
         return render_template('index.html', username=username, user_id=user_id)
     return redirect('/login')
-
 
 @app.route('/mongodb')
 def mongodb_page():
@@ -45,27 +77,33 @@ def send_message():
     data = request.json
     user_id = data.get('user_id', 'default_user_id')
     messaged_us = data.get('messaged_us', 'default_message')
-    # Start execute_command in a new thread
-    thread = threading.Thread(target=execute_command, args=(user_id, messaged_us,))
-    thread.start()
-    return jsonify({"status": "Command sent"})
+
+    # Execute main.py with user_id and messaged_us
+    execute_command(user_id, messaged_us)
+
+    # No need to send this message to the SSE queue
+    return jsonify({"status": "Message sent and processed"})
 
 @app.route('/stream/<user_id>')
 def stream(user_id):
     def event_stream(user_id):
-        while True:
-            try:
-                message = messages_queue.get()  # Blocking get, waits for a message
+        try:
+            yield 'data: {"type": "connection_established"}\n\n'
+            while True:
+                message = messages_queue.get()
                 if message['user_id'] == user_id:
                     yield f"data: {json.dumps(message)}\n\n"
-            except queue.Empty:
-                pass
-            time.sleep(0.1)
+                time.sleep(0.2)
+        except Exception as e:
+            app.logger.error(f"Stream error: {e}")
     return Response(stream_with_context(event_stream(user_id)), mimetype="text/event-stream")
 
 @app.route('/receive_update', methods=['POST'])
 def receive_update():
     data = request.json
+    message_id = data.get('message_id')
+    if message_id:
+        message_acknowledgments[message_id] = {"message": data, "acknowledged": False, "timestamp": time.time()}
     messages_queue.put(data)
     return jsonify({"status": "Message received"})
 
@@ -120,6 +158,20 @@ def remove_path(user_id, path_id):
     success = remove_user_paths(user_id, path_id)
     return jsonify({"success": success})
 
+@app.route('/edit_user_path/<user_id>/<path_id>', methods=['POST'])
+def edit_path(user_id, path_id):
+    if request.is_json:
+        updates = request.get_json()
+        # Call the edit_user_path function with the provided data
+        success = edit_user_path(user_id, path_id, updates)
+        if success:
+            return jsonify({"success": True, "message": "Path updated successfully."})
+        else:
+            return jsonify({"success": False, "message": "Failed to update the path."})
+    else:
+        return jsonify({"success": False, "error": "Invalid data, JSON expected."})
+
+
 @app.route('/dohook/', methods=['POST'])
 def webhook():
     user_paths = load_from_db()  # Load the latest data from MongoDB
@@ -139,8 +191,12 @@ def webhook():
                 user_paths[user_id] = {}
             user_paths[user_id][path] = hook_info
             save_to_db(user_paths)  # Save to MongoDB
-            # Send SSE message for new path
-            messages_queue.put({
+            
+            # Generate a unique message ID
+            message_id = generate_unique_message_id()
+            
+            # Create message data
+            message_data = {
                 "user_id": user_id,
                 "type": "new_path",
                 "path_info": {
@@ -149,8 +205,15 @@ def webhook():
                     "name": hook_info.get("hook_name"),
                     "description": hook_info.get("hook_description"),
                     "exists": os.path.exists(hook_info.get("script_path"))
-                }
-            })
+                },
+                "message_id": message_id  # Include the message ID
+            }
+
+            # Send SSE message for new path
+            messages_queue.put(message_data)
+
+            # Add to message acknowledgments
+            message_acknowledgments[message_id] = {"message": message_data, "acknowledged": False, "timestamp": time.time()}
 
             return jsonify({"success": True, "user_id": user_id, "path": path, "hook_info": hook_info})
 

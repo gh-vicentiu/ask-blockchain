@@ -1,111 +1,76 @@
-/* Global Styles */
-body {
-    font-family: Arial, sans-serif;
+/* Resetting default styles */
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column; /* Change to column for vertical layout */
-    min-height: 100vh; /* Ensure full page height */
+    box-sizing: border-box;
+}
+
+body, html {
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    height: 100%;
 }
 
 /* Banner Style */
-.banner {
-    width: 100%;
+div[style*="background-color: amber;"] {
     height: 50px;
-    background-color: amber;
+    background-color: #ffc107; /* Amber color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Navigation Menu Styles */
-nav {
-    width: 100%;
-    background-color: brown;
-}
 
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex; /* Display menu items in a row */
-    justify-content: center; /* Center menu items */
-    margin: 0;
-}
-
-nav ul li {
-    margin: 0 20px; /* Even spacing around menu items */
-}
-
+/* Main Row Container */
 .row {
     display: flex;
-    max-width: 1200px; /* Fixed maximum width */
-    padding: 50px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-#paths-display {
-    width: 30%; /* Adjust the width as needed */
-    background-color: #f8f8f8; /* Light background for the paths display */
-    padding: 10px; /* Add some padding around the content */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    overflow-y: auto; /* Enable scrolling if content overflows */
-    max-height: 600px; /* Adjust maximum height as needed */
-}
-
-#paths-display div {
-    margin-bottom: 10px; /* Space out each path entry */
-    padding: 5px; /* Padding inside each path entry */
-    background-color: #ffffff; /* White background for each entry */
-    border-radius: 5px; /* Rounded corners for aesthetics */
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Shadow for each entry */
-}
-
-#paths-display a {
-    color: #007bff; /* Link color */
-    text-decoration: none; /* Remove underline from links */
-}
-
-#paths-display a:hover {
-    text-decoration: underline; /* Underline links on hover */
-}
-  
-
-/* Chat Container Styles */
+/* Chat Container */
 #chat-container {
-    flex-grow: 1; /* Allows container to fill available space */
     width: 70%;
-    max-width: 600px;
-    margin: 20px auto; /* Center the chat container */
-    background: #fff;
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    margin-right: 10px;
     display: flex;
-    flex-direction: column; /* Aligns children (message-display and message-input-area) vertically */
+    flex-direction: column;
+    max-height: 600px;
 }
 
 #message-display {
-    flex-grow: 1; /* Allows message display to expand */
-    min-height: 500px;
+    flex-grow: 1;
     overflow-y: auto;
     padding: 20px;
-    background-color: #e9e9e9;
     border-bottom: 1px solid #ddd;
+}
+
+.message {
+    background: #e9e9e9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
 
 #message-input-area {
     padding: 10px;
+    background-color: #f8f8f8;
+    border-top: 1px solid #ddd;
+    display: flex;
 }
 
-/* Message Input and Button Styles */
-#messageInput {
-    width: calc(100% - 90px); /* Adjust width as per new layout */
+#userIdInput, #messageInput {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-right: 10px;
+    flex-grow: 1;
 }
 
 #sendButton {
     padding: 10px 20px;
-    background-color: #5cb85c;
+    background-color: #4caf50;
     color: white;
     border: none;
     border-radius: 4px;
@@ -113,59 +78,122 @@ nav ul li {
 }
 
 #sendButton:hover {
-    background-color: #4cae4c;
+    background-color: #43a047;
 }
 
-.message {
-    background: #f9f9f9;
-    padding: 8px 15px;
-    margin: 5px 0;
-    border-radius: 4px;
-    border: 1px solid #ddd;
+/* Paths Display */
+#paths-display {
+    width: 30%;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-height: 600px;
+    overflow-y: auto;
 }
+
+#paths-display div {
+    background-color: #e9e9e9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#paths-display a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#paths-display a:hover {
+    text-decoration: underline;
+}
+
+
 
 /* Footer Styles */
 footer {
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0;
     margin-top: 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Styles for Login and Signup Pages */
-.container {
-    width: 80%;
-    max-width: 600px;
-    margin: 20px auto; /* Center the container */
-    background: #fff;
+footer p {
+    color: #333;
+}
+
+/* Tab Styles */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.tab button:hover {
+    background-color: #ddd;
+}
+
+.tab button.active {
+    background-color: #ccc;
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+    height: calc(100vh - 150px); /* Adjust height */
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+/* Adjusting the main row container for full height */
+.row {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    height: 100%;
+    flex-grow: 1;
+}
+
+/* Ensure the body takes full viewport height */
+html, body {
+    height: 100%;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+#user-id-display {
+    width: 15%; /* Adjust as necessary */
+    background-color: #f8f8f8; /* Light background color */
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    padding: 20px;
+    margin-right: 10px;
 }
 
-.form-input {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+#chat-container {
+    width: 55%; /* Adjust as necessary */
+    /* ... existing styles ... */
 }
 
-.button {
-    padding: 10px 20px;
-    background-color: #5cb85c;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-}
-
-.button:hover {
-    background-color: #4cae4c;
-}
-
-.switch {
-    text-align: center;
-    margin-top: 20px;
+#paths-display {
+    width: 30%; /* Adjust as necessary */
+    /* ... existing styles ... */
 }

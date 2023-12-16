@@ -113,3 +113,12 @@ def remove_user_paths(user_id, path_id):
     # Assuming the paths are stored as a dictionary under the user's document
     result = collection.update_one({"_id": user_id}, {"$unset": {path_id: ""}})
     return result.modified_count > 0
+
+def edit_user_path(user_id, path_id, updates, db_name='user_database', collection_name='user_paths'):
+    client = get_mongo_client()
+    db = client[db_name]
+    collection = db[collection_name]
+    # Construct the update document
+    update_document = {f"{path_id}.{k}": v for k, v in updates.items()}
+    result = collection.update_one({"_id": user_id}, {"$set": update_document})
+    return result.modified_count > 0
