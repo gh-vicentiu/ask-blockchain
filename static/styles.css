@@ -34,10 +34,43 @@ nav ul li {
     margin: 0 20px; /* Even spacing around menu items */
 }
 
+.row {
+    display: flex;
+    max-width: 1200px; /* Fixed maximum width */
+    padding: 50px;
+}
+
+#paths-display {
+    width: 30%; /* Adjust the width as needed */
+    background-color: #f8f8f8; /* Light background for the paths display */
+    padding: 10px; /* Add some padding around the content */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    max-height: 600px; /* Adjust maximum height as needed */
+}
+
+#paths-display div {
+    margin-bottom: 10px; /* Space out each path entry */
+    padding: 5px; /* Padding inside each path entry */
+    background-color: #ffffff; /* White background for each entry */
+    border-radius: 5px; /* Rounded corners for aesthetics */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Shadow for each entry */
+}
+
+#paths-display a {
+    color: #007bff; /* Link color */
+    text-decoration: none; /* Remove underline from links */
+}
+
+#paths-display a:hover {
+    text-decoration: underline; /* Underline links on hover */
+}
+  
+
 /* Chat Container Styles */
 #chat-container {
     flex-grow: 1; /* Allows container to fill available space */
-    width: 80%;
+    width: 70%;
     max-width: 600px;
     margin: 20px auto; /* Center the chat container */
     background: #fff;
@@ -50,7 +83,7 @@ nav ul li {
 
 #message-display {
     flex-grow: 1; /* Allows message display to expand */
-    max-height: 500px;
+    min-height: 500px;
     overflow-y: auto;
     padding: 20px;
     background-color: #e9e9e9;

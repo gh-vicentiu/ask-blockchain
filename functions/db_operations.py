@@ -88,15 +88,28 @@ def get_user_paths(user_id, db_name='user_database', collection_name='user_paths
 
     if result:
         result.pop('_id', None)  # Remove the '_id' field
-        links = []
+        paths_data = []
         for path_id, path_info in result.items():
             if isinstance(path_info, dict):
                 script_path = path_info.get("script_path", "")
                 hook_name = path_info.get("hook_name", "Unnamed Hook")
                 hook_description = path_info.get("hook_description", "No Description")
                 file_exists = os.path.exists(script_path)
-                link = (f'<a href="/webhook/{user_id}/{path_id}" target="_blank">{hook_name}</a> '
-                        f'(Description: {hook_description}, Exists: {file_exists})')
-                links.append(link)
-        return links
+                path_data = {
+                    "id": path_id,
+                    "url": f"/webhook/{user_id}/{path_id}",
+                    "name": hook_name,
+                    "description": hook_description,
+                    "exists": file_exists
+                }
+                paths_data.append(path_data)
+        return paths_data
     return None
+
+def remove_user_paths(user_id, path_id):
+    client = get_mongo_client()
+    db = client['user_database']
+    collection = db['user_paths']
+    # Assuming the paths are stored as a dictionary under the user's document
+    result = collection.update_one({"_id": user_id}, {"$unset": {path_id: ""}})
+    return result.modified_count > 0

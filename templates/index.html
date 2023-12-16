@@ -10,18 +10,28 @@
     
     <!-- <div style="width: 500px; height: 300px; border: 1px solid black;"></div> Blank Box -->
     
-    <div id="chat-container">
-        <div id="message-display"></div>
-        <div id="message-input-area">
-            <input type="text" id="userIdInput" placeholder="{{user_id}}" />
-            <input type="text" id="messageInput" placeholder="Type your message here..." onkeypress="handleKeyPress(event)">
-            <button id="sendButton" onclick="sendMessage()">Send</button>
+
+    <div class="row">
+        <div id="chat-container">
+            <div id="message-display"></div>
+            <div id="message-input-area">
+                <input type="text" id="userIdInput" placeholder="{{user_id}}" />
+                <input type="text" id="messageInput" placeholder="Type your message here..." onkeypress="handleKeyPress(event)">
+                <button id="sendButton" onclick="sendMessage()">Send</button>
+            </div>
         </div>
-    </div>
-    <div id="paths-display"></div>
+        <div id="paths-display">
+            <!-- Paths Display Content Here -->
+        </div>
+    </div>    
     <script>
         let currentUserId = '{{user_id}}';
         let eventSource = null;
+    
+        document.addEventListener("DOMContentLoaded", () => {
+            initializeEventSource();
+            getUserPaths(currentUserId);
+        });
     
         function initializeEventSource() {
             if (eventSource) {
@@ -30,40 +40,45 @@
     
             eventSource = new EventSource('/stream/' + currentUserId);
             eventSource.onmessage = (event) => {
-                const msgData = JSON.parse(event.data);
-                if (msgData.hasOwnProperty('messaged_back')) {
-                    addMessageToChat(msgData.user_id, msgData.messaged_back, true);
+                console.log("Received SSE message:", event.data);
+                try {
+                    const msgData = JSON.parse(event.data);
+                    if (msgData.type === 'new_path') {
+                        displayUserPaths([msgData.path_info], currentUserId, true);
+                    } else if (msgData.hasOwnProperty('messaged_back')) {
+                        addMessageToChat(msgData.user_id, msgData.messaged_back, true);
+                    }
+                } catch (e) {
+                    console.error('Error parsing JSON:', e);
                 }
             };
         }
     
-        document.getElementById('userIdInput').addEventListener('change', (event) => {
-            currentUserId = event.target.value || '{{user_id}}';
-            initializeEventSource();
-        });
-    
         function sendMessage() {
             const messageInput = document.getElementById("messageInput");
             const message = messageInput.value;
-            const userId = document.getElementById("userIdInput").value || '{{user_id}}';
+            const userId = document.getElementById("userIdInput").value || currentUserId;
     
-            fetch('/send_message', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ user_id: userId, messaged_us: message })
-            })
-            .then(response => response.json())
-            .then(() => {
-                messageInput.value = '';
-                addMessageToChat(userId, message, false);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+            if (message.trim() !== '') {
+                addMessageToChat(userId, message, false); // Add user's message to chat immediately
+                fetch('/send_message', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ user_id: userId, messaged_us: message })
+                })
+                .then(response => response.json())
+                .then(() => {
+                    messageInput.value = '';
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            }
         }
     
-        document.addEventListener('keypress', (event) => {
+        document.getElementById("messageInput").addEventListener('keypress', (event) => {
             if (event.key === 'Enter') {
+                event.preventDefault(); // Prevent form submission
                 sendMessage();
             }
         });
@@ -76,50 +91,50 @@
             chatDiv.appendChild(newMessage);
         }
     
-        function fetchInitialMessages() {
-            fetch('/stream/' + currentUserId)
-            .then(response => response.json())
-            .then(messages => {
-                messages.forEach(message => {
-                    addMessageToChat(message.userId, message.text, message.isSystemMessage);
-                });
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        }
-    
         function getUserPaths(userId) {
             fetch('/get_user_paths/' + userId)
-            .then(response => response.json())
-            .then(paths => {
-                displayUserPaths(paths);
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+                .then(response => response.json())
+                .then(paths => {
+                    displayUserPaths(paths, userId);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
         }
     
-        function displayUserPaths(paths) {
+        function displayUserPaths(paths, userId, append = false) {
             const pathsDiv = document.getElementById('paths-display');
-            pathsDiv.innerHTML = ''; // Clear previous content
-            paths.forEach(pathHTML => {
+            if (!append) {
+                pathsDiv.innerHTML = '';
+            }
+            paths.forEach(path => {
                 const newPath = document.createElement('div');
-                newPath.innerHTML = pathHTML; // Use innerHTML instead of textContent
+                newPath.id = `path-container-${path.id}`;
+                newPath.innerHTML = `<a href="${path.url}" target="_blank">${path.name}</a>
+                                    <p>(Description: ${path.description}, Exists: ${path.exists})</p>
+                                    <button onclick="removePath('${userId}', '${path.id}')">Remove</button>`;
                 pathsDiv.appendChild(newPath);
             });
         }
-
     
-        document.addEventListener("DOMContentLoaded", () => {
-            getUserPaths(currentUserId);
-            fetchInitialMessages();
-            initializeEventSource();
-        });
+        function removePath(userId, pathId) {
+            fetch(`/remove_user_paths/${userId}/${pathId}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const pathElement = document.getElementById(`path-container-${pathId}`);
+                        if (pathElement) {
+                            pathElement.remove();
+                        }
+                    } else {
+                        alert('Error removing path');
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
     </script>
-     
     
+       
     {% include 'footer.html' %}
 </body>
-
 </html>

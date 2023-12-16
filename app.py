@@ -7,7 +7,7 @@ import time
 from db import get_mongo_client, test_mongo_connection
 from user_db import register_user, check_login
 import os
-from functions.db_operations import load_from_db, save_to_db, get_user_paths
+from functions.db_operations import load_from_db, save_to_db, get_user_paths, remove_user_paths
 
 app = Flask(__name__)
 messages_queue = queue.Queue()
@@ -114,6 +114,12 @@ def user_paths(user_id):
     paths = get_user_paths(user_id)
     return jsonify(paths)
 
+@app.route('/remove_user_paths/<user_id>/<path_id>', methods=['POST'])
+def remove_path(user_id, path_id):
+    # Logic to remove path from the database
+    success = remove_user_paths(user_id, path_id)
+    return jsonify({"success": success})
+
 @app.route('/dohook/', methods=['POST'])
 def webhook():
     user_paths = load_from_db()  # Load the latest data from MongoDB
@@ -133,6 +139,19 @@ def webhook():
                 user_paths[user_id] = {}
             user_paths[user_id][path] = hook_info
             save_to_db(user_paths)  # Save to MongoDB
+            # Send SSE message for new path
+            messages_queue.put({
+                "user_id": user_id,
+                "type": "new_path",
+                "path_info": {
+                    "id": path,
+                    "url": f"/webhook/{user_id}/{path}",
+                    "name": hook_info.get("hook_name"),
+                    "description": hook_info.get("hook_description"),
+                    "exists": os.path.exists(hook_info.get("script_path"))
+                }
+            })
+
             return jsonify({"success": True, "user_id": user_id, "path": path, "hook_info": hook_info})
 
     return jsonify({"success": False, "error": "Invalid data"})
