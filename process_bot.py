@@ -10,7 +10,7 @@ from ai_make.create_ai import create_assistant
 from ai_make.create_thread import create_thread  # To create a new conversation thread
 from ai_run.send_mess import add_message_to_thread  # To add a message to a conversation thread
 from ai_run.run_ai import run_assistant  # To run the AI assistant within a thread
-from functions.db_operations import read_db_chats, write_db_chats, read_db_agents, write_db_agents  # To handle database operations
+from functions.db_operations import read_db_chats, write_db_chats, read_db_agents, write_db_agents, read_db_assistants, write_db_assistants  # To handle database operations
 from functions.ai_parse_response import ai_parse_response
 from functions.return_response import send_message_to_hook
 
@@ -22,6 +22,7 @@ client = openai.Client()
 def process_bot(instruction, thread_main):
     user_id = thread_main['u_bot_0_id']
     dbc = read_db_chats(user_id)
+    dbb = read_db_assistants(user_id)
     dba = read_db_agents()
     # Log the incoming user ID and message
     logging.info(f"Processing bot {thread_main['agent']}: {thread_main['u_bot_0_id']} with message: {instruction}")
@@ -41,12 +42,12 @@ def process_bot(instruction, thread_main):
 
     # Retrieve or create a thread ID for the conversation
     dbc = read_db_chats(user_id)
-    thread_id = dbc.get('active', {}).get('active_' + thread_main['agent'] + '_thread_id')
+    thread_id = dbb.get('active', {}).get(thread_main['agent'] + '_thread_id')
     if not thread_id:
         logging.info(f"Creating new thread for {thread_main['agent']}.")
         thread_id = create_thread()
-        dbc[ids]['active_' + thread_main['agent'] + '_thread_id'] = thread_id
-        write_db_chats(user_id, dbc)
+        dbb['active'][thread_main['agent'] + '_thread_id'] = thread_id
+        write_db_assistants(user_id, dbb)
     logging.info(f"Global Assistant {thread_main['agent']}: {thread_id}.")
    
    

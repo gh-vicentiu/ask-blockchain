@@ -32,6 +32,30 @@ def write_db_chats(user_id, new_data):
         print(f"Error updating MongoDB for user {user_id}: {e}")
 
 
+# Function to read data from MongoDB
+def read_db_assistants(user_id):
+    client = get_mongo_client()
+    db = client['AssistantsData']
+    collection = db['Assistants']
+    try:
+        # Fetching data based on user_id
+        data = collection.find_one({"_id": user_id})
+        return data if data else {}
+    except Exception as e:
+        print(f"Error reading from MongoDB for user {user_id}: {e}")
+        return {}
+
+def write_db_assistants(user_id, new_data):
+    client = get_mongo_client()
+    db = client['AssistantsData']
+    collection = db['Assistants']
+    try:
+        # Setting the user_id as the _id of the document
+        collection.update_one({'_id': user_id}, {'$set': new_data}, upsert=True)
+        print("Database updated for user:", user_id)
+    except Exception as e:
+        print(f"Error updating MongoDB for user {user_id}: {e}")
+
 
 def read_db_agents():
     client = get_mongo_client()
@@ -56,6 +80,8 @@ def write_db_agents(agent_id, new_data):
         print("Database updated for agent:", agent_id)
     except Exception as e:
         print(f"Error updating MongoDB for agent {agent_id}: {e}")
+
+
 
 
 def save_to_db(data, db_name='user_database', collection_name='user_paths'):

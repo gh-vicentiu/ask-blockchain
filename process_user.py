@@ -10,7 +10,7 @@ from ai_make.create_ai import create_assistant  # To create a new AI assistant
 from ai_make.create_thread import create_thread  # To create a new conversation thread
 from ai_run.send_mess import add_message_to_thread  # To add a message to a conversation thread
 from ai_run.run_ai import run_assistant  # To run the AI assistant within a thread
-from functions.db_operations import read_db_chats, write_db_chats, read_db_agents, write_db_agents  # To handle database operations
+from functions.db_operations import read_db_chats, write_db_chats, read_db_agents, write_db_agents, read_db_assistants, write_db_assistants  # To handle database operations
 from functions.ai_parse_response import ai_parse_response
 from functions.return_response import send_message_to_hook
 
@@ -22,8 +22,9 @@ def process_user(user_id, messaged_us):
     # Log the incoming user ID and message
     logging.info(f"Processing user: {user_id} with message: {messaged_us}")
     # Read the current state of the database
-    dbc = read_db_chats(user_id)
     dba = read_db_agents()
+    dbb = read_db_assistants(user_id)
+    dbc = read_db_chats(user_id)
 
     # Initialize variable for the full thread
     thread_full = None
@@ -46,14 +47,15 @@ def process_user(user_id, messaged_us):
     
    
     # Retrieve or create a thread ID for the conversation
-    dbc = read_db_chats(user_id)
-    thread_id = dbc.get('active', {}).get('active_relay_thread_id')
+    dbb = read_db_assistants(user_id)
+    thread_id = dbb.get('active', {}).get('relay_thread_id')
     if not thread_id:
         logging.info(f"Creating new thread for the user {user_id}.")
         thread_id = create_thread()  # Your function to create a new thread ID
-        if 'active' not in dbc:
-            dbc['active'] = {}
-        dbc['active']['active_relay_thread_id'] = thread_id
+        if 'active' not in dbb:
+            dbb['active'] = {}
+        dbb['active']['relay_thread_id'] = thread_id
+        write_db_assistants(user_id, dbb)
         if assistant_id not in dbc:
             dbc[assistant_id] = {}
         dbc[assistant_id][thread_id] = {}

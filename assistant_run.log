@@ -1882,3 +1882,93 @@
 2023-12-17 01:21:01,085:INFO:Run completed. Fetching messages...
 2023-12-17 01:21:01,308:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_56E8gr8M51vm6lK6FVuUYOIY/messages?limit=1&order=desc "HTTP/1.1 200 OK"
 2023-12-17 01:21:01,311:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_1uoSuzVGnH79usqGpLFhOIOV', assistant_id='asst_m9zVqJ5vLS5RhSrhjfRjPH67', content=[MessageContentText(text=Text(annotations=[], value='The webhook for the "gogo.py" script has been successfully set up with the name "GO" and the provided description. You can access it at the following path: `/webhook/93a8_3ed1/lw8FLvTj`. If you need any further assistance, feel free to ask!'), type='text')], created_at=1702768858, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_5Cb423yUmEt40vuafr4e1FVU', thread_id='thread_56E8gr8M51vm6lK6FVuUYOIY')], object='list', first_id='msg_1uoSuzVGnH79usqGpLFhOIOV', last_id='msg_1uoSuzVGnH79usqGpLFhOIOV', has_more=True).
+2023-12-17 01:34:48,171:INFO:Processing user: 93a8_3ed1 with message: make me a hook that prints Go Baby name it BabyGo, it's about baby going
+2023-12-17 01:34:49,161:INFO:Assistant asst_m9zVqJ5vLS5RhSrhjfRjPH67 for 93a8_3ed1.
+2023-12-17 01:34:49,782:INFO:Adding Message to  asst_m9zVqJ5vLS5RhSrhjfRjPH67 - thread_56E8gr8M51vm6lK6FVuUYOIY for 93a8_3ed1.
+2023-12-17 01:34:49,783:INFO:None Attempting to add message to thread: make me a hook that prints Go Baby name it BabyGo, it's about baby going
+2023-12-17 01:34:50,120:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_56E8gr8M51vm6lK6FVuUYOIY/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-17 01:34:50,386:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_56E8gr8M51vm6lK6FVuUYOIY/runs/run_5Cb423yUmEt40vuafr4e1FVU "HTTP/1.1 200 OK"
+2023-12-17 01:34:50,716:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_56E8gr8M51vm6lK6FVuUYOIY/messages "HTTP/1.1 200 OK"
+2023-12-17 01:34:50,718:INFO:None Message ID registered: msg_aQo3FSPrcPC5ZkYiKhG7R4K3 - make me a hook that prints Go Baby name it BabyGo, it's about baby going
+2023-12-17 01:34:50,719:INFO:Message msg_aQo3FSPrcPC5ZkYiKhG7R4K3 added to  asst_m9zVqJ5vLS5RhSrhjfRjPH67 - thread_56E8gr8M51vm6lK6FVuUYOIY for 93a8_3ed1.
+2023-12-17 01:34:51,793:INFO:Start Main Assistent: 'u_bot_0_id': 93a8_3ed1, 'a_bot_0_id': asst_m9zVqJ5vLS5RhSrhjfRjPH67, 't_bot_0_id': thread_56E8gr8M51vm6lK6FVuUYOIY, 'm_bot_0_id': msg_aQo3FSPrcPC5ZkYiKhG7R4K3, 'agent': 'relay'
+2023-12-17 01:34:51,793:INFO:Starting the main assistant...
+2023-12-17 01:34:52,477:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_56E8gr8M51vm6lK6FVuUYOIY/runs "HTTP/1.1 200 OK"
+2023-12-17 01:34:52,480:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-17 01:34:52,480:INFO:Checking run status...
+2023-12-17 01:34:55,776:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_56E8gr8M51vm6lK6FVuUYOIY/runs/run_3lZBv3fmXqsnm3anEKAGUWuc "HTTP/1.1 200 OK"
+2023-12-17 01:34:55,779:INFO:Function Calling
+2023-12-17 01:34:55,779:INFO:{'tool_calls': [{'id': 'call_68lQK7OdqtEIqKfXBGHT54YX', 'function': {'arguments': '{"sentTo": "agent_coder", "sentFrom": "manager", "instruction": "Please create a script to print \\"Go Baby\\" with the name \\"BabyGo.py.\\""}', 'name': 'call_agent_coder'}, 'type': 'function'}, {'id': 'call_8h7kPHfwWMy3sWNsVa95CmpQ', 'function': {'arguments': '{"sentTo": "agent_webhook", "sentFrom": "manager", "instruction": "Please set up a webhook for the script named \\"BabyGo.py\\". Name it \\"BabyGo\\" and describe it as a script about a baby going."}', 'name': 'call_agent_webhook'}, 'type': 'function'}]}
+2023-12-17 01:34:56,896:INFO:Processing bot agent_coder: 93a8_3ed1 with message: Please create a script to print "Go Baby" with the name "BabyGo.py."
+2023-12-17 01:34:56,897:INFO:Global Assistant agent_coder: asst_BqtPvI5aAVO3c70QnoKVXUqB.
+2023-12-17 01:34:57,447:INFO:Global Assistant agent_coder: thread_dYksdS8jt68ajobshrVEURF6.
+2023-12-17 01:34:57,447:INFO:agent_coder Attempting to add message to thread: Please create a script to print "Go Baby" with the name "BabyGo.py."
+2023-12-17 01:34:57,757:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_dYksdS8jt68ajobshrVEURF6/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-17 01:34:58,049:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_dYksdS8jt68ajobshrVEURF6/runs/run_JnWcjjyKtsDMXLvXY3fDgcEK "HTTP/1.1 200 OK"
+2023-12-17 01:34:58,362:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_dYksdS8jt68ajobshrVEURF6/messages "HTTP/1.1 200 OK"
+2023-12-17 01:34:58,364:INFO:agent_coder Message ID registered: msg_SsjlCf8Hj34XIxpRxoYHBJkR - Please create a script to print "Go Baby" with the name "BabyGo.py."
+2023-12-17 01:34:58,365:INFO:Message msg_SsjlCf8Hj34XIxpRxoYHBJkR added to  asst_BqtPvI5aAVO3c70QnoKVXUqB - thread_dYksdS8jt68ajobshrVEURF6 for 93a8_3ed1.
+2023-12-17 01:34:59,478:INFO:Starting the secondery bots...
+2023-12-17 01:34:59,995:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_dYksdS8jt68ajobshrVEURF6/runs "HTTP/1.1 200 OK"
+2023-12-17 01:34:59,998:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-17 01:34:59,999:INFO:Checking run status...
+2023-12-17 01:35:03,276:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_dYksdS8jt68ajobshrVEURF6/runs/run_by1xcBv1lAfWPTn0s2Naivaj "HTTP/1.1 200 OK"
+2023-12-17 01:35:03,281:INFO:Function Calling
+2023-12-17 01:35:03,281:INFO:{'tool_calls': [{'id': 'call_kQwG9UdGbRsPY8A9401JINZc', 'function': {'arguments': '{"fileName":"BabyGo.py","fileContent":"print(\'Go Baby\')"}', 'name': 'create_file'}, 'type': 'function'}]}
+2023-12-17 01:35:04,878:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_dYksdS8jt68ajobshrVEURF6/runs/run_by1xcBv1lAfWPTn0s2Naivaj/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-17 01:35:04,882:INFO:Submitting outputs back: [{'tool_call_id': 'call_kQwG9UdGbRsPY8A9401JINZc', 'output': "File 'sandbox/93a8_3ed1/BabyGo.py' created successfully."}]
+2023-12-17 01:35:04,882:INFO:Checking run status...
+2023-12-17 01:35:08,097:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_dYksdS8jt68ajobshrVEURF6/runs/run_by1xcBv1lAfWPTn0s2Naivaj "HTTP/1.1 200 OK"
+2023-12-17 01:35:08,102:INFO:Run completed. Fetching messages...
+2023-12-17 01:35:08,375:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_dYksdS8jt68ajobshrVEURF6/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-17 01:35:08,383:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_M0EiHsdsOX1dC7gddVJ7KV6B', assistant_id='asst_BqtPvI5aAVO3c70QnoKVXUqB', content=[MessageContentText(text=Text(annotations=[], value='The script to print "Go Baby" with the name "BabyGo.py" has been created. You can execute the script using the filename "BabyGo.py".'), type='text')], created_at=1702769705, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_by1xcBv1lAfWPTn0s2Naivaj', thread_id='thread_dYksdS8jt68ajobshrVEURF6')], object='list', first_id='msg_M0EiHsdsOX1dC7gddVJ7KV6B', last_id='msg_M0EiHsdsOX1dC7gddVJ7KV6B', has_more=True).
+2023-12-17 01:35:11,516:INFO:Processing bot agent_webhook: 93a8_3ed1 with message: Please set up a webhook for the script named "BabyGo.py". Name it "BabyGo" and describe it as a script about a baby going.
+2023-12-17 01:35:11,517:INFO:Global Assistant agent_webhook: asst_kplMVHA5KsXGShlypLcRrOQV.
+2023-12-17 01:35:12,055:INFO:Global Assistant agent_webhook: thread_BGouAvMp0avBxUDl3uLmYu4w.
+2023-12-17 01:35:12,056:INFO:agent_webhook Attempting to add message to thread: Please set up a webhook for the script named "BabyGo.py". Name it "BabyGo" and describe it as a script about a baby going.
+2023-12-17 01:35:12,376:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_BGouAvMp0avBxUDl3uLmYu4w/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-17 01:35:12,652:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_BGouAvMp0avBxUDl3uLmYu4w/runs/run_z4xIenN65IzMNF3QggWOKDQZ "HTTP/1.1 200 OK"
+2023-12-17 01:35:12,957:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_BGouAvMp0avBxUDl3uLmYu4w/messages "HTTP/1.1 200 OK"
+2023-12-17 01:35:12,959:INFO:agent_webhook Message ID registered: msg_JJv6Nusc12JHR5PlWrEIg81f - Please set up a webhook for the script named "BabyGo.py". Name it "BabyGo" and describe it as a script about a baby going.
+2023-12-17 01:35:12,960:INFO:Message msg_JJv6Nusc12JHR5PlWrEIg81f added to  asst_kplMVHA5KsXGShlypLcRrOQV - thread_BGouAvMp0avBxUDl3uLmYu4w for 93a8_3ed1.
+2023-12-17 01:35:14,019:INFO:Starting the secondery bots...
+2023-12-17 01:35:14,565:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_BGouAvMp0avBxUDl3uLmYu4w/runs "HTTP/1.1 200 OK"
+2023-12-17 01:35:14,568:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-17 01:35:14,568:INFO:Checking run status...
+2023-12-17 01:35:17,851:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_BGouAvMp0avBxUDl3uLmYu4w/runs/run_SM8uBUGyALOed8kIyBthPukf "HTTP/1.1 200 OK"
+2023-12-17 01:35:17,854:INFO:Function Calling
+2023-12-17 01:35:17,854:INFO:{'tool_calls': [{'id': 'call_1DTCqQJknUEaw1wcU0FEILpP', 'function': {'arguments': '{"script_path":"BabyGo.py","hook_name":"BabyGo","hook_description":"A webhook for the BabyGo script about a baby going."}', 'name': 'add_to_webhook'}, 'type': 'function'}]}
+2023-12-17 01:35:20,626:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_BGouAvMp0avBxUDl3uLmYu4w/runs/run_SM8uBUGyALOed8kIyBthPukf/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-17 01:35:20,629:INFO:Submitting outputs back: [{'tool_call_id': 'call_1DTCqQJknUEaw1wcU0FEILpP', 'output': "Success: Webhook '/webhook/93a8_3ed1/8in3LQFK' added"}]
+2023-12-17 01:35:20,630:INFO:Checking run status...
+2023-12-17 01:35:23,861:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_BGouAvMp0avBxUDl3uLmYu4w/runs/run_SM8uBUGyALOed8kIyBthPukf "HTTP/1.1 200 OK"
+2023-12-17 01:35:23,864:INFO:Run completed. Fetching messages...
+2023-12-17 01:35:24,178:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_BGouAvMp0avBxUDl3uLmYu4w/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-17 01:35:24,181:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_F7Mmv6EBRRkZTAWKhNqDEPh0', assistant_id='asst_kplMVHA5KsXGShlypLcRrOQV', content=[MessageContentText(text=Text(annotations=[], value='The webhook for the "BabyGo.py" script has been successfully set up. You can access it at the following path: `/webhook/93a8_3ed1/8in3LQFK`'), type='text')], created_at=1702769720, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_SM8uBUGyALOed8kIyBthPukf', thread_id='thread_BGouAvMp0avBxUDl3uLmYu4w')], object='list', first_id='msg_F7Mmv6EBRRkZTAWKhNqDEPh0', last_id='msg_F7Mmv6EBRRkZTAWKhNqDEPh0', has_more=True).
+2023-12-17 01:35:27,147:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_56E8gr8M51vm6lK6FVuUYOIY/runs/run_3lZBv3fmXqsnm3anEKAGUWuc/submit_tool_outputs "HTTP/1.1 200 OK"
+2023-12-17 01:35:27,150:INFO:Submitting outputs back: [{'tool_call_id': 'call_68lQK7OdqtEIqKfXBGHT54YX', 'output': 'result The script to print "Go Baby" with the name "BabyGo.py" has been created. You can execute the script using the filename "BabyGo.py".'}, {'tool_call_id': 'call_8h7kPHfwWMy3sWNsVa95CmpQ', 'output': 'result The webhook for the "BabyGo.py" script has been successfully set up. You can access it at the following path: `/webhook/93a8_3ed1/8in3LQFK`'}]
+2023-12-17 01:35:27,150:INFO:Checking run status...
+2023-12-17 01:35:30,369:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_56E8gr8M51vm6lK6FVuUYOIY/runs/run_3lZBv3fmXqsnm3anEKAGUWuc "HTTP/1.1 200 OK"
+2023-12-17 01:35:30,372:INFO:Run completed. Fetching messages...
+2023-12-17 01:35:30,650:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_56E8gr8M51vm6lK6FVuUYOIY/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-17 01:35:30,653:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_UnAf7z2LDF69vcmr29o0FCfo', assistant_id='asst_m9zVqJ5vLS5RhSrhjfRjPH67', content=[MessageContentText(text=Text(annotations=[], value='The script to print "Go Baby" with the name "BabyGo.py" has been successfully created. Additionally, the webhook for the "BabyGo.py" script has been successfully set up. You can access it at the following path: `/webhook/93a8_3ed1/8in3LQFK`. If you need any further assistance or have additional requests, feel free to let me know!'), type='text')], created_at=1702769728, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_3lZBv3fmXqsnm3anEKAGUWuc', thread_id='thread_56E8gr8M51vm6lK6FVuUYOIY')], object='list', first_id='msg_UnAf7z2LDF69vcmr29o0FCfo', last_id='msg_UnAf7z2LDF69vcmr29o0FCfo', has_more=True).
+2023-12-17 22:53:27,939:INFO:Processing user: 93a8_3ed1 with message: hi
+2023-12-17 22:53:29,475:INFO:Assistant asst_m9zVqJ5vLS5RhSrhjfRjPH67 for 93a8_3ed1.
+2023-12-17 22:53:29,913:INFO:Creating new thread for the user 93a8_3ed1.
+2023-12-17 22:53:30,330:INFO:HTTP Request: POST https://api.openai.com/v1/threads "HTTP/1.1 200 OK"
+2023-12-17 22:53:31,520:INFO:Thread thread_njHgwOh0g5C0DZimGHRlqb7J for 93a8_3ed1.
+2023-12-17 22:53:31,520:INFO:Adding Message to  asst_m9zVqJ5vLS5RhSrhjfRjPH67 - thread_njHgwOh0g5C0DZimGHRlqb7J for 93a8_3ed1.
+2023-12-17 22:53:31,520:INFO:None Attempting to add message to thread: hi
+2023-12-17 22:53:31,829:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_njHgwOh0g5C0DZimGHRlqb7J/runs?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-17 22:53:32,133:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_njHgwOh0g5C0DZimGHRlqb7J/messages "HTTP/1.1 200 OK"
+2023-12-17 22:53:32,137:INFO:None Message ID registered: msg_UWiNgdzvAGiiznUXiJVGvLnz - hi
+2023-12-17 22:53:32,137:INFO:Message msg_UWiNgdzvAGiiznUXiJVGvLnz added to  asst_m9zVqJ5vLS5RhSrhjfRjPH67 - thread_njHgwOh0g5C0DZimGHRlqb7J for 93a8_3ed1.
+2023-12-17 22:53:33,403:INFO:Start Main Assistent: 'u_bot_0_id': 93a8_3ed1, 'a_bot_0_id': asst_m9zVqJ5vLS5RhSrhjfRjPH67, 't_bot_0_id': thread_njHgwOh0g5C0DZimGHRlqb7J, 'm_bot_0_id': msg_UWiNgdzvAGiiznUXiJVGvLnz, 'agent': 'relay'
+2023-12-17 22:53:33,404:INFO:Starting the main assistant...
+2023-12-17 22:53:33,910:INFO:HTTP Request: POST https://api.openai.com/v1/threads/thread_njHgwOh0g5C0DZimGHRlqb7J/runs "HTTP/1.1 200 OK"
+2023-12-17 22:53:33,913:INFO:Main Assistant run initiated. Dumping initial run status:
+2023-12-17 22:53:33,913:INFO:Checking run status...
+2023-12-17 22:53:37,181:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_njHgwOh0g5C0DZimGHRlqb7J/runs/run_pIfetpDMhII2Lpu6pc5RY43T "HTTP/1.1 200 OK"
+2023-12-17 22:53:37,185:INFO:Run completed. Fetching messages...
+2023-12-17 22:53:37,460:INFO:HTTP Request: GET https://api.openai.com/v1/threads/thread_njHgwOh0g5C0DZimGHRlqb7J/messages?limit=1&order=desc "HTTP/1.1 200 OK"
+2023-12-17 22:53:37,464:INFO:Messages fetched from the thread SyncCursorPage[ThreadMessage](data=[ThreadMessage(id='msg_cajx4DSlhNcyLo252NKq3Z5S', assistant_id='asst_m9zVqJ5vLS5RhSrhjfRjPH67', content=[MessageContentText(text=Text(annotations=[], value='Hello! How can I assist you today?'), type='text')], created_at=1702846414, file_ids=[], metadata={}, object='thread.message', role='assistant', run_id='run_pIfetpDMhII2Lpu6pc5RY43T', thread_id='thread_njHgwOh0g5C0DZimGHRlqb7J')], object='list', first_id='msg_cajx4DSlhNcyLo252NKq3Z5S', last_id='msg_cajx4DSlhNcyLo252NKq3Z5S', has_more=True).

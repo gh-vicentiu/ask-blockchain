@@ -3,74 +3,51 @@ import json
 import random
 import string
 
+def make_http_request(method, url, data=None, headers=None):
+    try:
+        if method == "POST":
+            response = requests.post(url, json=data, headers=headers)
+        elif method == "GET":
+            response = requests.get(url, headers=headers)
+        else:
+            return "Unsupported HTTP method"
+
+        if response.ok:
+            return response.json()
+        else:
+            return f"HTTP {method} request failed with status code: {response.status_code}"
+    except Exception as e:
+        return f"Error during HTTP {method} request: {str(e)}"
+
+
 def generate_random_string(length=8):
     characters = string.ascii_letters + string.digits
     return ''.join(random.choice(characters) for _ in range(length))
 
 def add_to_webhook(script_path, hook_name, hook_description, user_id):
-    url = "http://127.0.0.1:5000/dohook/"
-    headers = {"Content-Type": "application/json"}
-    url_path = generate_random_string(8)
-    
     data = {
         "user_id": user_id, 
-        "path": url_path, 
-        "script_path": 'sandbox/' + user_id + '/' + script_path, 
+        "path": generate_random_string(), 
+        "script_path": f'sandbox/{user_id}/{script_path}', 
         "hook_name": hook_name, 
         "hook_description": hook_description
     }
-
-    response = requests.post(url, headers=headers, data=json.dumps(data))
-
-    if response.status_code == 200:
-        response_data = response.json()
-        if response_data.get("success"):
-            print(f"Webhook '/webhook/{user_id}/{url_path}' added successfully with script path '{script_path}'")
-            return f"Success: Webhook '/webhook/{user_id}/{url_path}' added"
-        else:
-            print(f"Error adding webhook:", response_data.get("error"))
-            return f"Error adding webhook:", response_data.get("error")
-    else:
-        print("HTTP POST request failed with status code:", response.status_code)
-        return f"HTTP POST request failed with status code: {response.status_code}"
+    response = make_http_request("POST", "http://127.0.0.1:5000/dohook/", data)
+    return response
 
 def test_webhook(url_path):
-    base_url = "http://127.0.0.1:5000/"
-    full_url = f"{base_url}{url_path}"
-
-    try:
-        response = requests.get(full_url)
-        if response.status_code == 200:
-            print(f"Webhook '{full_url}' tested successfully.")
-            return f"Success: Webhook '{full_url}' is up and running. Result: {response.text}"
-        else:
-            print(f"Webhook test failed with status code: {response.status_code}")
-            return f"Error: Webhook test failed with status code: {response.status_code}. Details: {response.text}"
-    except Exception as e:
-        print(f"Error testing webhook: {e}")
-        return f"Error: Could not test webhook. Exception: {str(e)}"
-
+    response = make_http_request("GET", f"http://127.0.0.1:5000/{url_path}")
+    return response
 
 def remove_webhook(path_id, user_id):
     url = f"http://127.0.0.1:5000/remove_user_paths/{user_id}/{path_id}"
-    headers = {"Content-Type": "application/json"}
+    response = make_http_request("POST", url)
+    return response
 
-    try:
-        response = requests.post(url, headers=headers)
-        if response.status_code == 200:
-            response_data = response.json()
-            if response_data.get("success"):
-                print(f"Webhook with path_id '{path_id}' for user '{user_id}' removed successfully.")
-                return f"Success: Webhook with path_id '{path_id}' for user '{user_id}' removed."
-            else:
-                print(f"Failed to remove webhook: {response_data.get('error', 'Unknown Error')}")
-                return f"Error removing webhook: {response_data.get('error', 'Unknown Error')}"
-        else:
-            print(f"HTTP POST request failed with status code: {response.status_code}")
-            return f"HTTP POST request failed with status code: {response.status_code}"
-    except Exception as e:
-        print(f"Error removing webhook: {e}")
-        return f"Error removing webhook: Exception: {str(e)}"
+def edit_webhook(path_id, updates, user_id):
+    url = f"http://127.0.0.1:5000/edit_user_path/{user_id}/{path_id}"
+    response = make_http_request("POST", url, updates)
+    return response
 
 
 

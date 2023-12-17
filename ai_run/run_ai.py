@@ -4,7 +4,7 @@ import json
 import logging
 from ai_tools.main_tools import call_agent_webhook, call_agent_coder
 from ai_tools.secondary_tools import execute_file, create_file, move_files
-from ai_tools.tool_calls import handle_add_to_webhook, handle_call_agent_webhook, handle_call_agent_coder, handle_create_file, handle_execute_file, handle_move_files
+from ai_tools.tool_calls import handle_add_to_webhook, handle_remove_webhook, handle_edit_webhook, handle_test_webhook, handle_call_agent_webhook, handle_call_agent_coder, handle_create_file, handle_execute_file, handle_move_files
 from functions.db_operations import read_db_chats, write_db_chats  # To handle database operations
 from functions.return_response import send_message_to_hook
 
@@ -72,7 +72,10 @@ def run_assistant(thread_main):
                     "create_file": handle_create_file,
                     "execute_file": handle_execute_file,
                     "move_files": handle_move_files,
-                    "add_to_webhook": handle_add_to_webhook
+                    "add_to_webhook": handle_add_to_webhook,
+                    "remove_webhook": handle_remove_webhook,
+                    "edit_webhook": handle_edit_webhook,
+                    "test_webhook": handle_test_webhook
                 }
 
                 if func_name in handlers:
