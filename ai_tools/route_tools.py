@@ -35,8 +35,8 @@ def add_to_webhook(script_path, hook_name, hook_description, user_id):
     response = make_http_request("POST", "http://127.0.0.1:5000/dohook/", data)
     return response
 
-def test_webhook(url_path):
-    response = make_http_request("GET", f"http://127.0.0.1:5000/{url_path}")
+def test_webhook(webhook_path):
+    response = make_http_request("GET", f"http://127.0.0.1:5000/{webhook_path}")
     return response
 
 def remove_webhook(path_id, user_id):
@@ -51,7 +51,7 @@ def edit_webhook(path_id, updates, user_id):
 
 
 
-tools_config = [
+tools_route = [
     {
         "type": "function",
         "function": {

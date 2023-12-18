@@ -70,16 +70,16 @@ def read_db_agents():
 
 
 # Function to write data to MongoDB
-def write_db_agents(agent_id, new_data):
+def write_db_agents(new_data):
     client = get_mongo_client()
     db = client['AssistantsData']
     collection = db['Agents']
     try:
         # Assuming agent_id is analogous to user_id for agent documents
-        collection.update_one({'_id': agent_id}, {'$set': new_data}, upsert=True)
-        print("Database updated for agent:", agent_id)
+        collection.update_one({'_id': 'global'}, {'$set': new_data}, upsert=True)
+        print("Database updated for agent:")
     except Exception as e:
-        print(f"Error updating MongoDB for agent {agent_id}: {e}")
+        print(f"Error updating MongoDB for agent: {e}")
 
 
 

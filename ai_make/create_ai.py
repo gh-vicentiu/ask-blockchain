@@ -18,7 +18,7 @@ def create_assistant(agent=None):
     tool_route = tools_route
 
     if agent == "relay":
-        instructions_relay = read_instructions("instructions_relay.txt")
+        instructions_relay = read_instructions("ai_make/instructions_relay.txt")
         assistant = client.beta.assistants.create(
             name=agent,
             instructions=instructions_relay,
@@ -26,7 +26,7 @@ def create_assistant(agent=None):
             model="gpt-3.5-turbo-1106"        
         )
     elif agent == "agent_webhook":
-        instructions_agent_webhook = read_instructions("instructions_agent_webhook.txt")
+        instructions_agent_webhook = read_instructions("ai_make/instructions_agent_webhook.txt")
         assistant = client.beta.assistants.create(
             name=agent,
             instructions=instructions_agent_webhook,
@@ -34,7 +34,7 @@ def create_assistant(agent=None):
             model="gpt-3.5-turbo-1106"        
         )
     elif agent == "agent_coder":
-        instructions_agent_coder = read_instructions("instructions_agent_coder.txt")
+        instructions_agent_coder = read_instructions("ai_make/instructions_agent_coder.txt")
         assistant = client.beta.assistants.create(
             name=agent,
             instructions=instructions_agent_coder,
