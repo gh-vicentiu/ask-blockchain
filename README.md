@@ -49,6 +49,16 @@ export MONGODB_URI=""
 
 !!! OPEN AI KEY REQUIRED !!! 
 
+    20 december first beta version
+    it's alive and talks back!
+    Since alpha
+    Ui implemented
+    MongoDb implemented
+    the system now designs webhooks as well
+    better error handleing
+    improved and expanded code
+    huge update!
+
 What to expect. for now...
     5 dececmber 2023
     first alpha version!
